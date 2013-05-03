@@ -1,4 +1,4 @@
-dev-labs
+Dev Labs
 ========
 
-Internal development and some experiments with code
+This repository created for internal development and some experiments with code

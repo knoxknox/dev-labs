@@ -34,6 +34,7 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  Padrino.require_dependencies "#{Padrino.root}/config/initializers/**/*.rb"
 end
 
 ##

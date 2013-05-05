@@ -58,17 +58,25 @@ module Bookme
     #     render 'errors/505'
     #   end
     #
-    error 404 do
-      render 'errors/404'
-    end
+    disable :show_exceptions
 
-    error 500 do
-      render 'errors/500'
+    error Exception do
+      handle_exception('errors/500', :code => 500)
     end
 
     error ActiveRecord::RecordNotFound do
-      halt 404
-      render 'errors/404'
+      handle_exception('errors/404', :code => 404)
+    end
+
+    ##
+    # Handle exceptions that raised in application and renders error page.
+    #
+    def handle_exception(template, opts = {})
+      content_type :json
+      @error = env['sinatra.error']
+      response.status = opts[:code] || 500
+
+      render template
     end
 
   end

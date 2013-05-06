@@ -5,7 +5,10 @@ module Bookme
     register Padrino::Mailer
     register Padrino::Helpers
 
-    enable :sessions
+    ##
+    # Cookie based auth
+    # enable :sessions
+    #
 
     ##
     # Caching support

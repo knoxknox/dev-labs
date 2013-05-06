@@ -1,6 +1,22 @@
 require 'active_record'
 require 'rack/session/abstract/id'
 
+##
+# First of all disable :sessions (app.rb & apps.rb).
+# This removes Rack::Session::Cookie that uses by default.
+#
+# To enable DB sessions add: Padrino.use Rack::Session::AR
+# Don't forget to create a sessions table with this structure:
+#   CREATE TABLE IF NOT EXISTS `sessions` (
+#     `id` int(11) NOT NULL AUTO_INCREMENT,
+#     `session_id` varchar(128) NOT NULL,
+#     `data` text,
+#     `updated_at` datetime DEFAULT NULL,
+#   PRIMARY KEY (`id`),
+#   KEY `index_sessions_on_session_id` (`session_id`),
+#   KEY `index_sessions_on_updated_at` (`updated_at`)
+#   ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+#
 module Rack
   module Session
 
@@ -18,6 +34,14 @@ module Rack
     end
 
     class AR < Abstract::ID
+
+      def init_session(sid)
+        SessionStore.new(:session_id => sid, :data => {})
+      end
+
+      def find_session_by_id(sid)
+        SessionStore.where(:session_id => sid).first if sid
+      end
 
       def get_session(env, sid)
         ActiveRecord::Base.logger.quietly do
@@ -41,14 +65,6 @@ module Rack
         end
 
         sid
-      end
-
-      def init_session(sid)
-        SessionStore.new(:session_id => sid, :data => {})
-      end
-
-      def find_session_by_id(sid)
-        SessionStore.where(:session_id => sid).first if sid
       end
 
     end

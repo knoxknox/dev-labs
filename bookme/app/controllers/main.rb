@@ -1,5 +1,5 @@
 Bookme::App.controllers :main do
-  
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -22,7 +22,7 @@ Bookme::App.controllers :main do
   before do
     content_type :json
   end
-  
+
   # GET /main
   get :index do
     @data = Bookmark.all
@@ -41,6 +41,11 @@ Bookme::App.controllers :main do
   # GET: /main/preview
   get :preview do
     halt 400, 'Not implemented'
+  end
+
+  # POST: /main
+  post :create, :map => :main do
+    send_response(Bookmark.create(params[:data]))
   end
 
 end

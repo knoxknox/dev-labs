@@ -34,6 +34,12 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  if Padrino.env == :development
+    BetterErrors.logger = Padrino.logger
+    BetterErrors.application_root = PADRINO_ROOT
+    Padrino::Application.use BetterErrors::Middleware
+  end
+
   Padrino.require_dependencies "#{Padrino.root}/config/initializers/**/*.rb"
 end
 

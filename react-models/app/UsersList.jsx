@@ -7,7 +7,7 @@ module.exports = React.createClass({
   observe: { 'items': 'collection' },
 
   render: function() {
-    return <p>{this.renderItems()}</p>;
+    return <div>{this.renderItems()}</div>;
   },
 
   renderItems: function() {

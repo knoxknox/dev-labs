@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+mainClassName = 'app.Bootstrap'
+
+repositories {
+    mavenCentral()
+}
+
+task bundle(type: Copy) {
+    into "$buildDir/lib"
+    from configurations.runtime
+}
+
+dependencies {
+    compile 'com.sparkjava:spark-core:2.2'
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+}

@@ -30,7 +30,8 @@ class Trie
       end
 
       children = node.children
-      node.is_leaf = true if i == word.size - 1
+      leaf_node = i == word.size - 1
+      node.is_leaf = true if leaf_node
     end
   end
 

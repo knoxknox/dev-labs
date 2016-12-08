@@ -1,7 +1,7 @@
 # ratpack
 
 ## Docs
-Ref - https://ratpack.io
+https://ratpack.io
 
 ## Install
 ```

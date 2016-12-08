@@ -8,5 +8,5 @@ https://ratpack.io
 $ bundle install
 $ bundle exec jbundle install
 $
-$ jruby --server -S bin/server
+$ jruby --server -S scripts/server
 ```

@@ -1,0 +1,4 @@
+#!env jruby
+
+require_relative '../config/boot.rb'
+Qustreax::Server.new('0.0.0.0', ENV['port'] || 3000).run

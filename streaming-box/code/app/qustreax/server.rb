@@ -42,7 +42,7 @@ module Qustreax
         embedded.
         port(@port.to_i).
         base_dir(BaseDir.find).
-        props('application.properties').
+        props('config/server.props').
         address(InetAddress.getByName(@host)).
         development(ENV['RACK_ENV'] == 'development')
     end

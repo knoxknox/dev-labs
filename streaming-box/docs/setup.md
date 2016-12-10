@@ -13,18 +13,3 @@ $ wget http://mirror.23media.de/apache/storm/apache-storm-0.9.5/apache-storm-0.9
 $ wget http://mirror.cc.columbia.edu/pub/software/apache/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz
 $ wget https://github.com/ldaniels528/trifecta/releases/download/v0.18.20/trifecta_0.18.20.bin.jar
 ```
-
-## Additional
-```
-$ ps aux | grep java
-$ tar -xvzf package.tar.gz
-```
-```
-$ curl -L -s get.jenv.io | bash
-$ jenv install java 1.8.0_71 && java -version
-```
-```
-$ wget https://bootstrap.pypa.io/get-pip.py
-$ sudo python get-pip.py && rm -f get-pip.py
-$ sudo pip install --upgrade pip setuptools httpie
-```

@@ -1,0 +1,5 @@
+# blue:   name = [38;5;032m], folder = [38;5;075m]
+# green:  name = [38;5;028m], folder = [38;5;076m]
+# orange: name = [38;5;166m], folder = [38;5;178m]
+
+export PS1="\[\033[38;5;032m\]VM\[$(tput sgr0)\](\[\033[38;5;075m\]\w\[$(tput sgr0)\]):$ "

@@ -6,6 +6,7 @@
 
 ## Packages
 ```
+$ gem install foreman
 $ gem install cassandra-web
 $ wget http://apache.ip-connect.vn.ua/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.4.tgz
 $ wget http://apache.ip-connect.vn.ua/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz

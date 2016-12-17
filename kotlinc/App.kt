@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
     println("decoded string: ${decoded}")
 }
 
-fun encode(string: String, offset: Int) : String {
+fun encode(string: String, offset: Int): String {
     val builder = StringBuilder()
 
     for (char in string) {
@@ -20,7 +20,7 @@ fun encode(string: String, offset: Int) : String {
     return builder.toString()
 }
 
-fun decode(string: String, offset: Int) : String {
+fun decode(string: String, offset: Int): String {
     val builder = StringBuilder()
 
     for (char in string) {

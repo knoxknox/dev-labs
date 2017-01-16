@@ -3,4 +3,4 @@ date.day = 10
 date.month = 12
 date.year = 2017
 
-"#{date.year}-#{date.month}-#{date.day}"
+puts "#{date.year}-#{date.month}-#{date.day}" # 2017-12-10

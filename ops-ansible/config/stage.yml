@@ -1,0 +1,3 @@
+---
+env: 'stage'
+logs_path: '/var/log/stage.log'

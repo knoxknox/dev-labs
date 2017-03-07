@@ -1,14 +1,11 @@
 # ansible
-
 ```
-$ sudo apt-get install software-properties-common
-$
-$ sudo apt-add-repository ppa:ansible/ansible
-$ sudo apt-get update && sudo apt-get install ansible
+ENV="dev" make build
+ENV="dev" make uptime
+ENV="stage" make build
+ENV="stage" make uptime
 ```
 
-Example:<br/>
-```ENV="dev" make build or ENV="stage" make uptime```
-
-Documentation:<br/>
-http://docs.ansible.com/ansible/modules_by_category.html
+Documentation:
+- http://docs.ansible.com/ansible/intro_installation.html
+- http://docs.ansible.com/ansible/modules_by_category.html

@@ -1,14 +1,13 @@
 package coding
 
-import coding.Encoder
-import coding.Decoder
+import coding.Cipher
 
 fun main(args: Array<String>) {
-    val offset = 5
-    val string = "lorem ipsum"
+    val cipher = Cipher(5)
 
-    val encoded = Encoder(string).encode(offset)
-    val decoded = Decoder(encoded).decode(offset)
+    val string = "lorem ipsum"
+    val encoded = cipher.encode(string)
+    val decoded = cipher.decode(encoded)
 
     println("encoded: ${encoded}, decoded: ${decoded}")
 }

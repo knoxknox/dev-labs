@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 package coding
 
 import coding.Encoder
@@ -20,26 +12,3 @@ fun main(args: Array<String>) {
 
     println("encoded: ${encoded}, decoded: ${decoded}")
 }
-
-
-
-
-
-
-
-
-
-fun main(args: Array<String>) {
-    val offset = 5
-    val string = "lorem ipsum"
-
-    val encoded = encode(string, offset)
-    println("encoded string: ${encoded}")
-
-    val decoded = decode(encoded, offset)
-    println("decoded string: ${decoded}")
-}
-
-
-
-

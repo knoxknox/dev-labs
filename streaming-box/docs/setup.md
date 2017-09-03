@@ -2,11 +2,9 @@
 - http://teamcoding.com/blog/2015/10/05/kafka/
 - http://knowm.org/how-to-install-a-distributed-apache-storm-cluster/
 - http://exponential.io/blog/2015/01/19/install-cassandra-2_1-on-ubuntu-linux/
-- https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-14-04
 
 ## Packages
 ```
-$ gem install foreman
 $ gem install cassandra-web
 $ wget http://apache.ip-connect.vn.ua/spark/spark-1.6.3/spark-1.6.3-bin-hadoop2.4.tgz
 $ wget http://apache.ip-connect.vn.ua/cassandra/2.2.9/apache-cassandra-2.2.9-bin.tar.gz

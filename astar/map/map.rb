@@ -24,19 +24,9 @@ class Map
   private
 
   def create_map(size)
-    grid = Array.new(size)
-
-    0.upto(size - 1) do |i|
-      grid[i] = Array.new(size)
+    Array.new(size) do |i|
+      Array.new(size) { |j| Node.new(j, i) }
     end
-
-    0.upto(size - 1) do |i|
-      0.upto(size - 1) do |j|
-        grid[i][j] = Node.new(j, i)
-      end
-    end
-
-    grid
   end
 
 end

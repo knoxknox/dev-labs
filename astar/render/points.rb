@@ -21,7 +21,7 @@ class Points
   private
 
   def key
-    "#{@current_node.y}#{@current_node.x}"
+    "#{@current_node.y}:#{@current_node.x}"
   end
 
   def iterate_list

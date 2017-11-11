@@ -25,7 +25,7 @@ class Renderer
   end
 
   def get_type(i, j)
-    point = "#{i}#{j}"
+    point = "#{i}:#{j}"
     return Cell::ROUTE if @points.key?(point)
 
     @grid[i][j].block ? Cell::WALL : Cell::EMPTY

@@ -1,68 +1,34 @@
 class Renderer
-  attr_reader :grid, :current
 
-  def initialize(grid, current)
-    @grid, @current = grid, current
+  def initialize(grid, node)
+    @grid = grid
+    @printer = Printer.new
+    @node = node || fail('no route')
+    @points = Points.new(@node).build
   end
 
   def render
-    if current == nil
-    map = Array.new(grid.size)
-    0.upto(map.size - 1) do |i|
-      map[i] = Array.new(grid.size) { '_' }
-    end
-
-    0.upto(map.size - 1) do |i|
-      0.upto(map[i].size - 1) do |j|
-        if (grid[i][j].block)
-          map[i][j] = 'X'
-        end
+    iterate do |i|
+      iterate do |j|
+        type = get_type(i, j)
+        @printer.print_row(type)
       end
+      @printer.print_n
     end
-    map.each do |row|
-      row.each do |sym|
-        print "\e[#{31}m#{sym}\e[0m" + " " if sym == 'X'
-        print "\e[#{37}m#{sym}\e[0m" + " " if sym == 'O'
-        print "\e[#{34}m#{sym}\e[0m" + " " if sym == '_'
-      end
-      print "\n"
-    end
-      return false
-    end
+  end
 
-    current_node = current
 
-    map = Array.new(grid.size)
-    0.upto(map.size - 1) do |i|
-      map[i] = Array.new(grid.size) { '_' }
-    end
+  private
 
-    0.upto(map.size - 1) do |i|
-      0.upto(map.size - 1) do |j|
-        if (grid[i][j].block)
-          map[i][j] = 'X'
-        end
-      end
-    end
+  def iterate
+    0.upto(@grid.size - 1) { |x| yield x }
+  end
 
-    while (current_node.parent != nil) do
-      map[current_node.y][current_node.x] = "O"
-      current_node = current_node.parent
-    end
+  def get_type(i, j)
+    point = "#{i}#{j}"
+    return Cell::ROUTE if @points.key?(point)
 
-    # initial node will be latest node in linked list
-    initialNode = grid[current_node.y][current_node.x]
-    map[initialNode.y][initialNode.x] = "O"
-
-    map.each do |row|
-      row.each do |sym|
-        print "\e[#{31}m#{sym}\e[0m" + " " if sym == 'X'
-        print "\e[#{37}m#{sym}\e[0m" + " " if sym == 'O'
-        print "\e[#{34}m#{sym}\e[0m" + " " if sym == '_'
-      end
-      print "\n"
-    end
-    return true
+    @grid[i][j].block ? Cell::WALL : Cell::EMPTY
   end
 
 end

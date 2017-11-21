@@ -6,7 +6,7 @@
 ## Packages
 ```
 $ gem install cassandra-web
-$ wget http://apache.ip-connect.vn.ua/spark/spark-1.6.3/spark-1.6.3-bin-hadoop2.4.tgz
+$ wget http://apache.ip-connect.vn.ua/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz
 $ wget http://apache.ip-connect.vn.ua/cassandra/2.2.9/apache-cassandra-2.2.9-bin.tar.gz
 $ wget http://mirror.23media.de/apache/storm/apache-storm-0.9.5/apache-storm-0.9.5.tar.gz
 $ wget http://mirror.cc.columbia.edu/pub/software/apache/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz

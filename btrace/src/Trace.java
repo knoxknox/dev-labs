@@ -11,10 +11,10 @@ public class Trace {
   }
 
   @OnMethod(
-    clazz="/.*/",
+    clazz="App",
     method="randomize"
   )
-  public static void onPrintMethod(
+  public static void onRandomize(
     @ProbeClassName String probeClass,
     @ProbeMethodName String probeMethod) {
     println(strcat(probeClass, probeMethod));

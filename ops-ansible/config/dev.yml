@@ -1,3 +1,0 @@
----
-env: 'dev'
-logs_path: '/var/log/dev.log'

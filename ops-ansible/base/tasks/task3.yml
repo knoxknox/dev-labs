@@ -1,2 +1,0 @@
-- name: 'copy configuration'
-  template: 'src=~/workspace/templates/nginx.j2 dest=/tmp/nginx.conf'

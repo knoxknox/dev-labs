@@ -1,5 +1,0 @@
-- name: 'create file'
-  file: 'path=/tmp/{{env}}.txt state=touch'
-
-- name: 'create directory'
-  file: 'path=/tmp/dir-{{env}} state=directory'

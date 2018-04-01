@@ -1,0 +1,4 @@
+- name: 'time'
+  tags: 'time'
+  shell: 'uptime'
+  become_user: 'sudo'

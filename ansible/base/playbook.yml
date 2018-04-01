@@ -1,0 +1,10 @@
+---
+-
+  hosts: all
+  vars_files:
+    - '../config/all.yml'
+    - '../config/{{env}}.yml'
+  tasks:
+    - include: 'tasks/task1.yml'
+    - include: 'tasks/task2.yml'
+    - include: 'tasks/task3.yml'

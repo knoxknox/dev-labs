@@ -4,7 +4,7 @@ This is implementation of A* search algorithm.<br/>
 It is based on arrays (instead of PriorityQueue).<br/>
 The reason 'why?' is simplicity and educational purposes.
 
-Example ([preview](https://goo.gl/atPXXQ)):
+Example ([preview](https://bit.ly/2HaqfhO)):
 ```
  --------------------------------------------------- ---------------------------------------------------
 | O O       +   + +     + + + + +     +             | O     +       + +   + + + +   + + + +   + +   + + |

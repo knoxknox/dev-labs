@@ -13,7 +13,7 @@ $ hexdump -C proto.bin
 0x002A
 ```
 
-Internally it based on `bindata` gem:
+Internally it is based on `bindata` gem:
 ```
 > packet.to_binary_s                 - returns binary representation
 > Adb::PacketStructure.read(binary)  - reads and assigns binary data from IO

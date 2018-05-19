@@ -1,5 +1,5 @@
 require 'sidekiq/web'
 require_relative 'config/boot.rb'
 
-run App
-run Rack::URLMap.new('/' => App, '/w' => Sidekiq::Web)
+run Application
+run Rack::URLMap.new('/api' => Api, '/web' => Static, '/sidekiq' => Sidekiq::Web)

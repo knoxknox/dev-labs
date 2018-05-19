@@ -2,4 +2,4 @@ server:
 	rackup config.ru
 
 console:
-	irb -r ./app/app.rb
+	irb -r ./config/boot.rb

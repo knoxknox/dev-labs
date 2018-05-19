@@ -1,8 +1,11 @@
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
+  set :views, File.join(root, 'templates')
+  set :environment, Sprockets::Environment.new
+  set :haml, format: :html5, layout: :application
 
-  get '/' do
-    'Index Page'
-  end
-
+  environment.css_compressor = :scss
+  environment.js_compressor = :uglify
+  environment.append_path 'assets/javascripts'
+  environment.append_path 'assets/stylesheets'
 end

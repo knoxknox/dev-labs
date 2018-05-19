@@ -1,5 +1,5 @@
 server:
-	ruby app/app.rb
+	rackup config.ru
 
 console:
 	irb -r ./app/app.rb

@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+option java_package = "com.chrome";
+option java_outer_classname = "Settings";
+
+message OS {
+  oneof os_type {
+    string linux = 1;
+    string windows = 3;
+  }
+}

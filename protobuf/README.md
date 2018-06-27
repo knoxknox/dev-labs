@@ -41,5 +41,5 @@ read -> { n = read_uint64; wire = n & 0x7; number = n >> 3; }
 0x73 0x74 0x72 0x69 0x6E 0x67   - payload="string"
 
 12 => 0x12 => 18 => 10010 => 10[010] => num[wire] => num=2, wire=2
-1A => 0x1A => 26 => 11010 => 11[010] => num[wire] => num=2, wire=3
+1A => 0x1A => 26 => 11010 => 11[010] => num[wire] => num=3, wire=2
 ```

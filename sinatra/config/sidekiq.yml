@@ -1,5 +1,0 @@
----
-:queues:
-  - backup
-  - default
-:concurrency: 20

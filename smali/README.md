@@ -80,7 +80,7 @@ MainActivity.smali
 ```
 Line 350 invokes a method `isEmulator` which returns a boolean value.<br/>
 The boolean result is moved to the v13 register, and then if-eqz opcode determines if value is 0.<br/>
-If v13 is equal to 0, then the code jumps to the code_0 block. Otherwise, we get message from line 357.
+If v13 is equal to 0, then the code jumps to the cond_0 block. Otherwise, we get message from line 357.
 
 How to change this
 ```

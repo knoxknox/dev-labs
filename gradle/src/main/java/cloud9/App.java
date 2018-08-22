@@ -1,4 +1,4 @@
-package c9;
+package cloud9;
 
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,17 +1,17 @@
-apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = 'app.Bootstrap'
+mainClassName = 'cloud9.App'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 task bundle(type: Copy) {
-    into "$buildDir/lib"
-    from configurations.runtime
+  into "$buildDir/lib"
+  from configurations.runtime
 }
 
 dependencies {
-    compile 'com.sparkjava:spark-core:2.2'
-    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+  compile 'com.sparkjava:spark-core:2.2'
+  compile 'org.apache.commons:commons-lang3:3.7'
 }

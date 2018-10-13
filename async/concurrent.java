@@ -5,7 +5,9 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Java 8 - Async Computation
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
+ *
+ * Future: Create => Transform => Result
+ * runAsync/supplyAsync => thenApply/thenApplyAsync => thenRun/thenAccept
  *
  * Methods with Async postfix    - running a corresponding step of execution in another thread
  * Methods without Async postfix - running the next execution stage using a current calling thread

@@ -112,3 +112,9 @@ task.execute && sleep(5) && task.shutdown # prints time 4 times
 delay_seconds = 3
 task = Concurrent::ScheduledTask.execute(delay_seconds) { puts Time.now }
 sleep(5) && puts("Executed after #{delay_seconds} sec, state=#{task.state}")
+
+##
+# Concurrent::DataStructures
+#
+[Concurrent::Delay, Concurrent::Maybe]
+[Concurrent::Map, Concurrent::Set, Concurrent::Hash, Concurrent::Array, Concurrent::Tuple]

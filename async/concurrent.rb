@@ -114,6 +114,27 @@ task = Concurrent::ScheduledTask.execute(delay_seconds) { puts Time.now }
 sleep(5) && puts("Executed after #{delay_seconds} sec, state=#{task.state}")
 
 ##
+# Concurrent::DependentTask
+#
+#                 load_users <- load_devices
+#                /
+# load_data_async              load_summaries
+#                \            /
+#                 load_threats
+#                             \
+#                              load_descriptions
+#
+wait = ->(delay, message) { sleep(delay); puts(message) }
+
+load_devices = Concurrent.dataflow { wait.(5, 'load_devices') }
+load_summaries = Concurrent.dataflow { wait.(4, 'load_summaries') }
+load_descriptions = Concurrent.dataflow { wait.(6, 'load_descriptions') }
+
+load_users = Concurrent.dataflow(load_devices) { wait.(1, 'load_users') }
+load_threats = Concurrent.dataflow(load_summaries, load_descriptions) { wait.(1, 'load_threats') }
+load_data_async = Concurrent.dataflow(load_users, load_threats) { wait.(1, 'complete') }; sleep(10)
+
+##
 # Concurrent::DataStructures
 #
 [Concurrent::Delay, Concurrent::Maybe]

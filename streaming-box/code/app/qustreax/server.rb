@@ -28,11 +28,10 @@ module Qustreax
 
     def server
       RatpackServer.of do |s|
-        s.serverConfig(config)
+        s.server_config(config)
 
         s.handlers do |chain|
-          chain.get 'health', Handler::Health
-          chain.get 'protected', Handler::Protected
+          Routing::Routes.define_chain(chain)
         end
       end
     end

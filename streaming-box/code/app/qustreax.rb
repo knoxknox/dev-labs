@@ -7,4 +7,10 @@ module Qustreax
     autoload :Health, 'qustreax/handler/health'
     autoload :Protected, 'qustreax/handler/protected'
   end
+
+  module Routing
+    autoload :Router, 'qustreax/routing/router'
+    autoload :Routes, 'qustreax/routing/routes'
+    autoload :RoutesMap, 'qustreax/routing/routes_map'
+  end
 end

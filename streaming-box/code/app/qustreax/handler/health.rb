@@ -1,9 +1,9 @@
 module Qustreax
   module Handler
-    class Streaming
+    class Health
 
       def self.handle(ctx)
-        ctx.getResponse.status(200).send
+        ctx.response.status(200).send
       end
 
     end

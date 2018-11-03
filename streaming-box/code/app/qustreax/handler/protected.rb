@@ -1,9 +1,9 @@
 module Qustreax
   module Handler
-    class Status
+    class Protected
 
       def self.handle(ctx)
-        ctx.render('no content')
+        ctx.render('protected')
       end
 
     end

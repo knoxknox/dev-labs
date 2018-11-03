@@ -31,8 +31,8 @@ module Qustreax
         s.serverConfig(config)
 
         s.handlers do |chain|
-          chain.get 'status', Handler::Status
-          chain.get 'stream', Handler::Streaming
+          chain.get 'health', Handler::Health
+          chain.get 'protected', Handler::Protected
         end
       end
     end

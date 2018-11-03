@@ -2,7 +2,7 @@ module Qustreax
   module Handler
     class Filter
 
-      def self.handle(ctx)
+      def handle(ctx)
         percentage = rand(1..100)
 
         if percentage > 50

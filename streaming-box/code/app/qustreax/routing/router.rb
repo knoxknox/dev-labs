@@ -2,16 +2,14 @@ module Qustreax
   module Routing
     class Router
 
-      def self.chain
-        @chain ||= RoutesMap.new
+      def initialize(routes)
+        @routes = routes
       end
 
-      def self.handle(ctx)
-        type = ctx.request.method
-        path = ctx.path_binding.description
-
-        route = "#{type} #{path}"
-        chain.handlers[route.downcase].call(ctx)
+      def create(chain)
+        chain.get 'health', @routes
+        chain.get 'protected', @routes
+        chain.get 'protected/:id', @routes
       end
 
     end

@@ -31,7 +31,8 @@ module Qustreax
         s.server_config(config)
 
         s.handlers do |chain|
-          Routing::Routes.define_chain(chain)
+          routes = Routing::Routes.new
+          Routing::Router.new(routes).create(chain)
         end
       end
     end

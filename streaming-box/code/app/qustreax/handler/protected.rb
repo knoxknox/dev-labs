@@ -2,7 +2,7 @@ module Qustreax
   module Handler
     class Protected
 
-      def self.handle(ctx)
+      def handle(ctx)
         ctx.render('protected')
       end
 

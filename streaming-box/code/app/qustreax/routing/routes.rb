@@ -1,11 +1,22 @@
 module Qustreax
   module Routing
     class Routes
+      attr_reader :routes
 
-      def self.define_chain(chain)
-        chain.get 'health', Router
-        chain.get 'protected', Router
-        chain.get 'protected/:id', Router
+      def initialize
+        @routes = RoutesMap.new
+      end
+
+      def handle(ctx)
+        route = route_path_for(ctx)
+        routes.handlers[route.downcase].call(ctx)
+      end
+
+
+      private
+
+      def route_path_for(ctx)
+        "#{ctx.request.method} #{ctx.path_binding.description}"
       end
 
     end

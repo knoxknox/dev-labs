@@ -2,7 +2,7 @@ module Qustreax
   module Handler
     class Auth
 
-      def self.handle(ctx)
+      def handle(ctx)
         headers = ctx.request.headers
         auth_token = headers.get('Auth-Token')
 

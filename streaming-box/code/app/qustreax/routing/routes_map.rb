@@ -24,7 +24,7 @@ module Qustreax
       end
 
       def chain(ctx, *actions)
-        ctx.insert(*actions.map { |x| x.to_java(Java::RatpackHandling::Handler) } )
+        ctx.insert(*actions.map { |x| x.new.to_java(Java::RatpackHandling::Handler) } )
       end
 
     end

@@ -1,6 +1,6 @@
 shell:
-	sh asm/build.sh
+	cd asm && sh build.sh
 
 compile:
-	infect.c ${CC} -o $@ $<
-	target.c ${CC} -o $@ $<
+	${CC} -o /tmp/infect code/infect.c
+	${CC} -o /tmp/target code/target.c

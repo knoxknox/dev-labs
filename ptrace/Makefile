@@ -1,3 +1,6 @@
+trace:
+	strace /tmp/shell
+
 shell:
 	cd asm && sh build.sh
 

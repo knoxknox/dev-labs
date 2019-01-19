@@ -1,0 +1,29 @@
+apply plugin: 'scala'
+apply plugin: 'application'
+mainClassName = 'cloud9.Main'
+
+repositories {
+  mavenCentral()
+}
+
+task update(type: Wrapper) {
+  gradleVersion = '4.9'
+}
+
+test {
+  testLogging.showStandardStreams = true
+  systemProperty 'specs2.commandline', 'console'
+}
+
+dependencies {
+  compile(
+    [group: 'org.scala-lang', name: 'scala-library', version: '2.11.8'],
+    [group: 'org.scala-lang', name: 'scala-compiler', version: '2.11.8']
+  )
+
+  testCompile(
+    [group: 'junit', name: 'junit', version: '4.12'],
+    [group: 'org.specs2', name: 'specs2-core_2.11', version: '3.8.5.1'],
+    [group: 'org.specs2', name: 'specs2-junit_2.11', version: '3.8.5.1']
+  )
+}

@@ -2,8 +2,9 @@
 
 Build:
 ```
-$ gradle run - start application
-$ gradle build - build gradle project
-$ gradle bundle - copy jar dependencies
-$ gradle -t run - start continuous build
+$ ./gradlew run - start application
+$ ./gradlew test - start junit tests
+$ ./gradlew build - build gradle project
+$ ./gradlew update - update gradle wrapper
+$ ./gradlew -t run - start continuous build
 ```

@@ -1,5 +1,8 @@
 package cloud9
 
-object Main extends App {
-  println("Scala playground")
+object Main {
+  def main(args: Array[String]) = {
+    val version = Version.get
+    println(s"app version: $version")
+  }
 }

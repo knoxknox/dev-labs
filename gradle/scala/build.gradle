@@ -11,8 +11,13 @@ task update(type: Wrapper) {
 }
 
 test {
-  testLogging.showStandardStreams = true
-  systemProperty 'specs2.commandline', 'console'
+  testLogging {
+    exceptionFormat 'FULL'
+    showCauses true
+    showExceptions true
+    showStackTraces true
+    showStandardStreams true
+  }
 }
 
 dependencies {

@@ -28,7 +28,7 @@ dependencies {
 
   testCompile(
     [group: 'junit', name: 'junit', version: '4.12'],
-    [group: 'org.specs2', name: 'specs2-core_2.11', version: '3.8.5.1'],
-    [group: 'org.specs2', name: 'specs2-junit_2.11', version: '3.8.5.1']
+    [group: 'org.mockito', name: 'mockito-all', version: '1.10.16'],
+    [group: 'org.scalatest', name: 'scalatest_2.11', version: '3.0.5']
   )
 }

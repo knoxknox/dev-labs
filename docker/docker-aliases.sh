@@ -8,17 +8,19 @@
 function dc() {
   case $1 in
     'h' )
-      echo 'Help:'
-      echo 'dc (prints how to use dc)'
-      echo 'dc redis (enter to the given container)'
-      echo 'dc redis ls -lsa (execute given command)'
-      echo 'Commands:'
-      echo 'ls - dc ls (list containers)'
-      echo 'build - dc build (build Dockerfile)'
-      echo 'stop - dc stop (stop containers)'
-      echo 'start - dc start (start containers)'
-      echo 'restart - dc restart redis (restart 1/N containers)'
-      echo 'logs - dc logs redis (show logs for given container)'
+      echo -e '
+      Help:
+        dc (prints how to use dc)
+        dc redis (enter to the given container)
+        dc redis ls -lsa (execute given command)
+      Commands:
+        ls - dc ls (list containers)
+        build - dc build (build Dockerfile)
+        stop - dc stop (stop containers)
+        start - dc start (start containers)
+        restart - dc restart redis (restart 1/N containers)
+        logs - dc logs redis (show logs for given container)
+      '
       ;;
     'ls' )
       docker-compose ps

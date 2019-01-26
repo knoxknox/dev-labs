@@ -1,5 +1,7 @@
 apply plugin: 'scala'
 apply plugin: 'application'
+apply plugin: 'com.github.maiflai.scalatest'
+
 mainClassName = 'cloud9.Main'
 
 repositories {
@@ -20,10 +22,25 @@ test {
   }
 }
 
+buildscript {
+  repositories {
+    maven {
+      url 'https://plugins.gradle.org/m2/'
+    }
+  }
+  dependencies {
+    classpath 'gradle.plugin.com.github.maiflai:gradle-scalatest:0.23'
+  }
+}
+
 dependencies {
   compile(
     [group: 'org.scala-lang', name: 'scala-library', version: '2.11.8'],
     [group: 'org.scala-lang', name: 'scala-compiler', version: '2.11.8']
+  )
+
+  testRuntime(
+    [group: 'org.pegdown', name: 'pegdown', version: '1.4.2']
   )
 
   testCompile(

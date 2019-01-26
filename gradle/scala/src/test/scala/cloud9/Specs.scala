@@ -1,17 +1,16 @@
 package cloud9
 
-import org.junit.Assert._
-import junit.framework.TestCase
+import org.scalatest.FunSpec
 
-class Specs extends TestCase {
+class Specs extends FunSpec {
 
-  def testMath {
-    assertEquals(2 + 2, 4)
+  it("test math") {
+    assert(2 + 2 == 4)
   }
 
-  def testVersion {
+  it("test version") {
     val version = Version.get
-    assertEquals(version.split("b")(0), "1.0")
+    assert(version.split("b")(0) == "1.0")
   }
 
 }

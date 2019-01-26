@@ -1,0 +1,15 @@
+version: 3
+services:
+  app:
+    build: .
+    ports:
+      - 4567:4567
+    command: ruby /code/app/app.rb -o 0.0.0.0
+    volumes:
+      - .:/code
+    container_name: app
+  redis:
+    ports:
+      - 6379:6379
+    image: redis:alpine
+    container_name: redis-db

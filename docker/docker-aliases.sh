@@ -11,7 +11,7 @@ function dc() {
       echo -e '
       Help:
         dc (prints how to use dc)
-        dc redis (interacts with container)
+        dc redis (runs shell for container)
         dc redis ls -lsa (executes given command)
       Commands:
         ls - dc ls (list containers)

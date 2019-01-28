@@ -11,15 +11,15 @@ function dc() {
       echo -e '
       Help:
         dc (prints how to use dc)
-        dc redis (enter to the given container)
-        dc redis ls -lsa (execute given command)
+        dc redis (interacts with container)
+        dc redis ls -lsa (executes given command)
       Commands:
         ls - dc ls (list containers)
         build - dc build (build Dockerfile)
-        stop - dc stop (stop containers)
-        start - dc start (start containers)
-        restart - dc restart redis (restart 1/N containers)
-        logs - dc logs redis (show logs for given container)
+        stop - dc stop (stops containers)
+        start - dc start (starts containers)
+        restart - dc restart redis (restarts 1/N containers)
+        logs - dc logs redis (shows logs for given container)
       '
       ;;
     'ls' )

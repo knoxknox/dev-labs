@@ -20,6 +20,7 @@ function dc() {
         start - dc start (starts containers)
         restart - dc restart redis (restarts 1/N containers)
         logs - dc logs redis (shows logs for given container)
+        run - dc run redis cat /proc/version (one-time command)
       '
       ;;
     'ls' )
@@ -39,6 +40,9 @@ function dc() {
       ;;
     'logs' )
       docker-compose logs -f $2
+      ;;
+    'run' )
+      docker-compose run --rm ${@:2}
       ;;
     * )
       if [ -z "$1" ]; then

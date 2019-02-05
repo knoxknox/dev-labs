@@ -16,6 +16,7 @@ function dc() {
       Commands:
         ls - dc ls (list containers)
         build - dc build (build Dockerfile)
+        clean - dc clean (cleanup everything)
         stop - dc stop (stops containers)
         start - dc start (starts containers)
         restart - dc restart redis (restarts 1/N containers)
@@ -28,6 +29,9 @@ function dc() {
       ;;
     'build' )
       docker-compose build
+      ;;
+    'clean' )
+      docker system prune -a
       ;;
     'stop' )
       docker-compose stop

@@ -1,9 +1,12 @@
 # app
 
-Install golang (see docs/install.md).<br/>
-Makefile contains all commands to work with app.
-
 Setup:
+```
+$ git clone <project> /tmp/project
+$ sh /tmp/project/goimc/scripts/setup.sh
+```
+
+Install libs:
 ```
 ~/workspace/src/app $ make init
 ~/workspace/src/app $ make deps

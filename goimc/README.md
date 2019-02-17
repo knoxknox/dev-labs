@@ -15,12 +15,3 @@ Features (optional):
 - scaling (client or server side)
 
 Project contains: tests, format specs, telnet examples, deployment docs.
-
-### Protocol
-
-This project is based on RESP protocol.<br/>
-More info can be found on official Redis site.
-
-References:
-- https://redis.io/topics/protocol
-- https://github.com/antirez/RESP3/blob/master/spec.md

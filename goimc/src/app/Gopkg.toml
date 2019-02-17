@@ -1,0 +1,9 @@
+[[constraint]]
+  branch = "master"
+  name = "github.com/thoas/go-funk"
+[[constraint]]
+  branch = "master"
+  name = "github.com/ahmetb/go-linq"
+[[constraint]]
+  branch = "master"
+  name = "github.com/huandu/xstrings"

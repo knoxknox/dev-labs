@@ -21,6 +21,6 @@ Project contains: tests, format specs, telnet examples, deployment docs.
 This project is based on RESP protocol.<br/>
 More info can be found on official Redis site.
 
-Features:
+References:
 - https://redis.io/topics/protocol
 - https://github.com/antirez/RESP3/blob/master/spec.md

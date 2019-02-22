@@ -7,11 +7,11 @@ import (
 )
 
 var (
-  arrayCode = []byte{'*'}
-  errorCode = []byte{'-'}
-  stringCode = []byte{'+'}
-  integerCode = []byte{':'}
-  bulkStringCode = []byte{'$'}
+  arrayCode = byte('*')
+  errorCode = byte('-')
+  stringCode = byte('+')
+  integerCode = byte(':')
+  bulkStringCode = byte('$')
   lineEndingCode = []byte{'\r', '\n'}
 )
 
@@ -26,12 +26,12 @@ func Encoder(writer io.Writer) *RespEncoder {
 }
 
 func (e *RespEncoder) Encode(args ...string) (err error) {
-  e.Write(arrayCode)
+  e.WriteByte(arrayCode)
   e.WriteString(strconv.Itoa(len(args)))
   e.Write(lineEndingCode)
 
   for _, arg := range args {
-    e.Write(bulkStringCode)
+    e.WriteByte(bulkStringCode)
     e.WriteString(strconv.Itoa(len(arg)))
     e.Write(lineEndingCode)
     e.WriteString(arg)
@@ -42,7 +42,7 @@ func (e *RespEncoder) Encode(args ...string) (err error) {
 }
 
 func (e *RespEncoder) EncodeInteger(arg int) (err error) {
-  e.Write(integerCode)
+  e.WriteByte(integerCode)
   e.WriteString(strconv.Itoa(arg))
   e.Write(lineEndingCode)
 
@@ -50,7 +50,7 @@ func (e *RespEncoder) EncodeInteger(arg int) (err error) {
 }
 
 func (e *RespEncoder) EncodeError(arg string) (err error) {
-  e.Write(errorCode)
+  e.WriteByte(errorCode)
   e.WriteString(arg)
   e.Write(lineEndingCode)
 
@@ -58,7 +58,7 @@ func (e *RespEncoder) EncodeError(arg string) (err error) {
 }
 
 func (e *RespEncoder) EncodeString(arg string) (err error) {
-  e.Write(stringCode)
+  e.WriteByte(stringCode)
   e.WriteString(arg)
   e.Write(lineEndingCode)
 
@@ -66,7 +66,7 @@ func (e *RespEncoder) EncodeString(arg string) (err error) {
 }
 
 func (e *RespEncoder) EncodeBulkString(arg string) (err error) {
-  e.Write(bulkStringCode)
+  e.WriteByte(bulkStringCode)
   e.WriteString(strconv.Itoa(len(arg)))
   e.Write(lineEndingCode)
   e.WriteString(arg)

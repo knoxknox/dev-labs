@@ -42,40 +42,7 @@ func TestDecodeCommandMultipleArguments(t *testing.T) {
   assert.Equal(t, command.args[1], "value")
 }
 
-func TestDecodeCommandTooShort(t *testing.T) {
-  var buf bytes.Buffer
-  subject := Decoder(&buf)
-  buf.WriteString("1\r\n$4\r\nLLEN\r\n")
-
-  _, err := subject.Parse()
-  if assert.Error(t, err) {
-    assert.Equal(t, "Invalid package", err.Error())
-  }
-}
-
-func TestDecodeIncorrectLineEnding(t *testing.T) {
-  var buf bytes.Buffer
-  subject := Decoder(&buf)
-  buf.WriteString("*2\t\n$4\r\nLLEN\r\n$4\r\nlist\r\n")
-
-  _, err := subject.Parse()
-  if assert.Error(t, err) {
-    assert.Equal(t, "Invalid package", err.Error())
-  }
-}
-
-func TestDecodeIncorrectPackageSize(t *testing.T) {
-  var buf bytes.Buffer
-  subject := Decoder(&buf)
-  buf.WriteString("*X\r\n$4\r\nLLEN\r\n$4\r\nlist\r\n")
-
-  _, err := subject.Parse()
-  if assert.Error(t, err) {
-    assert.Equal(t, "Invalid package size", err.Error())
-  }
-}
-
-func TestDecodeIncorrectPackageBody(t *testing.T) {
+func TestIncorrectPackageBody(t *testing.T) {
   var buf bytes.Buffer
   subject := Decoder(&buf)
   buf.WriteString("*1\r\n$4\r\nLLEN\r\n")
@@ -86,7 +53,40 @@ func TestDecodeIncorrectPackageBody(t *testing.T) {
   }
 }
 
-func TestDecodePartTooShort(t *testing.T) {
+func TestPrefixTooShort(t *testing.T) {
+  var buf bytes.Buffer
+  subject := Decoder(&buf)
+  buf.WriteString("1\r\n$4\r\nLLEN\r\n")
+
+  _, err := subject.Parse()
+  if assert.Error(t, err) {
+    assert.Equal(t, "Invalid package", err.Error())
+  }
+}
+
+func TestPrefixIncorrectLineEnding(t *testing.T) {
+  var buf bytes.Buffer
+  subject := Decoder(&buf)
+  buf.WriteString("*2\t\n$4\r\nLLEN\r\n$4\r\nlist\r\n")
+
+  _, err := subject.Parse()
+  if assert.Error(t, err) {
+    assert.Equal(t, "Invalid package", err.Error())
+  }
+}
+
+func TestPrefixIncorrectPackageSize(t *testing.T) {
+  var buf bytes.Buffer
+  subject := Decoder(&buf)
+  buf.WriteString("*X\r\n$4\r\nLLEN\r\n$4\r\nlist\r\n")
+
+  _, err := subject.Parse()
+  if assert.Error(t, err) {
+    assert.Equal(t, "Invalid package size", err.Error())
+  }
+}
+
+func TestCommandTooShort(t *testing.T) {
   var buf bytes.Buffer
   subject := Decoder(&buf)
   buf.WriteString("*2\r\n4\r\nLLEN\r\n$4\r\nlist\r\n")
@@ -97,7 +97,7 @@ func TestDecodePartTooShort(t *testing.T) {
   }
 }
 
-func TestDecodePartIncorrectLineEnding(t *testing.T) {
+func TestCommandIncorrectLineEnding(t *testing.T) {
   var buf bytes.Buffer
   subject := Decoder(&buf)
   buf.WriteString("*2\r\n$4\r\nLLEN\t\n$4\r\nlist\r\n")
@@ -108,7 +108,7 @@ func TestDecodePartIncorrectLineEnding(t *testing.T) {
   }
 }
 
-func TestDecodePartIncorrectPackageSize(t *testing.T) {
+func TestCommandIncorrectPackageSize(t *testing.T) {
   var buf bytes.Buffer
   subject := Decoder(&buf)
   buf.WriteString("*2\r\n$9\r\nLLEN\r\n$4\r\nlist\r\n")

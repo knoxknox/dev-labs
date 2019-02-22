@@ -77,7 +77,7 @@ func (d *RespDecoder) readLine() (line []byte, err error) {
     return nil, errors.New("Line cannot be read")
   }
 
-  if len(line) <= 2 {
+  if len(line) < 4 {
     return nil, errors.New("Incorrect line, too short")
   }
 

@@ -1,16 +1,10 @@
 package main
 
 import (
-  "app/data"
   "fmt"
+  "app/version"
 )
 
 func main() {
-  list := data.Seed()
-
-  fmt.Println(data.Version())
-  fmt.Println(DoubledEven(list))
-
-  fmt.Println(Count("Test string"))
-  fmt.Println(Contains("Test string"))
+  fmt.Printf("Version=%d.%d", version.Major, version.Minor)
 }

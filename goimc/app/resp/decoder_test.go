@@ -20,10 +20,10 @@ func TestDecodeCommand(t *testing.T) {
 func TestDecodeCommandArguments(t *testing.T) {
   var buf bytes.Buffer
   subject := Decoder(&buf)
-  buf.WriteString("*3\r\n$3\r\nGET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n")
+  buf.WriteString("*3\r\n$3\r\nSET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n")
 
   command, _ := subject.Parse()
-  assert.Equal(t, command.name, "GET")
+  assert.Equal(t, command.name, "SET")
   assert.Equal(t, command.key, "key")
   assert.Equal(t, len(command.args), 1)
   assert.Equal(t, command.args[0], "value")

@@ -18,7 +18,7 @@ test:
 	@richgo test -v app/...
 
 watch:
-	@reflex -d none -g '**/*.go' make run
+	@reflex -s -d none -g '**/*.go' -- go run app/main
 
 build:
 	cd main && GOOS=linux GOARCH=amd64 go build -o /tmp/app

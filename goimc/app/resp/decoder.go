@@ -8,9 +8,9 @@ import (
 )
 
 type Command struct {
-  name string
-  key  string
-  args []string
+  Name string
+  Key  string
+  Args []string
 }
 
 type RespDecoder struct {

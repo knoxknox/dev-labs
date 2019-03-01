@@ -11,7 +11,7 @@ type Reply struct {
 
 func NewReply(conn net.Conn) *Reply {
   return &Reply{
-    writer: resp.Encoder(conn),
+    writer: resp.NewEncoder(conn),
   }
 }
 

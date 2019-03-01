@@ -14,4 +14,4 @@ Features (optional):
 - persistence to db/disk
 - scaling (client or server side)
 
-Project contains: tests, format specs, telnet examples, deployment docs.
+Project contains: tests, netcat client, protocol specs, deployment docs.

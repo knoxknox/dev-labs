@@ -57,9 +57,9 @@ func TestEncodeCommand(t *testing.T) {
 func TestEncodeCommandArguments(t *testing.T) {
   var buf bytes.Buffer
   subject := Encoder(&buf)
-  subject.Encode("GET", "key", "value")
+  subject.Encode("SET", "key", "value")
 
-  assert.Equal(t, buf.String(), "*3\r\n$3\r\nGET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n")
+  assert.Equal(t, buf.String(), "*3\r\n$3\r\nSET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n")
 }
 
 func TestEncodeCommandMultipleArguments(t *testing.T) {

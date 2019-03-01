@@ -17,7 +17,7 @@ type RespDecoder struct {
   *bufio.Reader
 }
 
-func Decoder(reader io.Reader) *RespDecoder {
+func NewDecoder(reader io.Reader) *RespDecoder {
   return &RespDecoder{
     Reader: bufio.NewReaderSize(reader, 32*1024),
   }

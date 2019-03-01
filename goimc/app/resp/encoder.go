@@ -19,7 +19,7 @@ type RespEncoder struct {
   *bufio.Writer
 }
 
-func Encoder(writer io.Writer) *RespEncoder {
+func NewEncoder(writer io.Writer) *RespEncoder {
   return &RespEncoder{
     Writer: bufio.NewWriter(writer),
   }

@@ -7,6 +7,19 @@ import (
   "strconv"
 )
 
+const BufSize = 32 * 1024 // 32KB
+
+var (
+  ErrorLineRead = errors.New("Line cannot be read")
+  ErrorLineTooShort = errors.New("Incorrect line, too short")
+  ErrorLineEndingCRLF = errors.New("Incorrect line ending (CRLF)")
+  ErrorInvalidPackage = errors.New("Invalid package")
+  ErrorInvalidPackageSize = errors.New("Invalid package size")
+  ErrorInvalidPackageBody = errors.New("Invalid package body")
+  ErrorInvalidPackagePart = errors.New("Invalid part of package")
+  ErrorInvalidCommandLength = errors.New("Invalid length of command")
+)
+
 type Command struct {
   Name string
   Key  string
@@ -19,7 +32,7 @@ type RespDecoder struct {
 
 func NewDecoder(reader io.Reader) *RespDecoder {
   return &RespDecoder{
-    Reader: bufio.NewReaderSize(reader, 32*1024),
+    Reader: bufio.NewReaderSize(reader, BufSize),
   }
 }
 
@@ -29,17 +42,17 @@ func (d *RespDecoder) Parse() (*Command, error) {
     if err == io.EOF {
       return nil, err
     }
-    return nil, errors.New("Invalid package")
+    return nil, ErrorInvalidPackage
   }
 
   count, err := d.toInt(line[1:])
   if err != nil {
-    return nil, errors.New("Invalid package size")
+    return nil, ErrorInvalidPackageSize
   }
 
   result, err := d.parse(count * 2)
   if err != nil || len(result) < 2 {
-    return nil, errors.New("Invalid package body")
+    return nil, ErrorInvalidPackageBody
   }
 
   return &Command{result[0], result[1], result[2:]}, nil
@@ -54,7 +67,7 @@ func (d *RespDecoder) parse(parts int) ([]string, error) {
       if err == io.EOF {
         return nil, err
       }
-      return nil, errors.New("Invalid part of package")
+      return nil, ErrorInvalidPackagePart
     }
 
     if buf[0] == '$' {
@@ -63,7 +76,7 @@ func (d *RespDecoder) parse(parts int) ([]string, error) {
     }
 
     if len(buf) != commandLength {
-      return nil, errors.New("Invalid length of command")
+      return nil, ErrorInvalidCommandLength
     }
 
     result = append(result, string(buf))
@@ -83,16 +96,16 @@ func (d *RespDecoder) readLine() (line []byte, err error) {
     if err == io.EOF {
       return nil, err
     }
-    return nil, errors.New("Line cannot be read")
+    return nil, ErrorLineRead
   }
 
   if len(line) < 4 {
-    return nil, errors.New("Incorrect line, too short")
+    return nil, ErrorLineTooShort
   }
 
   ending := len(line) - 2
   if line[ending] != '\r' {
-    return nil, errors.New("Incorrect line ending (CRLF)")
+    return nil, ErrorLineEndingCRLF
   }
 
   return line[:ending], nil

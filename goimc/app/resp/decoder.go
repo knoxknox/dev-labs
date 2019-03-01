@@ -26,6 +26,9 @@ func NewDecoder(reader io.Reader) *RespDecoder {
 func (d *RespDecoder) Parse() (*Command, error) {
   line, err := d.readLine()
   if err != nil {
+    if err == io.EOF {
+      return nil, err
+    }
     return nil, errors.New("Invalid package")
   }
 
@@ -48,6 +51,9 @@ func (d *RespDecoder) parse(parts int) ([]string, error) {
   for i := 0; i < parts; i++ {
     buf, err := d.readLine()
     if err != nil {
+      if err == io.EOF {
+        return nil, err
+      }
       return nil, errors.New("Invalid part of package")
     }
 
@@ -74,6 +80,9 @@ func (d *RespDecoder) readLine() (line []byte, err error) {
   line, err = d.ReadBytes('\n')
 
   if err != nil {
+    if err == io.EOF {
+      return nil, err
+    }
     return nil, errors.New("Line cannot be read")
   }
 
@@ -81,7 +90,7 @@ func (d *RespDecoder) readLine() (line []byte, err error) {
     return nil, errors.New("Incorrect line, too short")
   }
 
-  ending := len(line)-2
+  ending := len(line) - 2
   if line[ending] != '\r' {
     return nil, errors.New("Incorrect line ending (CRLF)")
   }

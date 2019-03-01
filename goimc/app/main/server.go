@@ -53,8 +53,10 @@ func (client *client) serve() {
 
   for {
     command, err := reader.Parse()
-    if err != nil && err != io.EOF {
-      writer.SendError(err)
+    if err != nil {
+      if err != io.EOF {
+        writer.SendError(err)
+      }
       return // break, close connection
     }
 

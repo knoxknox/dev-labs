@@ -22,3 +22,7 @@ watch:
 
 build:
 	cd main && GOOS=linux GOARCH=amd64 go build -o /tmp/app
+
+coverage:
+	@richgo test -v app/... -coverprofile=/tmp/coverage.out
+	@go tool cover -o /tmp/coverage.html -html=/tmp/coverage.out

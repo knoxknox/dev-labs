@@ -1,29 +1,29 @@
-package main
+package storage
 
 import (
   "sync"
 )
 
-type storage struct {
+type Storage struct {
   mutex *sync.RWMutex
-  container map[string]string
+  container map[string]Object
 }
 
-func NewStorage() *storage {
-  return &storage{
+func NewStorage() *Storage {
+  return &Storage{
     mutex: &sync.RWMutex{},
-    container: make(map[string]string),
+    container: make(map[string]Object),
   }
 }
 
-func (storage *storage) Get(key string) string {
+func (storage *Storage) Get(key string) Object {
   storage.mutex.RLock()
   defer storage.mutex.RUnlock()
 
   return storage.container[key]
 }
 
-func (storage *storage) Set(key string, value string) {
+func (storage *Storage) Set(key string, value Object) {
   storage.mutex.Lock()
   defer storage.mutex.Unlock()
 

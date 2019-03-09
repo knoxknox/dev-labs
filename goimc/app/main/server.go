@@ -6,12 +6,13 @@ import (
   "fmt"
   "net"
   "app/resp"
+  "app/storage"
 )
 
 type client struct {
   id int64
   conn net.Conn
-  store *storage
+  store *storage.Storage
 }
 
 func NewServer(address string) {
@@ -24,7 +25,7 @@ func NewServer(address string) {
   LogInfo("Server started on port: %s", address)
 
   var id int64
-  store := NewStorage()
+  store := storage.NewStorage()
   for {
     conn, err := listener.Accept()
     if err != nil {
@@ -72,7 +73,7 @@ func (client *client) handleCommand(writer *Reply, command *resp.Command) {
       return
     }
     value := client.store.Get(command.Key)
-    writer.Send(value)
+    writer.Send(value.(string))
   case "SET":
     if len(command.Key) < 1 || len(command.Args) < 1 {
       writer.SendError(fmt.Errorf("SET expects 2 argument(s)"))

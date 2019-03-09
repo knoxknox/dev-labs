@@ -12,9 +12,9 @@ func TestDecodeCommand(t *testing.T) {
   buf.WriteString("*2\r\n$4\r\nLLEN\r\n$4\r\nlist\r\n")
 
   command, _ := subject.Parse()
-  assert.Equal(t, command.Name, "LLEN")
-  assert.Equal(t, command.Key, "list")
-  assert.Equal(t, len(command.Args), 0)
+  assert.Equal(t, "LLEN", command.Name)
+  assert.Equal(t, "list", command.Key)
+  assert.Equal(t, 0, len(command.Args))
 }
 
 func TestDecodeCommandArguments(t *testing.T) {
@@ -23,10 +23,10 @@ func TestDecodeCommandArguments(t *testing.T) {
   buf.WriteString("*3\r\n$3\r\nSET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n")
 
   command, _ := subject.Parse()
-  assert.Equal(t, command.Name, "SET")
-  assert.Equal(t, command.Key, "key")
-  assert.Equal(t, len(command.Args), 1)
-  assert.Equal(t, command.Args[0], "value")
+  assert.Equal(t, "SET", command.Name)
+  assert.Equal(t, "key", command.Key)
+  assert.Equal(t, 1, len(command.Args))
+  assert.Equal(t, "value", command.Args[0])
 }
 
 func TestDecodeCommandMultipleArguments(t *testing.T) {
@@ -35,11 +35,11 @@ func TestDecodeCommandMultipleArguments(t *testing.T) {
   buf.WriteString("*4\r\n$4\r\nHSET\r\n$4\r\nhash\r\n$5\r\nfield\r\n$5\r\nvalue\r\n")
 
   command, _ := subject.Parse()
-  assert.Equal(t, command.Name, "HSET")
-  assert.Equal(t, command.Key, "hash")
-  assert.Equal(t, len(command.Args), 2)
-  assert.Equal(t, command.Args[0], "field")
-  assert.Equal(t, command.Args[1], "value")
+  assert.Equal(t, "HSET", command.Name)
+  assert.Equal(t, "hash", command.Key)
+  assert.Equal(t, 2, len(command.Args))
+  assert.Equal(t, "field", command.Args[0])
+  assert.Equal(t, "value", command.Args[1])
 }
 
 func TestIncorrectPackageBody(t *testing.T) {

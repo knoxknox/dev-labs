@@ -26,3 +26,21 @@ func TestNonExistingKey(t *testing.T) {
 
   assert.Equal(t, "", subject.Get("non existing key"))
 }
+
+func TestRemoveByGivenKey(t *testing.T) {
+  subject := NewMap()
+  subject.Set("key", "value")
+  subject.Remove("key")
+  subject.Remove("non existing key")
+
+  assert.Equal(t, "", subject.Get("key"))
+  assert.Equal(t, "", subject.Get("non existing key"))
+}
+
+func TestMapValues(t *testing.T) {
+  subject := NewMap()
+  subject.Set("x", "10")
+  subject.Set("y", "20")
+
+  assert.Equal(t, []string{"x:10", "y:20"}, subject.Values())
+}

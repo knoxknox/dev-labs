@@ -21,13 +21,13 @@ func (this *List) Size() int {
 func (this *List) PopLast() string {
   el := this.elements.Back()
   this.elements.Remove(el)
-  return this.nodeToString(el)
+  return this.bytesToString(el)
 }
 
 func (this *List) PopFirst() string {
   el := this.elements.Front()
   this.elements.Remove(el)
-  return this.nodeToString(el)
+  return this.bytesToString(el)
 }
 
 func (this *List) Add(element string) {
@@ -46,7 +46,7 @@ func (this *List) Get() []string {
   els := this.elements
   elements := []string{}
   for el := els.Front(); el != nil; el = el.Next() {
-    elements = append(elements, this.nodeToString(el))
+    elements = append(elements, this.bytesToString(el))
   }
 
   return elements
@@ -60,7 +60,7 @@ func (this *List) Remove(index int) {
   this.fetch(index, func(el *list.Element) { this.elements.Remove(el) })
 }
 
-func (this *List) nodeToString(el *list.Element) string {
+func (this *List) bytesToString(el *list.Element) string {
   return string(el.Value.([]byte))
 }
 

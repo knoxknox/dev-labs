@@ -16,7 +16,7 @@ The most used channels are: channel.NioSocketChannel (for client), channel.NioSe
 Pipeline with 5 handlers:
 <img src="static/netty-01.png"/>
 
-This pipeline is equivalent to the following logic.
+This pipeline is equivalent to the following logic.<br/>
 The input i/o event is process by handlers 1-3-4-5. The output is process by 5-2.
 <img src="static/netty-02.png"/>
 

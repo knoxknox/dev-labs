@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {
-  compile 'io.netty:netty-all:4.0.34.Final'
+  compile 'io.netty:netty-all:4.0.56.Final'
 }

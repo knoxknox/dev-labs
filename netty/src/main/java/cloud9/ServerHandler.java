@@ -12,15 +12,16 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     TimeStamp ts = (TimeStamp) msg;
     ts.setRecvTimeStamp(System.nanoTime());
 
-    System.out.printf("delay (ms): %s", 1.0 * ts.timeDiffInNanoSecond() / 1000000L);
+    System.out.printf("delay (ms): %s\n", 1.0 * ts.timeDiffInNanoSecond() / 1000000L);
   }
 
   @Override
   public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
     if (!(evt instanceof IdleStateEvent)) return;
-    IdleStateEvent idleEvent = (IdleStateEvent) evt;
-    if (idleEvent.state() == IdleState.ALL_IDLE) {
-      ctx.writeAndFlush(new TimeStamp()); // idle for no read/write
+
+    IdleStateEvent event = (IdleStateEvent) evt
+    if (event.state() == IdleState.ALL_IDLE) {
+      ctx.writeAndFlush(new TimeStamp()); // no read/write in 5 sec
     }
   }
 

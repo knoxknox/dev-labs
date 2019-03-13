@@ -5,7 +5,9 @@ import java.nio.ByteBuffer;
 public class TimeStamp {
   private long sendTimeStamp;
   private long recvTimeStamp;
-  final int BUF_SIZE = Long.SIZE / Byte.SIZE;
+
+  final int MSG_SIZE = FIELD_SIZE * 2;
+  final int FIELD_SIZE = Long.SIZE / Byte.SIZE;
 
   public TimeStamp() {
     this.sendTimeStamp = System.nanoTime();
@@ -22,28 +24,28 @@ public class TimeStamp {
   // Pack 2 long numbers to a 16 bytes array.
   // Every 8 bytes represents a single long number.
   public byte[] toByteArray() {
-    byte[] ba = new byte[BUF_SIZE * 2];
-    byte[] t1 = ByteBuffer.allocate(BUF_SIZE).putLong(sendTimeStamp).array();
-    byte[] t2 = ByteBuffer.allocate(BUF_SIZE).putLong(recvTimeStamp).array();
+    byte[] buf = new byte[MSG_SIZE];
+    byte[] buf1 = ByteBuffer.allocate(FIELD_SIZE).putLong(sendTimeStamp).array();
+    byte[] buf2 = ByteBuffer.allocate(FIELD_SIZE).putLong(recvTimeStamp).array();
 
-    for (int i = 0; i < BUF_SIZE; i++) ba[i] = t1[i];
-    for (int i = 0; i < BUF_SIZE; i++) ba[i + BUF_SIZE] = t2[i];
+    for (int i = 0; i < FIELD_SIZE; i++) buf[i] = buf1[i];
+    for (int i = 0; i < FIELD_SIZE; i++) buf[i + FIELD_SIZE] = buf2[i];
 
-    return ba;
+    return buf;
   }
 
   // Unpack 2 long numbers from 16 bytes array.
   // Every 8 bytes represents a single long number.
   public void fromByteArray(byte[] content) {
-    if (content.length != BUF_SIZE * 2) return;
+    if (content.length != MSG_SIZE) return;
 
-    ByteBuffer b1 = ByteBuffer.allocate(BUF_SIZE).put(content, 0, BUF_SIZE);
-    ByteBuffer b2 = ByteBuffer.allocate(BUF_SIZE).put(content, BUF_SIZE, BUF_SIZE);
+    ByteBuffer buf1 = ByteBuffer.allocate(FIELD_SIZE).put(content, 0, FIELD_SIZE);
+    ByteBuffer buf2 = ByteBuffer.allocate(FIELD_SIZE).put(content, FIELD_SIZE, FIELD_SIZE);
 
-    b1.rewind();
-    b2.rewind();
-    this.sendTimeStamp = b1.getLong();
-    this.recvTimeStamp = b2.getLong();
+    buf1.rewind();
+    buf2.rewind();
+    this.sendTimeStamp = buf1.getLong();
+    this.recvTimeStamp = buf2.getLong();
   }
 
 }

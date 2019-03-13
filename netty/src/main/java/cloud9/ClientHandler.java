@@ -8,9 +8,8 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
   @Override
   public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
     TimeStamp ts = (TimeStamp) msg;
-    ctx.writeAndFlush(ts); // received message sent back directly
-
-    System.out.printf("received: %s", ts.toString());
+    System.out.printf("received: %s\n", ts.toString());
+    ctx.writeAndFlush(ts); // send received message back
   }
 
   @Override

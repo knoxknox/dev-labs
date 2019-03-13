@@ -21,23 +21,21 @@ public class NettyServer {
     ServerBootstrap bootstrap = new ServerBootstrap();
     NioEventLoopGroup bossGroup = new NioEventLoopGroup();
     NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+    // ThreadPool to execute handlers with slow business logic.
+    final EventExecutorGroup executors = new DefaultEventExecutorGroup(1024);
 
     bootstrap.group(bossGroup, workerGroup);
     bootstrap.channel(NioServerSocketChannel.class);
-
-    // ThreadPool to execute handlers with slow business logic.
-    final EventExecutorGroup group = new DefaultEventExecutorGroup(500);
-
     bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
       @Override
       protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast("idle", new IdleStateHandler(0, 0, 5));
-        pipeline.addLast("message encoder", new TimeStampEncoder());
-        pipeline.addLast("message decoder", new TimeStampDecoder());
+        pipeline.addLast("package encoder", new TimeStampEncoder());
+        pipeline.addLast("package decoder", new TimeStampDecoder());
 
-        // Run in separate thread from I/O thread.
-        pipeline.addLast(group, "handler", new ServerHandler());
+        // Run handler in separate thread from I/O thread.
+        pipeline.addLast(executors, "handler", new ServerHandler());
       }
     });
 

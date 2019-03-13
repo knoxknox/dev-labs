@@ -19,7 +19,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
   public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
     if (!(evt instanceof IdleStateEvent)) return;
 
-    IdleStateEvent event = (IdleStateEvent) evt
+    IdleStateEvent event = (IdleStateEvent) evt;
     if (event.state() == IdleState.ALL_IDLE) {
       ctx.writeAndFlush(new TimeStamp()); // no read/write in 5 sec
     }

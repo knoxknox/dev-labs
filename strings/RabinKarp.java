@@ -55,18 +55,6 @@ public class RabinKarp {
     /**
      * Preprocesses the pattern string.
      *
-     * @param pattern the pattern string
-     * @param R the alphabet size
-     */
-    public RabinKarp(char[] pattern, int R) {
-        this.pat = String.valueOf(pattern);
-        this.R = R;
-        throw new UnsupportedOperationException("Operation not supported yet");
-    }
-
-    /**
-     * Preprocesses the pattern string.
-     *
      * @param pat the pattern string
      */
     public RabinKarp(String pat) {
@@ -97,11 +85,6 @@ public class RabinKarp {
                 return false;
         return true;
     }
-
-    // Monte Carlo version: always return true
-    // private boolean check(int i) {
-    //    return true;
-    //}
 
     /**
      * Returns the index of the first occurrrence of the pattern string
@@ -136,7 +119,6 @@ public class RabinKarp {
         return n;
     }
 
-
     // a random 31-bit prime
     private static long longRandomPrime() {
         BigInteger prime = BigInteger.probablePrime(31, new Random());
@@ -158,7 +140,7 @@ public class RabinKarp {
         int offset = searcher.search(txt);
 
         // print results
-        StdOut.println("text:    " + txt);
+        StdOut.println("text: " + txt);
 
         // from brute force search method 1
         StdOut.print("pattern: ");

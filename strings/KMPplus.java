@@ -58,7 +58,6 @@ public class KMPplus {
         return n;
     }
 
-
     // test client
     public static void main(String[] args) {
         String pattern = args[0];
@@ -72,7 +71,7 @@ public class KMPplus {
 
         // print results
         StdOut.println("m = " + m + ", n = " + n);
-        StdOut.println("text:    " + text);
+        StdOut.println("text: " + text);
         StdOut.print("pattern: ");
         for (int i = 0; i < offset; i++)
             StdOut.print(" ");

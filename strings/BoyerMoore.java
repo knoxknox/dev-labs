@@ -4,9 +4,9 @@
  * ->               abracadabra
  */
 public class BoyerMoore {
-    private int[] right;    // the bad-characted skip array
-    private final int R;    // the radix (size of ascii table)
-    private String pattern; // string to search in provided text
+    private int[] right;               // the bad-characted skip array
+    private String pattern;            // string to search in provided text
+    private final int ASCII_CHARS=256; // number of characters in ascii table
 
     public static void main(String[] args) {
         String text = args[0];
@@ -22,11 +22,12 @@ public class BoyerMoore {
     }
 
     public BoyerMoore(String pattern) {
-        this.R = 256;
         this.pattern = pattern;
+        right = new int[ASCII_CHARS];
 
-        right = new int[R];
-        for (int c = 0; c < R; c++) right[c] = -1;
+        // initialize all occurrences as -1
+        for (int i = 0; i < ASCII_CHARS; i++) right[i] = -1;
+        // fill the actual value of last occurrence of a character
         // demo => [100, 101, 109, 111] => [100: 0, 101: 1, 109: 2, 111: 3]
         for (int j = 0; j < pattern.length(); j++) right[pattern.charAt(j)] = j;
     }
@@ -38,7 +39,7 @@ public class BoyerMoore {
 
         for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
-            for (int j = m-1; j >= 0; j--) {
+            for (int j = m-1; j >= 0; j--) { // from end
                 if (text.charAt(i+j) != pattern.charAt(j)) {
                     skip = Math.max(1, j - right[text.charAt(i+j)]);
                     break;

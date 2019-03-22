@@ -1,113 +1,54 @@
-/******************************************************************************
- *  Compilation:  javac BoyerMoore.java
- *  Execution:    java BoyerMoore pattern text
- *  Dependencies: StdOut.java
- *
- *  Reads in two strings, the pattern and the input text, and
- *  searches for the pattern in the input text using the
- *  bad-character rule part of the Boyer-Moore algorithm.
- *  (does not implement the strong good suffix rule)
- *
- *  % java BoyerMoore abracadabra abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad
- *  pattern:               abracadabra
- *
- *  % java BoyerMoore rab abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad
- *  pattern:         rab
- *
- *  % java BoyerMoore bcara abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad
- *  pattern:                                   bcara
- *
- *  % java BoyerMoore rabrabracad abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad
- *  pattern:                        rabrabracad
- *
- *  % java BoyerMoore abacad abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad
- *  pattern: abacad
- *
- ******************************************************************************/
-
 /**
- *  The {@code BoyerMoore} class finds the first occurrence of a pattern string
- *  in a text string.
- *  <p>
- *  This implementation uses the Boyer-Moore algorithm (with the bad-character
- *  rule, but not the strong good suffix rule).
- *  <p>
- *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * java BoyerMoore abacadabrabracabracadabrabrabracad abracadabra
+ * -> abacadabrabracabracadabrabrabracad
+ * ->               abracadabra
  */
 public class BoyerMoore {
-    private final int R;     // the radix (alphabet size)
-    private int[] right;     // the bad-character skip array
-    private String pat;      // store the pattern as string
+    private int[] right;    // the bad-characted skip array
+    private final int R;    // the radix (size of ascii table)
+    private String pattern; // string to search in provided text
 
-    /**
-     * Preprocesses the pattern string.
-     *
-     * @param pat the pattern string
-     */
-    public BoyerMoore(String pat) {
-        this.R = 256;
-        this.pat = pat;
+    public static void main(String[] args) {
+        String text = args[0];
+        String pattern = args[1];
+        int offset = new BoyerMoore(pattern).search(text);
 
-        // position of rightmost occurrence of c in the pattern
-        right = new int[R];
-        for (int c = 0; c < R; c++)
-            right[c] = -1;
-        for (int j = 0; j < pat.length(); j++)
-            right[pat.charAt(j)] = j;
+        System.out.println(text);
+        while (offset > 0) {
+            offset--;
+            System.out.print(" ");
+        }
+        System.out.println(pattern);
     }
 
-    /**
-     * Returns the index of the first occurrrence of the pattern string
-     * in the text string.
-     *
-     * @param  txt the text string
-     * @return the index of the first occurrence of the pattern string
-     *         in the text string; n if no such match
-     */
-    public int search(String txt) {
-        int m = pat.length();
-        int n = txt.length();
-        int skip;
+    public BoyerMoore(String pattern) {
+        this.R = 256;
+        this.pattern = pattern;
+
+        right = new int[R];
+        for (int c = 0; c < R; c++) right[c] = -1;
+        // demo => [100, 101, 109, 111] => [100: 0, 101: 1, 109: 2, 111: 3]
+        for (int j = 0; j < pattern.length(); j++) right[pattern.charAt(j)] = j;
+    }
+
+    public int search(String text) {
+        int skip = 0;
+        int n = text.length();
+        int m = pattern.length();
+
         for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
             for (int j = m-1; j >= 0; j--) {
-                if (pat.charAt(j) != txt.charAt(i+j)) {
-                    skip = Math.max(1, j - right[txt.charAt(i+j)]);
+                if (text.charAt(i+j) != pattern.charAt(j)) {
+                    skip = Math.max(1, j - right[text.charAt(i+j)]);
                     break;
                 }
             }
-            if (skip == 0) return i;    // found
+
+            if (skip == 0) return i; // return offset of first match
         }
-        return n;                       // not found
+
+        return n;
     }
 
-    /**
-     * Takes a pattern string and an input string as command-line arguments;
-     * searches for the pattern string in the text string; and prints
-     * the first occurrence of the pattern string in the text string.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        String pat = args[0];
-        String txt = args[1];
-
-        BoyerMoore boyermoore = new BoyerMoore(pat);
-        int offset = boyermoore.search(txt);
-
-        // print results
-        StdOut.println("text: " + txt);
-
-        StdOut.print("pattern: ");
-        for (int i = 0; i < offset; i++)
-            StdOut.print(" ");
-        StdOut.println(pat);
-    }
 }

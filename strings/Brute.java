@@ -1,7 +1,7 @@
 /**
  * java Brute abacadabrabracabracadabrabrabracad abracadabra
- * text:    abacadabrabracabracadabrabrabracad
- * pattern:               abracadabra
+ * -> abacadabrabracabracadabrabrabracad
+ * ->               abracadabra
  */
 public class Brute {
 

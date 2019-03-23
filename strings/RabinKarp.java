@@ -1,8 +1,3 @@
-/**
- * java RabinKarp abacadabrabracabracadabrabrabracad abracadabra
- * -> abacadabrabracabracadabrabrabracad
- * ->               abracadabra
- */
 import java.util.Random;
 import java.math.BigInteger;
 

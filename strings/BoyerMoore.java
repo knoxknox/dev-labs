@@ -1,8 +1,3 @@
-/**
- * java BoyerMoore abacadabrabracabracadabrabrabracad abracadabra
- * -> abacadabrabracabracadabrabrabracad
- * ->               abracadabra
- */
 public class BoyerMoore {
     private int[] right;               // the bad-characted skip array
     private String pattern;            // string to search in provided text

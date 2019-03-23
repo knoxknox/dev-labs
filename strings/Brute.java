@@ -1,8 +1,3 @@
-/**
- * java Brute abacadabrabracabracadabrabrabracad abracadabra
- * -> abacadabrabracabracadabrabrabracad
- * ->               abracadabra
- */
 public class Brute {
 
     public static void main(String[] args) {

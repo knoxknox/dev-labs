@@ -1,8 +1,3 @@
-/**
- * java KMP abacadabrabracabracadabrabrabracad abracadabra
- * -> abacadabrabracabracadabrabrabracad
- * ->               abracadabra
- */
 public class KMP {
     private int[] next;
     private String pattern;
@@ -47,4 +42,5 @@ public class KMP {
 
         return (j == m) ? (i - m) : n; // offset of first match or length of text
     }
+
 }

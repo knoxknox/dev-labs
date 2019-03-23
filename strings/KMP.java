@@ -25,15 +25,14 @@ public class KMP {
         this.pattern = pattern;
         int m = pattern.length();
 
-        int j = -1;
         next = new int[m];
-        for (int i = 0; i < m; i++) {
-            if (i == 0)                                      next[i] = -1;
-            else if (pattern.charAt(i) != pattern.charAt(j)) next[i] = j;
-            else                                             next[i] = next[j];
-            while (j >= 0 && pattern.charAt(i) != pattern.charAt(j)) j = next[j];
 
-            j++;
+        int i, j;
+        next[0] = -1;
+        for (i = 0, j = -1; i < m; i++, j++) {
+            if (i == 0) continue;
+            next[i] = (pattern.charAt(i) == pattern.charAt(j)) ? next[j] : j;
+            while (j >= 0 && pattern.charAt(i) != pattern.charAt(j)) j = next[j];
         }
     }
 
@@ -42,12 +41,10 @@ public class KMP {
         int m = pattern.length();
 
         int i, j;
-        for (i = 0, j = 0; i < n && j < m; i++) {
+        for (i = 0, j = 0; i < n && j < m; i++, j++) {
             while (j >= 0 && text.charAt(i) != pattern.charAt(j)) j = next[j];
-
-            j++;
         }
 
-        return (j == m) ? (i - m) : n; // offset of first match or n
+        return (j == m) ? (i - m) : n; // offset of first match or length of text
     }
 }

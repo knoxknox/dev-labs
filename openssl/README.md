@@ -46,7 +46,10 @@ cat document.txt | openssl dgst -sha256 -binary
 # generate ca private key
 openssl genrsa -des3 -out ca.key 4096
 
-# generate certificate using private key
+# generate certificate signing request
+openssl req -new -key ca.key -out ca.csr
+
+# generate self-signed certificate using private key
 openssl req -new -x509 -days 365 -key ca.key -out ca.crt
 
 # view certificate content

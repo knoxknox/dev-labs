@@ -41,10 +41,10 @@ cat document.txt | openssl dgst -sha256 -binary
 
 ```sh
 # decrypt symmetric
-cat document.sec | openssl enc -des -d -k mypassword
+cat document.sec | openssl enc -aes-256 -d -k mypassword
 
 # encrypt symmetric
-cat document.txt | openssl enc -des -e -k mypassword -out document.sec
+cat document.txt | openssl enc -aes-256 -e -k mypassword -out document.sec
 ```
 
 ```sh
@@ -61,7 +61,7 @@ openssl dgst -sha256 -sign privkey.pem -out document.sig document.txt
 openssl dgst -sha256 -verify pubkey.pem -signature document.sig document.txt
 
 # decrypt
-openssl rsautl -decrypt -inkey privkey.pem -in document.sec
+openssl rsautl -decrypt -inkey privkey.pem -in document.sec -out document.txt
 
 # encrypt
 openssl rsautl -encrypt -pubin -inkey pubkey.pem -in document.txt -out document.sec

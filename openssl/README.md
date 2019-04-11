@@ -24,6 +24,11 @@ openssl list-standard-commands
 ```
 
 ```sh
+# ssl client
+openssl s_client -connect example.com:443
+```
+
+```sh
 # base64 encode
 cat document.txt | openssl enc -base64 -e
 
@@ -54,6 +59,10 @@ openssl genrsa -des3 -out privkey.pem 4096
 # generate public key from private
 openssl rsa -in privkey.pem -pubout -out pubkey.pem
 
+# How to use keys:
+# sign = private key, verify = public key
+# encrypt = public key, decrypt = private key
+
 # sign
 openssl dgst -sha256 -sign privkey.pem -out document.sig document.txt
 
@@ -65,6 +74,21 @@ openssl rsautl -decrypt -inkey privkey.pem -in document.sec -out document.txt
 
 # encrypt
 openssl rsautl -encrypt -pubin -inkey pubkey.pem -in document.txt -out document.sec
+```
+
+```sh
+# generate ca private key
+openssl genrsa -des3 -out ca.key 4096
+
+# generate certificate using private key
+openssl req -new -x509 -days 365 -key ca.key -out ca.crt
+
+# view certificate content
+openssl x509 -text -in ca.crt
+
+# view private and public keys
+openssl rsa -noout -text -in server.key
+openssl x509 -noout -text -in server.crt
 ```
 
 Resources:

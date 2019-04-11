@@ -2,12 +2,12 @@
 
 OpenSSL cheat sheet.
 
-```
+```sh
 # version
 openssl version
 ```
 
-```
+```sh
 # ca - create certificate authorities
 # dgst - compute hash functions
 # password - generation of "hashed passwords"
@@ -23,7 +23,7 @@ openssl version
 openssl list-standard-commands
 ```
 
-```
+```sh
 # base64 encode
 cat document.txt | openssl enc -base64 -e
 
@@ -31,7 +31,7 @@ cat document.txt | openssl enc -base64 -e
 cat document.txt | openssl enc -base64 -d
 ```
 
-```
+```sh
 # sha256
 cat document.txt | openssl dgst -sha256
 
@@ -39,7 +39,7 @@ cat document.txt | openssl dgst -sha256
 cat document.txt | openssl dgst -sha256 -binary
 ```
 
-```
+```sh
 # decrypt symmetric
 cat document.sec | openssl enc -des -d -k mypassword
 
@@ -47,7 +47,7 @@ cat document.sec | openssl enc -des -d -k mypassword
 cat document.txt | openssl enc -des -e -k mypassword -out document.sec
 ```
 
-```
+```sh
 # generate private key
 openssl genrsa -des3 -out privkey.pem 4096
 

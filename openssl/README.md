@@ -3,8 +3,11 @@
 OpenSSL cheat sheet.
 
 ```sh
-# version
+# show version
 openssl version
+
+# ssl/tls client
+openssl s_client -connect example.com:443
 ```
 
 ```sh
@@ -24,11 +27,6 @@ openssl list-standard-commands
 ```
 
 ```sh
-# ssl client
-openssl s_client -connect example.com:443
-```
-
-```sh
 # base64 encode
 cat document.txt | openssl enc -base64 -e
 
@@ -42,6 +40,21 @@ cat document.txt | openssl dgst -sha256
 
 # sha256 as binary
 cat document.txt | openssl dgst -sha256 -binary
+```
+
+```sh
+# generate ca private key
+openssl genrsa -des3 -out ca.key 4096
+
+# generate certificate using private key
+openssl req -new -x509 -days 365 -key ca.key -out ca.crt
+
+# view certificate content
+openssl x509 -text -in ca.crt
+
+# view private and public keys
+openssl rsa -noout -text -in server.key
+openssl x509 -noout -text -in server.crt
 ```
 
 ```sh
@@ -74,21 +87,6 @@ openssl rsautl -decrypt -inkey privkey.pem -in document.sec -out document.txt
 
 # encrypt
 openssl rsautl -encrypt -pubin -inkey pubkey.pem -in document.txt -out document.sec
-```
-
-```sh
-# generate ca private key
-openssl genrsa -des3 -out ca.key 4096
-
-# generate certificate using private key
-openssl req -new -x509 -days 365 -key ca.key -out ca.crt
-
-# view certificate content
-openssl x509 -text -in ca.crt
-
-# view private and public keys
-openssl rsa -noout -text -in server.key
-openssl x509 -noout -text -in server.crt
 ```
 
 Resources:

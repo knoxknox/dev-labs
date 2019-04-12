@@ -62,10 +62,10 @@ openssl x509 -noout -text -in server.crt
 
 ```sh
 # decrypt symmetric
-cat document.sec | openssl enc -aes-256 -d -k mypassword
+cat document.sec | openssl enc -aes256 -d -k mypassword
 
 # encrypt symmetric
-cat document.txt | openssl enc -aes-256 -e -k mypassword -out document.sec
+cat document.txt | openssl enc -aes256 -e -k mypassword -out document.sec
 ```
 
 ```sh

@@ -56,8 +56,8 @@ openssl req -new -x509 -days 365 -key ca.key -out ca.crt
 openssl x509 -text -in ca.crt
 
 # view private and public keys
-openssl rsa -noout -text -in server.key
-openssl x509 -noout -text -in server.crt
+openssl rsa -noout -text -in private.key
+openssl pkey -noout -text -pubin -in public.key
 ```
 
 ```sh

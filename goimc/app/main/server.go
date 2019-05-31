@@ -73,6 +73,10 @@ func (client *client) handleCommand(writer *Reply, command *resp.Command) {
       return
     }
     value := client.store.Get(command.Key)
+    if value == nil {
+      writer.Send("nil")
+      return
+    }
     writer.Send(value.(string))
   case "SET":
     if len(command.Key) < 1 || len(command.Args) < 1 {

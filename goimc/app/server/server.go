@@ -1,12 +1,14 @@
-package main
+package server
 
 import (
   "io"
   "os"
   "fmt"
   "net"
+  "app/log"
   "app/resp"
   "app/storage"
+  "app/server/responder"
 )
 
 type client struct {
@@ -18,18 +20,18 @@ type client struct {
 func NewServer(address string) {
   listener, err := net.Listen("tcp", address)
   if err != nil {
-    LogError("Could not start server: %s", err)
+    log.Error("Could not start server: %s", err)
     os.Exit(1)
   }
   defer listener.Close()
-  LogInfo("Server started on port: %s", address)
+  log.Info("Server started on port: %s", address)
 
   var id int64
   store := storage.NewStorage()
   for {
     conn, err := listener.Accept()
     if err != nil {
-      LogError("Error to handle request: %s", err)
+      log.Error("Error to handle request: %s", err)
       continue
     }
 
@@ -41,16 +43,16 @@ func NewServer(address string) {
 
 func (client *client) close() {
   if err := client.conn.Close(); err == nil {
-    LogInfo("Close connection: %s", client.conn.RemoteAddr())
+    log.Info("Close connection: %s", client.conn.RemoteAddr())
   }
 }
 
 func (client *client) serve() {
   defer client.close()
-  LogInfo("Connection %d: %s", client.id, client.conn.RemoteAddr())
+  log.Info("Connection %d: %s", client.id, client.conn.RemoteAddr())
 
-  writer := NewReply(client.conn)
   reader := resp.NewDecoder(client.conn)
+  writer := responder.NewReply(client.conn)
 
   for {
     command, err := reader.Parse()
@@ -65,7 +67,7 @@ func (client *client) serve() {
   }
 }
 
-func (client *client) handleCommand(writer *Reply, command *resp.Command) {
+func (client *client) handleCommand(writer *responder.Reply, command *resp.Command) {
   switch command.Name {
   case "GET":
     if len(command.Key) < 1 {

@@ -1,5 +1,11 @@
 package main
 
+import (
+  "app/log"
+  "app/server"
+)
+
 func main() {
-  NewServer(":6379")
+  log.Init(log.INFO)
+  server.NewServer(":6379")
 }

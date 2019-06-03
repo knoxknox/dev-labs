@@ -13,31 +13,31 @@ func Init(level int) {
 
 func Info(msg string, args ...interface{}) {
   if (Level <= INFO) {
-    print("INFO", msg, args)
+    print("INFO", msg, args...)
   }
 }
 
 func Warn(msg string, args ...interface{}) {
   if (Level <= WARN) {
-    print("WARN", msg, args)
+    print("WARN", msg, args...)
   }
 }
 
 func Debug(msg string, args ...interface{}) {
   if (Level <= DEBUG) {
-    print("DEBUG", msg, args)
+    print("DEBUG", msg, args...)
   }
 }
 
 func Error(msg string, args ...interface{}) {
   if (Level <= ERROR) {
-    print("ERROR", msg, args)
+    print("ERROR", msg, args...)
   }
 }
 
 func Fatal(msg string, args ...interface{}) {
   if (Level <= FATAL) {
-    print("FATAL", msg, args)
+    print("FATAL", msg, args...)
   }
 }
 

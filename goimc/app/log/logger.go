@@ -13,12 +13,34 @@ func Init(level int) {
 
 func Info(msg string, args ...interface{}) {
   if (Level <= INFO) {
-    log.Printf(fmt.Sprintf("[INFO]: %s", msg), args...)
+    print("INFO", msg, args)
+  }
+}
+
+func Warn(msg string, args ...interface{}) {
+  if (Level <= WARN) {
+    print("WARN", msg, args)
+  }
+}
+
+func Debug(msg string, args ...interface{}) {
+  if (Level <= DEBUG) {
+    print("DEBUG", msg, args)
   }
 }
 
 func Error(msg string, args ...interface{}) {
   if (Level <= ERROR) {
-    log.Printf(fmt.Sprintf("[ERROR]: %s", msg), args...)
+    print("ERROR", msg, args)
   }
+}
+
+func Fatal(msg string, args ...interface{}) {
+  if (Level <= FATAL) {
+    print("FATAL", msg, args)
+  }
+}
+
+func print(level string, msg string, args ...interface{}) {
+  log.Printf(fmt.Sprintf("[%s]: %s", level, msg), args...)
 }

@@ -8,7 +8,8 @@ import (
   "app/log"
   "app/resp"
   "app/storage"
-  "app/server/responder"
+  "app/server/cmd"
+  "app/server/reply"
 )
 
 type client struct {
@@ -51,8 +52,8 @@ func (client *client) serve() {
   defer client.close()
   log.Info("Connection %d: %s", client.id, client.conn.RemoteAddr())
 
+  writer := reply.NewReply(client.conn)
   reader := resp.NewDecoder(client.conn)
-  writer := responder.NewReply(client.conn)
 
   for {
     command, err := reader.Parse()
@@ -67,27 +68,11 @@ func (client *client) serve() {
   }
 }
 
-func (client *client) handleCommand(writer *responder.Reply, command *resp.Command) {
-  switch command.Name {
-  case "GET":
-    if len(command.Key) < 1 {
-      writer.SendError(fmt.Errorf("GET expects 1 argument(s)"))
-      return
-    }
-    value := client.store.Get(command.Key)
-    if value == nil {
-      writer.Send("nil")
-      return
-    }
-    writer.Send(value.(string))
-  case "SET":
-    if len(command.Key) < 1 || len(command.Args) < 1 {
-      writer.SendError(fmt.Errorf("SET expects 2 argument(s)"))
-      return
-    }
-    client.store.Set(command.Key, command.Args[0])
-    writer.SendStr("OK")
-  default:
-    writer.SendError(fmt.Errorf("Unknown command: %s", command.Name))
+func (client *client) handleCommand(writer *reply.Reply, command *resp.Command) {
+  handler := cmd.Commands[command.Name]
+  if handler != nil {
+    handler(writer, command, client.store)
+    return
   }
+  writer.SendError(fmt.Errorf("Unknown command: %s", command.Name))
 }

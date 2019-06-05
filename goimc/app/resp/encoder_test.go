@@ -6,6 +6,14 @@ import (
   "github.com/stretchr/testify/assert"
 )
 
+func TestEncodeNull(t *testing.T) {
+  var buf bytes.Buffer
+  subject := NewEncoder(&buf)
+  subject.EncodeNull("-1")
+
+  assert.Equal(t, "$-1\r\n", buf.String())
+}
+
 func TestEncodeError(t *testing.T) {
   var buf bytes.Buffer
   subject := NewEncoder(&buf)

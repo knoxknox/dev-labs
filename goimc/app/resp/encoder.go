@@ -41,6 +41,14 @@ func (e *RespEncoder) Encode(args ...string) (err error) {
   return e.Flush()
 }
 
+func (e *RespEncoder) EncodeNull(arg string) (err error) {
+  e.WriteByte(bulkStringCode)
+  e.WriteString(arg)
+  e.Write(lineEndingCode)
+
+  return e.Flush()
+}
+
 func (e *RespEncoder) EncodeInteger(arg int) (err error) {
   e.WriteByte(integerCode)
   e.WriteString(strconv.Itoa(arg))

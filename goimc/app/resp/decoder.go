@@ -99,7 +99,7 @@ func (d *RespDecoder) readLine() (line []byte, err error) {
     return nil, ErrorLineRead
   }
 
-  if len(line) < 4 {
+  if len(line) < 3 {
     return nil, ErrorLineTooShort
   }
 

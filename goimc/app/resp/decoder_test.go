@@ -53,6 +53,17 @@ func TestIncorrectPackageBody(t *testing.T) {
   }
 }
 
+func TestPrefixMissing(t *testing.T) {
+  var buf bytes.Buffer
+  subject := NewDecoder(&buf)
+  buf.WriteString("\r\n$4\r\nLLEN\r\n")
+
+  _, err := subject.Parse()
+  if assert.Error(t, err) {
+    assert.Equal(t, "Invalid package", err.Error())
+  }
+}
+
 func TestPrefixTooShort(t *testing.T) {
   var buf bytes.Buffer
   subject := NewDecoder(&buf)
@@ -60,7 +71,7 @@ func TestPrefixTooShort(t *testing.T) {
 
   _, err := subject.Parse()
   if assert.Error(t, err) {
-    assert.Equal(t, "Invalid package", err.Error())
+    assert.Equal(t, "Invalid package size", err.Error())
   }
 }
 

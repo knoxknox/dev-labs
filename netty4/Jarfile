@@ -1,3 +1,4 @@
 jar 'com.google.guava:guava', '23.0'
+jar 'org.slf4j:slf4j-simple', '1.7.26'
 jar 'io.netty:netty-all', '4.1.37.Final'
 jar 'io.netty:netty-transport-native-epoll', '4.1.37.Final'

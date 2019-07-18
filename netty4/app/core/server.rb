@@ -1,10 +1,8 @@
 require 'app/core/request_pipeline'
 
 java_import 'io.netty.channel.ChannelOption'
-java_import 'io.netty.handler.logging.LogLevel'
 java_import 'io.netty.bootstrap.ServerBootstrap'
 java_import 'io.netty.channel.nio.NioEventLoopGroup'
-java_import 'io.netty.handler.logging.LoggingHandler'
 java_import 'io.netty.channel.socket.nio.NioServerSocketChannel'
 
 ##
@@ -19,13 +17,13 @@ module Labs
       @boss_group = NioEventLoopGroup.new
       @worker_group = NioEventLoopGroup.new
 
-      backlog_size = configatron.app.backlog_size
-      logging_handler = LoggingHandler.new(LogLevel::INFO)
-
-      @bootstrap.group(@boss_group, @worker_group)
+      @bootstrap
+        .group(@boss_group, @worker_group)
+        .child_handler(RequestPipeline.new)
         .channel(NioServerSocketChannel.java_class)
-        .handler(logging_handler).child_handler(RequestPipeline.new)
-      @bootstrap.option(ChannelOption::SO_BACKLOG, backlog_size.to_java(Java::int))
+
+      @bootstrap.option(ChannelOption::SO_BACKLOG,
+        configatron.app.backlog_size.to_java(Java::int))
     end
 
     def listen(port)

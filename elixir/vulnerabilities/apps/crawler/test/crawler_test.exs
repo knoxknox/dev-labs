@@ -2,7 +2,7 @@ defmodule CrawlerTest do
   use ExUnit.Case
   doctest Crawler
 
-  test "greets the world" do
-    assert Crawler.hello() == :world
+  test "true" do
+    assert 1 + 1 == 2
   end
 end

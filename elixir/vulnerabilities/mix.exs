@@ -9,5 +9,4 @@ defmodule Vulnerabilities.MixProject do
       start_permanent: Mix.env() == :prod
     ]
   end
-
 end

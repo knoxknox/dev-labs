@@ -1,4 +1,4 @@
-# Vulnerabilities
+# vulnerabilities
 
 ```
 $ make console

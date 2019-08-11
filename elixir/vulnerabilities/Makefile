@@ -12,3 +12,6 @@ compile:
 
 install:
 	mix deps.get
+
+application:
+	mix run --no-halt

@@ -17,7 +17,7 @@ defmodule Router do
   end
 
   match _ do
-    send_resp(conn, 404, encode("Not Found"))
+    send_resp(conn, 404, encode("Route not found"))
   end
 
   defp decode(body) do

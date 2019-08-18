@@ -1,13 +1,6 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'haml'
 gem 'rack'
 gem 'thin'
 gem 'tilt'
-
-group :development, :test do
-  gem 'pry'
-  gem 'rake'
-  gem 'rspec'
-  gem 'capybara'
-end

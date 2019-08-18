@@ -12,11 +12,11 @@ module Frack
         env.merge!(controller_action(mapping))
         app.call(env)
       else
-        Rack::Response.new('Not found', 404)
+        Rack::Response.new('Path not found', 404)
       end
     end
 
-    def controller_action(mapping)
+    private def controller_action(mapping)
       controller, action = mapping.split('#')
       { 'controller' => controller, 'action' => action }
     end
@@ -25,9 +25,11 @@ module Frack
   class RouteBuilder
     attr_reader :routes
 
-    def initialize(routes={}, &block)
-      @routes = routes
-      instance_exec(&block) if block_given?
+    def initialize(&block)
+      @routes = {}
+      if block_given?
+        instance_exec(&block)
+      end
     end
 
     def match(route)

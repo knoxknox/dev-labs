@@ -8,11 +8,11 @@ module Frack
         Rack::Response.new(*dispatch)
       end
 
-      def dispatch
+      private def dispatch
         controller.new(env).public_send(env['action'])
       end
 
-      def controller
+      private def controller
         Object.const_get(env['controller'].capitalize + 'Controller')
       end
     end

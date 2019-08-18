@@ -6,36 +6,37 @@ module Frack
       @env = env
     end
 
-    def params
-      @params ||= Rack::Utils.parse_nested_query(env['QUERY_STRING'])
-    end
-
-    def render(view=controller_action)
-      render_template(layout) do
-        render_template(view)
+    def render(view, data)
+      render_template(layout_path) do
+        render_template(view_path(view))
       end
     end
 
-    def render_template(path, &block)
-      Tilt.new(file(path)).render(self, &block)
+    def params
+      @params ||= begin
+        query = env['QUERY_STRING']
+        Rack::Utils.parse_nested_query(query)
+      end
     end
 
-    def file(path)
-      Dir[File.join('app', 'views', "#{path}.html.*")].first
+
+    private
+
+    def view_path(view)
+      File.join(env['controller'], view)
     end
 
-    def layout
+    def layout_path
       File.join('layouts', 'application')
     end
 
-    def controller_action
-      File.join(env['controller'], env['action'])
+    def render_template(path, &block)
+      Tilt.new(template_path(path)).render(self, &block)
     end
 
-    def redirect_to path
-      body = %Q(Redirecting to <a href="#{path}">#{path}</a>)
-      header = { "Location" => path }
-      [body, 301, header]
+    def template_path(path)
+      Dir[File.join('app', 'views', "#{path}.html.*")].first
     end
+
   end
 end

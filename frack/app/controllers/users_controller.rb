@@ -3,4 +3,8 @@ class UsersController < Frack::BaseController
     @users = User.all
     render('index', @users)
   end
+
+  def redirect
+    redirect_to('users/index')
+  end
 end

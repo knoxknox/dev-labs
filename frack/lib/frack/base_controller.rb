@@ -12,6 +12,10 @@ module Frack
       end
     end
 
+    def redirect_to(path)
+      ['301', 301, { 'Location' => path }]
+    end
+
     def params
       @params ||= begin
         query = env['QUERY_STRING']

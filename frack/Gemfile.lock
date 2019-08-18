@@ -1,17 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    daemons (1.3.1)
-    eventmachine (1.2.7)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
+    nio4r (2.4.0)
+    puma (4.1.0)
+      nio4r (~> 2.0)
     rack (2.0.7)
     temple (0.8.1)
-    thin (1.7.2)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0, >= 1.0.4)
-      rack (>= 1, < 3)
     tilt (2.0.9)
 
 PLATFORMS
@@ -19,8 +16,8 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  puma
   rack
-  thin
   tilt
 
 BUNDLED WITH

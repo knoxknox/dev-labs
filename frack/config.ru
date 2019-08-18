@@ -9,8 +9,8 @@ use Rack::ContentLength
 use Rack::Static, root: 'public', urls: ['/css']
 
 use Frack::Router do
-  match '/' => 'users#index'
-  match '/redirect' => 'users#redirect'
+  match '/' => 'users#redirect'
+  match '/users/index' => 'users#index'
 end
 
 run Frack::Application

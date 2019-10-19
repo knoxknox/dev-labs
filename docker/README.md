@@ -14,3 +14,8 @@ $ ifconfig eth0 | grep inet
 $ dc app curl 192.168.0.50:4567
 $ dc redis-db curl 192.168.0.50:4567
 ```
+
+Connect from container to the host:
+```
+Use a special DNS name 'host.docker.internal'.
+```

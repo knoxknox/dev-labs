@@ -1,4 +1,4 @@
-// Declaring Variables
+## Declaring Variables
 
 ```
 let x;
@@ -9,7 +9,7 @@ let z = 3;
 let x, y, z = 3;
 ```
 
-// JS For Loop Shorthand
+## JS For Loop Shorthand
 
 ```
 const fruits = ['mango', 'banana'];
@@ -21,7 +21,7 @@ for (let fruit of fruits)
 Object.entries(object).forEach(([key, value]) => {});
 ```
 
-// Object Property Shorthand
+## Object Property Shorthand
 
 ```
 const x = 10, y = 20;
@@ -31,7 +31,7 @@ const object = { x: x, y: y };
 const object = { x, y }; // => { x: x, y: y }
 ```
 
-// Arrow Functions Shorthand
+## Arrow Functions Shorthand
 
 ```
 list.forEach(function(item) { console.log(item); });
@@ -44,7 +44,7 @@ hello = world => console.log('Hello', world);
 setTimeout(() => console.log('Loaded'), 2000);
 ```
 
-// Default Parameter Values
+## Default Parameter Values
 
 ```
 function f(x, y) {
@@ -57,7 +57,7 @@ function f(x, y) {
 f = (x = 3, y = 4) => (x * y);
 ```
 
-// Template Literals
+## Template Literals
 
 ```
 const db = 'http://' + host + ':' + port;
@@ -66,7 +66,7 @@ const db = 'http://' + host + ':' + port;
 const db = `http://${host}:${port}`
 ```
 
-// Destructuring Assignment
+## Destructuring Assignment
 
 ```
 const form = this.props.form;
@@ -77,7 +77,7 @@ import { action } from 'mobx';
 const { form, store } = this.props;
 ```
 
-// Spread Operator
+## Spread Operator
 
 ```
 const list = [1, 2, 3];
@@ -103,7 +103,7 @@ const props2 = { age: 42, country: 'USA' };
 const merged = { ...props1, ...props2 } // id, name, age, country
 ```
 
-// Object Property Assignment
+## Object Property Assignment
 
 ```
 const age = { age: 25 };

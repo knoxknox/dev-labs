@@ -2,7 +2,7 @@
 
 ```es6
 // lib/math.js
-export var pi = 3.14;
+export const pi = 3.14;
 export function sum(x, y) { return x + y; }
 ```
 ```es6
@@ -12,8 +12,9 @@ console.log(pi, sum, math.pi, math.sum);
 ```
 ```es6
 export * from 'lib/math';
-export var e = 2.71828182846;
+export const e = 2.71828182846;
 export default function(x) { return Math.log(x); }
+// default exports one thing (class/function/primitive)
 import ln, { e, pi } from 'lib/exports'; // => e, pi, ln
 ```
 

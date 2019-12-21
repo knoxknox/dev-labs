@@ -4,8 +4,8 @@ GEM
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
-    nio4r (2.4.0)
-    puma (4.1.0)
+    nio4r (2.5.2)
+    puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
     temple (0.8.1)

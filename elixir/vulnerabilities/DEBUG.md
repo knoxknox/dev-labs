@@ -28,3 +28,13 @@ end
 
 iex> some_fun(:foo, "bar") # => [a: :foo, b: "bar"]
 ```
+
+## IEx.pry
+
+```elixir
+def some_fun(a, b) do
+  require IEx; IEx.pry
+  ...
+end
+```
+Run code with `iex -S mix` or `iex -S mix phx.server`.

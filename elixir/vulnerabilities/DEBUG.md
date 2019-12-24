@@ -87,7 +87,7 @@ iex> Process.info(pid)
 ## :sys.get_state / :sys.get_status
 
 :sys.get_state/1 gets the current state of a process.
-```
+```elixir
 iex(1)> defmodule Example, do: use GenServer
 iex(2)> {:ok, pid} = GenServer.start_link(Example, %{ping: "pong"})
 iex(3)> :sys.get_state(pid)
@@ -95,7 +95,7 @@ iex(3)> :sys.get_state(pid)
 ```
 
 :sys.get_status/1 returns the whole process information.
-```
+```elixir
 iex> :sys.get_status(pid)
 {:status, #PID<0.134.0>, {:module, :gen_server}, [
   :running,
@@ -116,3 +116,20 @@ iex> :sys.get_status(pid)
 ]}
 ```
 To replace process state at runtime use command `:sys.replace_state/2`.
+
+## :observer
+
+Overview of the running system.
+```elixir
+iex> :observer.start
+iex> :observer_cli.start
+```
+
+## Distillery
+
+Run commands after package release.
+```elixir
+$ bin/<app_name> <command>
+$ bin/example_application help
+$ bin/example_application remote_console
+```

@@ -133,3 +133,8 @@ $ bin/<app_name> <command>
 $ bin/example_application help
 $ bin/example_application remote_console
 ```
+
+# Resources
+- https://elixir-lang.org/getting-started/debugging.html
+- https://www.pagerduty.com/eng/tracking-down-ets-related-memory-leak
+- https://medium.com/@diamondgfx/debugging-phoenix-with-iex-pry-5417256e1d11

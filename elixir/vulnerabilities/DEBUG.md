@@ -37,4 +37,6 @@ def some_fun(a, b) do
   ...
 end
 ```
-Run code with `iex -S mix` or `iex -S mix phx.server`.
+Run code with `iex -S mix` or `iex -S mix phx.server`.<br/>
+Enter `respawn()` in pry to continue the rest of request execution.<br/>
+Command to run tests `iex -S mix test --trace` w/o time out automatically.

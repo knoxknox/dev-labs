@@ -56,3 +56,63 @@ iex> :int.ni(App.Example)         # prepare module for debugging
 iex> :int.break(App.Example, 3)   # set a break point at the line 3
 iex> App.Example.calc(1000, 2000) # call a function and start debugging
 ```
+
+## :sys.trace
+
+Trace process calls and state change.
+```elixir
+iex> :sys.trace(pid, true)
+iex> GenServer.call(pid, :next_number)
+*DBG* <0.69.0> got call next_number from <0.25.0>
+*DBG* <0.69.0> sent 105 to <0.25.0>, new state 106
+```
+
+## Process.info
+
+Get information about a specific process.
+```elixir
+iex> Process.info(pid)
+[
+  ...
+  messages: [],
+  status: :waiting,
+  trap_exit: false,
+  priority: :normal,
+  message_queue_len: 0,
+  links: [#PID<0.610.0>],
+  ...
+]
+```
+
+## :sys.get_state / :sys.get_status
+
+:sys.get_state/1 gets the current state of a process.
+```
+iex(1)> defmodule Example, do: use GenServer
+iex(2)> {:ok, pid} = GenServer.start_link(Example, %{ping: "pong"})
+iex(3)> :sys.get_state(pid)
+%{ping: "pong"}
+```
+
+:sys.get_status/1 returns the whole process information.
+```
+iex> :sys.get_status(pid)
+{:status, #PID<0.134.0>, {:module, :gen_server}, [
+  :running,
+  #PID<0.118.0>,
+  [
+    "$ancestors": [#PID<0.118.0>, #PID<0.57.0>],
+    "$initial_call": {Sequence.Server, :init, 1}
+  ],
+  [
+    data: [{'State', 103}],
+    data: [
+      {'Status', :running},
+      {'Logged events', []},
+      {'Parent', #PID<0.118.0>}
+    ],
+    header: 'Status for generic server <0.134.0>'
+  ]
+]}
+```
+To replace process state at runtime use command `:sys.replace_state/2`.

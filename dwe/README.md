@@ -3,9 +3,10 @@
 Cheat Sheets for various Data Tools.
 
 ## Articles
-- http://teamcoding.com/blog/2015/10/05/kafka/
+- http://teamcoding.com/posts/2015-10-05-kafka/
 - http://knowm.org/how-to-install-a-distributed-apache-storm-cluster/
-- http://exponential.io/blog/2015/01/19/install-cassandra-2_1-on-ubuntu-linux/
+- http://databricks.gitbooks.io/databricks-spark-reference-applications/
+- http://intellipaat.com/blog/tutorial/cassandra-tutorial/brief-architecture-of-cassandra/
 
 ## Packages
 ```

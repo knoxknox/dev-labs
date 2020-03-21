@@ -21,11 +21,11 @@ defmodule Router do
   end
 
   defp decode(body) do
-    Poison.decode!(body)
+    Jason.decode!(body)
   end
 
   defp encode(response) do
-    Poison.encode!(%{response: response})
+    Jason.encode!(%{response: response})
   end
 
   ##

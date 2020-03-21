@@ -18,14 +18,14 @@ defmodule Server.MixProject do
   def application do
     [
       mod: {Server, []},
-      extra_applications: [:logger, :cowboy, :plug, :poison]
+      extra_applications: [:logger, :plug, :cowboy]
     ]
   end
 
   defp deps do
     [
       {:plug, "~> 1.9"},
-      {:poison, "~> 4.0"},
+      {:jason, "~> 1.2"},
       {:cowboy, "~> 2.7"},
       {:plug_cowboy, "~> 2.1"}
     ]

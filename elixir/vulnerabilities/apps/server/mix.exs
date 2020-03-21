@@ -24,10 +24,10 @@ defmodule Server.MixProject do
 
   defp deps do
     [
-      {:plug, "~> 1.5"},
-      {:poison, "~> 3.1"},
-      {:cowboy, "~> 1.0.0"},
-      {:plug_cowboy, "~> 1.0"}
+      {:plug, "~> 1.9"},
+      {:poison, "~> 4.0"},
+      {:cowboy, "~> 2.7"},
+      {:plug_cowboy, "~> 2.1"}
     ]
   end
 end

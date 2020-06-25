@@ -7,7 +7,7 @@ GEM
     nio4r (2.5.2)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.4)
     temple (0.8.1)
     tilt (2.0.9)
 

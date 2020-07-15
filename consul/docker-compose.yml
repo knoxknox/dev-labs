@@ -9,26 +9,26 @@ services:
       - '8600:8600/udp'
     command: 'agent -server -ui -bootstrap-expect 1 -client 0.0.0.0'
   service1:
-    build: .
+    build: app
     ports:
       - 4001:4567
     volumes:
-      - .:/code
+      - ./app:/code
     command: ruby /code/app.rb -o 0.0.0.0
   service1-agent:
     image: consul
     volumes:
-      - conf/service1.json:/consul/config/service.json
+      - ./conf/service1.json:/consul/config/service.json
     command: 'agent -retry-join consul-server -client 0.0.0.0'
   service2:
-    build: .
+    build: app
     ports:
       - 4002:4567
     volumes:
-      - .:/code
+      - ./app:/code
     command: ruby /code/app.rb -o 0.0.0.0
   service2-agent:
     image: consul
     volumes:
-      - conf/service2.json:/consul/config/service.json
+      - ./conf/service2.json:/consul/config/service.json
     command: 'agent -retry-join consul-server -client 0.0.0.0'

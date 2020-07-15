@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "example",
+    "port": 4001,
+    "address": "127.0.0.1",
+    "check": {
+      "name": "default",
+      "timeout": "5s",
+      "interval": "5s",
+      "http": "http://host.docker.internal:4001/health"
+    }
+  }
+}

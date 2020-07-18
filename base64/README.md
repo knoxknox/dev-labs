@@ -1,5 +1,8 @@
-**Usage**
-```
+# base64
+
+Base64 algorithm example.
+
+```ruby
 require 'base64'
 
 string = "I'm killing your brain like a poisonous mushroom"

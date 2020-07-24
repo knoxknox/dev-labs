@@ -1,6 +1,31 @@
 ##
 # Iteration in Elixir.
 #
+# How data is organized:
+# [1 | []]                           => [1]
+# [1 | [2, 3]]                       => [1, 2, 3]
+# [1 | [2 | [3, 4, 5]]]              => [1, 2, 3, 4, 5]
+# [1 | [2 | [3 | [4 | [5 | []]]]]]   => [1, 2, 3, 4, 5]
+#
+# How to iterate over data:
+# [
+#   1 | [                            => head=1, tail=[2..]
+#     2 | [                          => head=2, tail=[3..]
+#       3 | [                        => head=3, tail=[4..]
+#         4 | [                      => head=4, tail=[5..]
+#           5 | []                   => head=5, tail=[end]
+#         ]
+#       ]
+#     ]
+#   ]
+# ] => the same as [1, 2, 3, 4, 5], due to [1 | []] == [1]
+#
+# Example of [head | tail] iteration:
+# list = [1, 2, 3]
+# [head | tail] = list               => head=1, tail=[2, 3]
+# [head | tail] = tail               => head=2, tail=[3, []]
+# [head | tail] = tail               => head=3, tail=[empty]
+#
 defmodule Enumeration do
   def each([], _func), do: nil
   def each([head | tail], func) do

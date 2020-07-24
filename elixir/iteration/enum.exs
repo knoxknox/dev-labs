@@ -17,8 +17,15 @@ defmodule Enumeration do
   def reduce([head | tail], total, func) do
     reduce(tail, func.(head, total), func)
   end
+
+  def filter([], _func), do: []
+  def filter([head | tail], func) do
+    result = func.(head)
+    if result, do: [head | filter(tail, func)], else: filter(tail, func)
+  end
 end
 
 Enumeration.each([1, 2, 3], &IO.puts/1) |> IO.inspect
 Enumeration.map([1, 2, 3], fn(value) -> value * 2 end) |> IO.inspect
+Enumeration.filter([1, 2, 3], fn(value) -> value > 1 end) |> IO.inspect
 Enumeration.reduce([1, 2, 3], 0, fn(value, total) -> value + total end) |> IO.inspect

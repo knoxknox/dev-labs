@@ -79,3 +79,10 @@ To access each allocation (122e097d/f8b9e388) use curl command:
 $ curl 172.19.0.5:31679   => 200: Request served by e6d5be866435
 $ curl 172.19.0.7:27926   => 200: Request served by 5a014dbffd5c
 ```
+
+To extract service information from consul via HTTP or DNS SRV:
+```
+$ dig @127.0.0.1 -p 8600 web.service.consul         => returns IP's
+$ dig @127.0.0.1 -p 8600 web.service.consul SRV     => returns Ports
+$ curl http://localhost:8500/v1/catalog/service/web => returns ServiceInfo
+```

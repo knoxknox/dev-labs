@@ -7,6 +7,7 @@ RUN apt-get update && \
     curl \
     unzip \
     iproute2 \
+    dnsutils \
     gnupg-agent \
     ca-certificates \
     apt-transport-https \

@@ -15,14 +15,16 @@ This is required by design to have the minimum quorum for leader election.
 Run cluster with `dc start`.<br/>
 Visit http://localhost:4646/ui for the UI.
 
-$ dc ls
+Print containers info:
 ```
-nomad_nomad-server_1         0.0.0.0:4646->4646/tcp, 4647/tcp, 4648/tcp
-nomad_nomad-follower-1_1     4647/tcp
-nomad_nomad-follower-2_1     4648/tcp
-nomad_nomad-client-dc1_1
-nomad_nomad-client-dc2_1
-nomad_consul-server_1        8300/tcp, 8301/tcp/udp, 8302/tcp/udp, 8500/tcp, 8600/tcp/udp
+$ dc ls
+~
+> nomad_nomad-server_1         0.0.0.0:4646->4646/tcp, 4647/tcp, 4648/tcp
+> nomad_nomad-follower-1_1     4647/tcp
+> nomad_nomad-follower-2_1     4648/tcp
+> nomad_nomad-client-dc1_1
+> nomad_nomad-client-dc2_1
+> nomad_consul-server_1        8300/tcp, 8301/tcp/udp, 8302/tcp/udp, 8500/tcp, 8600/tcp/udp
 ```
 
 To check apps versions:

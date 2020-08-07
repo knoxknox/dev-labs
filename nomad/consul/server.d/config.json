@@ -1,0 +1,9 @@
+{
+  "server": true,
+  "bootstrap": true,
+  "bootstrap_expect": 1,
+  "log_level": "INFO",
+  "node_name": "server",
+  "datacenter": "local",
+  "data_dir": "/consul/config"
+}

@@ -1,0 +1,7 @@
+{
+  "server": false,
+  "log_level": "INFO",
+  "datacenter": "local",
+  "data_dir": "/consul/config",
+  "retry_join": ["consul-server"]
+}

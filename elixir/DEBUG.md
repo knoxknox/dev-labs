@@ -84,6 +84,27 @@ iex> Process.info(pid)
 ]
 ```
 
+## Process.whereis
+
+Find process by name or specific process id.
+```elixir
+iex> Supervisor.which_children(:example_supervisor)
+[
+  {:example_children1, #PID<0.222.0>, :supervisor, []},
+  {:example_children2, #PID<0.226.0>, :supervisor, []},
+]
+iex> Process.info(:c.pid(0,222,0))
+[
+  status: :waiting,
+  registered_name: :example_children1,
+  initial_call: {:proc_lib, :init_p, 5},
+  current_function: {:gen_server, :loop, 7},
+  links: [#PID<0.223.0>, #PID<0.234.0>, #PID<0.221.0>],
+  ...
+]
+iex> Process.whereis(:example_children1) => #PID<0.222.0>
+```
+
 ## :sys.get_state / :sys.get_status
 
 :sys.get_state/1 gets the current state of a process.

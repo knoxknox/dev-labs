@@ -26,8 +26,8 @@ defmodule Server.MixProject do
     [
       {:plug, "~> 1.9"},
       {:jason, "~> 1.2"},
-      {:cowboy, "~> 2.7"},
-      {:plug_cowboy, "~> 2.1"}
+      {:cowboy, "~> 2.8"},
+      {:plug_cowboy, "~> 2.3"}
     ]
   end
 end

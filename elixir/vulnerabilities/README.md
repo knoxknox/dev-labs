@@ -5,5 +5,5 @@ $ make console
 $
 $ iex> recompile
 $ iex> :observer.start
-$ iex> Crawler.WorkerCves.execute
+$ iex> Crawler.Processor.execute
 ```

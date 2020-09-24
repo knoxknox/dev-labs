@@ -4,7 +4,7 @@ defmodule Crawler.Requests.Debian do
 
   def get do
     case @client.get(@url) do
-      {:ok, json} -> Jason.decode!(json)
+      {:ok, json} -> {:ok, Jason.decode!(json)}
       {:error, error_msg} -> {:error, error_msg}
     end
   end

@@ -1,6 +1,6 @@
 defmodule Crawler.App do
   use Application
-  @workers_count 16
+  @workers_count 4
 
   def start(_type, _args) do
     Supervisor.start_link(children(), strategy: :one_for_one)
@@ -10,8 +10,8 @@ defmodule Crawler.App do
     [
       %{
         type: :worker,
-        id: Crawler.WorkerCves,
-        start: {Crawler.WorkerCves, :start_link, [@workers_count]}
+        id: Crawler.Processor,
+        start: {Crawler.Processor, :start_link, [%{workers_count: @workers_count}]}
       }
     ]
   end

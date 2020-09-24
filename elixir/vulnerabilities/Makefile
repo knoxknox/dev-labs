@@ -4,6 +4,9 @@ tasks:
 tests:
 	mix test
 
+format:
+	mix format
+
 console:
 	iex -S mix
 

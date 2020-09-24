@@ -1,7 +1,7 @@
 defmodule Crawler.Processor do
   use GenServer
   @name :processor
-  @timeout :timer.seconds(30)
+  @timeout :infinity
   alias Crawler.{Logger, TasksCounter}
 
   def init(state) do
@@ -27,15 +27,21 @@ defmodule Crawler.Processor do
   end
 
   defp handle_task({package, cves}, tasks_count) do
-    process = self()
+    task_pid = self()
     TasksCounter.increment(1)
 
     Enum.each(cves, fn({cve_id, _cve}) ->
+      Logger.enqueue(task_pid, package, cve_id)
       case Crawler.Requests.Circl.get(cve_id) do
-        {:ok, data} -> Crawler.Parsers.Circl.call(data)
-        {:error, error} -> raise "Error in processing: #{inspect(error)}"
+        {:ok, data} ->
+          result = Crawler.Parsers.Circl.call(data)
+          Logger.success(task_pid, package, cve_id, result)
+        {:error, message} ->
+          Logger.failure(task_pid, package, cve_id, message)
       end
     end)
+
+    Logger.status(TasksCounter.value(), tasks_count)
   end
 
   defp tasks_list do

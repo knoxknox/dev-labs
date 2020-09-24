@@ -25,8 +25,7 @@ defmodule Crawler.MixProject do
   defp deps do
     [
       {:jason, "~> 1.2"},
-      {:poolboy, "~> 1.5"},
-      {:httpoison, "~> 1.6"}
+      {:httpoison, "~> 1.7"}
     ]
   end
 end

@@ -1,4 +1,4 @@
-defmodule Router do
+defmodule Server.Router do
   use Plug.Router
   use Plug.ErrorHandler
 
@@ -36,5 +36,4 @@ defmodule Router do
     response = "Error #{conn.status} happens"
     send_resp(conn, conn.status, encode(response))
   end
-
 end

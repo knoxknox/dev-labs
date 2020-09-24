@@ -17,7 +17,7 @@ defmodule Server.MixProject do
 
   def application do
     [
-      mod: {Server, []},
+      mod: {Server.App, []},
       extra_applications: [:logger, :plug, :cowboy]
     ]
   end

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "name": "react-models",
   "dependencies": {
-    "react": "^0.12.2",
+    "react": "^16.13.1",
     "backbone": "^1.1.2",
     "underscore": "^1.8.3"
   },

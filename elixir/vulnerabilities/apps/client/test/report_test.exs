@@ -3,27 +3,30 @@ defmodule Client.ReportTest do
   @subject Client.Report
   @expected_header "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 
-  test "return empty xml document for empty map" do
+  test "returns xml document for empty data" do
     assert @subject.generate(%{}) == @expected_header
   end
 
-  test "return correct xml tag when value is empty" do
+  test "returns xml document for primitive values" do
     assert @subject.generate(%{id: nil}) == "#{@expected_header}<id/>"
-  end
-
-  test "return correct xml document for default map" do
     assert @subject.generate(%{id: 100}) == "#{@expected_header}<id>100</id>"
     assert @subject.generate(%{id: true}) == "#{@expected_header}<id>true</id>"
     assert @subject.generate(%{id: "test"}) == "#{@expected_header}<id>test</id>"
   end
 
-  test "return correct xml document for nested-1 map" do
-    nested_map = %{id: 100, user: %{name: "test"}}
-    assert @subject.generate(nested_map) == "#{@expected_header}<id>100</id><user><name>test</name></user>"
+  test "returns xml document for array of values" do
+    fields = %{ids: ["100", "200", "300"]}
+    expected_values = Enum.map(fields[:ids], &("<value>#{&1}</value>"))
+    assert @subject.generate(fields) == "#{@expected_header}<ids>#{expected_values}</ids>"
   end
 
-  test "return correct xml document for nested-2 map" do
-    nested_map = %{id: %{user: %{name: "test name"}}}
-    assert @subject.generate(nested_map) == "#{@expected_header}<id><user><name>test name</name></user></id>"
+  test "returns xml document for nested map (nesting=1)" do
+    fields = %{id: 100, user: %{name: "test"}}
+    assert @subject.generate(fields) == "#{@expected_header}<id>100</id><user><name>test</name></user>"
+  end
+
+  test "returns xml document for nested map (nesting=2)" do
+    fields = %{id: %{nested: %{name: "test"}}}
+    assert @subject.generate(fields) == "#{@expected_header}<id><nested><name>test</name></nested></id>"
   end
 end

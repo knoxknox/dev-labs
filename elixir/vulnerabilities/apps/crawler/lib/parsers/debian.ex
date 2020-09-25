@@ -4,7 +4,7 @@ defmodule Crawler.Parsers.Debian do
   end
 
   defp collect_cve_releases(releases) do
-    Enum.map(releases, fn({name, details}) ->
+    Enum.map(releases, fn {name, details} ->
       %{
         "release" => name,
         "status" => details["status"],
@@ -21,13 +21,13 @@ defmodule Crawler.Parsers.Debian do
   end
 
   defp collect_packages(packages) do
-    Enum.reduce(packages, %{}, fn({package_name, cves}, result) ->
+    Enum.reduce(packages, %{}, fn {package_name, cves}, result ->
       Map.put(result, package_name, collect_cves_per_package(cves))
     end)
   end
 
   defp collect_cves_per_package(cves) do
-    Enum.reduce(cves, %{}, fn({cve_id, cve_info}, result) ->
+    Enum.reduce(cves, %{}, fn {cve_id, cve_info}, result ->
       Map.put(result, cve_id, collect_cve_info_per_package(cve_info))
     end)
   end

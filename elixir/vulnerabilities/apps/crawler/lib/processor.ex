@@ -30,12 +30,14 @@ defmodule Crawler.Processor do
     task_pid = self()
     TasksCounter.increment(1)
 
-    Enum.each(cves, fn({cve_id, _cve}) ->
+    Enum.each(cves, fn {cve_id, _cve} ->
       Logger.enqueue(task_pid, package, cve_id)
+
       case Crawler.Requests.Circl.get(cve_id) do
         {:ok, data} ->
           result = Crawler.Parsers.Circl.call(data)
           Logger.success(task_pid, package, cve_id, result)
+
         {:error, message} ->
           Logger.failure(task_pid, package, cve_id, message)
       end
@@ -53,6 +55,6 @@ defmodule Crawler.Processor do
 
   defp async_stream(tasks, tasks_count, max_concurrency) do
     options = [timeout: @timeout, max_concurrency: max_concurrency]
-    tasks |> Task.async_stream(& handle_task(&1, tasks_count), options) |> Stream.run
+    tasks |> Task.async_stream(&handle_task(&1, tasks_count), options) |> Stream.run()
   end
 end

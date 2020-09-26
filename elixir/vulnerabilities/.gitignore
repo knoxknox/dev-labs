@@ -1,4 +1,4 @@
-/deps/
-/cover/
-/_build/
-/.elixir_ls/
+deps/
+cover/
+_build/
+.elixir_ls/

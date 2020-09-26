@@ -1,10 +1,9 @@
 defmodule Crawler.Requests.Circl do
-  @client Crawler.Http.Client
   @retry_after :timer.seconds(10)
   @url "https://cve.circl.lu/api/cve"
 
   def get(cve_id, retries \\ 3) do
-    case @client.get("#{@url}/#{cve_id}") do
+    case client.get("#{@url}/#{cve_id}") do
       {:ok, json} -> {:ok, Jason.decode!(json)}
       {:error, :retry} -> retry_after(cve_id, retries)
       {:error, :closed} -> retry_after(cve_id, retries)
@@ -20,5 +19,9 @@ defmodule Crawler.Requests.Circl do
     else
       {:error, "Reached the max number of query retries"}
     end
+  end
+
+  def client do
+    Application.get_env(:crawler, :http_client, Crawler.Http.Client)
   end
 end

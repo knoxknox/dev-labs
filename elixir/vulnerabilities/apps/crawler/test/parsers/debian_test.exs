@@ -12,7 +12,7 @@ defmodule Crawler.Parsers.DebianTest do
     response = %{
       "socks4-server" => %{
         "CVE-2019-0053" => %{
-          "debianbug" => 945861,
+          "debianbug" => 945_861,
           "description" => "Insufficient validation of environment variables.",
           "releases" => %{
             "buster" => %{

@@ -16,7 +16,7 @@ defmodule Client.ReportTest do
 
   test "returns xml document for array of values" do
     fields = %{ids: ["100", "200", "300"]}
-    expected_values = Enum.map(fields[:ids], &("<value>#{&1}</value>"))
+    expected_values = Enum.map(fields[:ids], &"<value>#{&1}</value>")
     assert @subject.generate(fields) == "#{@expected_header}<ids>#{expected_values}</ids>"
   end
 

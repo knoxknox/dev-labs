@@ -4,10 +4,7 @@ format:
 console:
 	iex -S mix
 
-compile:
-	mix compile
-
-deps:
+install:
 	mix deps.get
 
 outdated:
@@ -19,3 +16,6 @@ test:
 cover:
 	MIX_ENV=test mix coveralls.html
 	find apps -name excoveralls.html | xargs open
+
+release:
+	MIX_ENV=prod mix release --overwrite vulnerabilities

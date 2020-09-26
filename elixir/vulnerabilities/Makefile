@@ -1,9 +1,3 @@
-tasks:
-	mix help
-
-tests:
-	mix test
-
 format:
 	mix format
 
@@ -13,8 +7,11 @@ console:
 compile:
 	mix compile
 
-install:
+deps:
 	mix deps.get
 
-application:
-	mix run --no-halt
+test:
+	MIX_ENV=test mix test
+
+cover:
+	MIX_ENV=test mix coveralls.html

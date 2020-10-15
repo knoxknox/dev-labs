@@ -138,6 +138,19 @@ iex> :sys.get_status(pid)
 ```
 To replace process state at runtime use command `:sys.replace_state/2`.
 
+## :recon
+
+Tracing function calls.
+```elixir
+iex> :recon_trace.calls({Module.Name, :function, :_}, 5)
+iex> :recon_trace.calls({Module.Name, :function, :return_trace}, 10)
+# => 12:00:01 <0.5000.0> 'Elixir.Module.Name':function(#{<<"arg">>=>1}) --> ok
+# => 12:00:02 <0.5000.0> 'Elixir.Module.Name':function(#{<<"arg">>=>2}) --> ok
+# => 12:00:03 <0.5000.0> 'Elixir.Module.Name':function(#{<<"arg">>=>3}) --> ok
+# => 12:00:04 <0.5000.0> 'Elixir.Module.Name':function(#{<<"arg">>=>4}) --> ok
+# => 12:00:05 <0.5000.0> 'Elixir.Module.Name':function(#{<<"arg">>=>5}) --> ok
+```
+
 ## :observer
 
 Overview of the running system.

@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "cvss",
+    "package",
+    "releases",
+    "cvss-time",
+    "references",
+    "description"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "CVE-.*"
+    },
+    "cvss": {
+      "minimum": 0,
+      "maximum": 10,
+      "type": "number"
+    },
+    "package": {
+      "minLength": 2,
+      "type": "string"
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "status",
+          "release",
+          "fixed_version"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["opened", "resolved"]
+          },
+          "release": {
+            "minLength": 2,
+            "type": "string"
+          },
+          "fixed_version": {
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cvss-time": {
+      "type": "string",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "http.*"
+      }
+    },
+    "description": {
+      "minLength": 10,
+      "type": "string"
+    }
+  }
+}

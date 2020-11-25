@@ -14,30 +14,30 @@ export class SortedSet {
     return this.list;
   }
 
-  key(node) {
-    return +`${node.id}${weights[node.type]}`;
-  }
-
-  comparator(node1, node2) {
-    return this.key(node1) >= this.key(node2);
-  }
-
   add(node) {
-    const key = this.key(node);
+    const key = this._key(node);
     if (this.keys.hasOwnProperty(key)) return;
 
     this.keys[key] = true;
-    this.list.splice(this.getInsertionIndex(node), 0, node);
+    this.list.splice(this._getInsertionIndex(node), 0, node);
   }
 
-  getInsertionIndex(node) {
+  _key(node) {
+    return +`${node.id}${weights[node.type]}`;
+  }
+
+  _comparator(node1, node2) {
+    return this._key(node1) >= this._key(node2);
+  }
+
+  _getInsertionIndex(node) {
     let low = 0;
     let high = this.list.length;
 
     while (low < high) {
       const mid = (low + high) >>> 1;
       const computed = this.list[mid];
-      this.comparator(node, computed) ? high = mid : low = mid + 1;
+      this._comparator(node, computed) ? high = mid : low = mid + 1;
     }
 
     return high;

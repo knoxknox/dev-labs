@@ -3,6 +3,7 @@ import { SortedSet } from 'app';
 test('empty set', () => {
   const expected = [];
   const list = new SortedSet();
+
   expect(list.values).toEqual(expected);
 });
 

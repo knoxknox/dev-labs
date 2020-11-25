@@ -22,16 +22,24 @@ export class SortedSet {
     return this.key(node1) >= this.key(node2);
   }
 
-  getNextInsertionIndex(node) {
-    return this.list.findIndex(el => this.comparator(node, el));
-  }
-
   add(node) {
     const key = this.key(node);
     if (this.keys.hasOwnProperty(key)) return;
 
     this.keys[key] = true;
-    const index = this.getNextInsertionIndex(node);
-    index == -1 ? this.list.push(node) : this.list.splice(index, 0, node);
+    this.list.splice(this.getInsertionIndex(node), 0, node);
+  }
+
+  getInsertionIndex(node) {
+    let low = 0;
+    let high = this.list.length;
+
+    while (low < high) {
+      const mid = (low + high) >>> 1;
+      const computed = this.list[mid];
+      this.comparator(node, computed) ? high = mid : low = mid + 1;
+    }
+
+    return high;
   }
 };

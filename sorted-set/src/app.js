@@ -20,7 +20,7 @@ export class SortedSet {
 
   add(node) {
     const key = this._key(node);
-    if (this.keys.hasOwnProperty(key)) return;
+    if (hasOwnProperty.call(this.keys, key)) return;
 
     this.keys[key] = true;
     this.list.splice(this._getInsertionIndex(node), 0, node);
@@ -46,4 +46,4 @@ export class SortedSet {
 
     return high;
   }
-};
+}

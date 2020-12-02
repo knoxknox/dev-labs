@@ -36,6 +36,7 @@ export class HashRing {
   }
 
   getNode(target) {
+    if (!this.length) return null;
     const hash = this.crypto(target);
     const index = this.getNodePosition(hash);
 
@@ -45,7 +46,6 @@ export class HashRing {
   getNodePosition(hash) {
     let low = 0;
     let high = this.length - 1;
-    if (high === 0 || hash.length <= 0) return 0;
 
     while (low <= high) {
       const mid = (low + high) >>> 1;

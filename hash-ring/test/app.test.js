@@ -165,6 +165,11 @@ describe('ring', () => {
   });
 
   describe('#getNode', () => {
+    it('returns null for empty ring', () => {
+      const ring = new HashRing();
+      expect(ring.getNode('test')).toBe(null);
+    });
+
     it('returns proper node for each target', () => {
       const ring = new HashRing();
       const targets = {

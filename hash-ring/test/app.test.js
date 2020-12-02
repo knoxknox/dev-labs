@@ -209,4 +209,31 @@ describe('ring', () => {
       });
     });
   });
+
+  describe('#getNodePosition', () => {
+    it('returns closest vnode when target hash is in hash ring', () => {
+      const ring = new HashRing();
+
+      ring.add('node1');
+      expect(ring.keys[0]).toBe('01de2a76a32c70a6c3afe5686bc21409');
+      expect(ring.keys[1]).toBe('0d2aa67997848cc7c4b9513513f08c8e');
+      expect(ring.getNodePosition('01ff0000000000000000000000000000')).toBe(0);
+    });
+
+    it('returns latest vnode when target hash < first vnode hash', () => {
+      const ring = new HashRing();
+
+      ring.add('node1');
+      expect(ring.keys[0]).toBe('01de2a76a32c70a6c3afe5686bc21409');
+      expect(ring.getNodePosition('00000000000000000000000000000000')).toBe(19);
+    });
+
+    it('returns latest vnode when target hash > latest vnode hash', () => {
+      const ring = new HashRing();
+
+      ring.add('node1');
+      expect(ring.keys[19]).toBe('ff5b72562a6feab5fc0c33a03372b1b7');
+      expect(ring.getNodePosition('ffffffffffffffffffffffffffffffff')).toBe(19);
+    });
+  });
 });

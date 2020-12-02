@@ -211,6 +211,14 @@ describe('ring', () => {
   });
 
   describe('#getNodePosition', () => {
+    it('returns vnode when target hash equals to vnode hash', () => {
+      const ring = new HashRing();
+
+      ring.add('node1');
+      expect(ring.keys[1]).toBe('0d2aa67997848cc7c4b9513513f08c8e');
+      expect(ring.getNodePosition('0d2aa67997848cc7c4b9513513f08c8e')).toBe(1);
+    });
+
     it('returns closest vnode when target hash is in hash ring', () => {
       const ring = new HashRing();
 

@@ -51,7 +51,7 @@ export class HashRing {
       const mid = (low + high) >>> 1;
       const computed = this.keys[mid];
 
-      if (hash === computed) return 0;
+      if (hash === computed) return mid;
       // JS compares strings char by char (ascii)
       hash > computed ? low = mid + 1 : high = mid - 1;
     }

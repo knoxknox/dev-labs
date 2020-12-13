@@ -23,4 +23,10 @@ $ curl 0.0.0.0:3000 # status_code = 200, body = 9001
 $ curl 0.0.0.0:3000 # status_code = 200, body = 9002
 $ curl 0.0.0.0:3000 # status_code = 200, body = 9003
 $ curl 0.0.0.0:3000 # status_code = 200, body = 9004
+
+$ curl 0.0.0.0:3000/app1 # status_code = 200, body = 9001
+$ curl 0.0.0.0:3000/app1 # status_code = 200, body = 9002
+
+$ curl 0.0.0.0:3000/app2 # status_code = 200, body = 9003
+$ curl 0.0.0.0:3000/app2 # status_code = 200, body = 9004
 ```

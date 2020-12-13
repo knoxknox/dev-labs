@@ -6,6 +6,7 @@ services:
       - '3000:80'
     volumes:
       - ./conf:/etc/nginx
+      - ./public:/tmp/nginx
   server9001:
     image: hashicorp/http-echo
     ports:

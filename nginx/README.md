@@ -30,3 +30,10 @@ $ curl 0.0.0.0:3000/app1 # status_code = 200, body = 9002
 $ curl 0.0.0.0:3000/app2 # status_code = 200, body = 9003
 $ curl 0.0.0.0:3000/app2 # status_code = 200, body = 9004
 ```
+
+Next configurations can be used in this project:
+- conf/l4.conf.ex: example how to use L4 tcp proxy;
+- conf/l7.conf.ex: example how to use L7 http proxy;
+- conf/web.conf.ex: example how to use nginx as web server;
+
+Change `conf/nginx.conf` then run `docker-compose restart nginx`.

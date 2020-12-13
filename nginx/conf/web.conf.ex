@@ -9,14 +9,7 @@ http {
   server {
     listen 80;
     root /tmp/nginx;
-
-    location /img {
-      root /tmp/images;
-    }
-
-    location ~ .png$ {
-      return 403;
-    }
+    location ~ .txt$ { return 401; }
   }
 
   server {
@@ -26,8 +19,8 @@ http {
       proxy_pass http://localhost:80/;
     }
 
-    location /img {
-      proxy_pass http://localhost:80/img/;
+    location /files {
+      proxy_pass http://localhost:80/files/;
     }
   }
 }

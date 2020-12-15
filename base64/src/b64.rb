@@ -30,7 +30,7 @@ class Converter
   private
 
   def chunk(string, chunk_size)
-    string.scan(/.{#{chunk_size}}/)
+    string.scan(/.{1,#{chunk_size}}/)
   end
 
   def split_hex_to_3_bytes

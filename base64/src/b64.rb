@@ -19,7 +19,7 @@ class Converter
     result = []
     split_hex_to_3_bytes.each do |x|
       bits = from_3_bytes_to_bits(x)
-      group_of_6_bits = chunk(bits, 6)
+      group_of_6_bits = from_bits_to_6_bits(bits)
       result << from_bit_group_to_base64(group_of_6_bits)
     end
 
@@ -35,6 +35,10 @@ class Converter
 
   def split_hex_to_3_bytes
     chunk(string, 6).map! { |x| chunk(x, 2) }
+  end
+
+  def from_bits_to_6_bits(bits)
+    chunk(bits, 6).map! { |x| x.ljust(6, '0') }
   end
 
   def from_3_bytes_to_bits(group)

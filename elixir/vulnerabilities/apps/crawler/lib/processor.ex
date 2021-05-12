@@ -30,12 +30,16 @@ defmodule Crawler.Processor do
     task_pid = self()
     TasksCounter.increment(1)
 
-    Enum.each(cves, fn {cve_id, _cve} ->
+    Enum.each(cves, fn {cve_id, cve} ->
       Logger.enqueue(task_pid, package, cve_id)
 
       case Crawler.Requests.Circl.get(cve_id) do
         {:ok, data} ->
-          result = Crawler.Parsers.Circl.call(data)
+          result = cve
+            |> Map.put("id", cve_id)
+            |> Map.put("package", package)
+            |> Map.merge(Crawler.Parsers.Circl.call(data))
+
           Logger.success(task_pid, package, cve_id, result)
 
         {:error, message} ->

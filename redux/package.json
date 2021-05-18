@@ -1,0 +1,18 @@
+{
+  "name": "redux",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie < 11",
+    "not op_mini all"
+  ],
+  "scripts": {
+    "start": "react-scripts start"
+  }
+}

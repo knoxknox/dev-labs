@@ -44,7 +44,7 @@ DEPENDENCIES
   rake (~> 12.0)
 
 RUBY VERSION
-   ruby 2.3.0p0 (jruby 9.1.2.0)
+   ruby 2.5.3p0 (jruby 9.2.7.0)
 
 BUNDLED WITH
-   1.13.6
+   1.16.6

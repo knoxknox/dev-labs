@@ -5,10 +5,8 @@ https://ratpack.io
 
 ## Install
 ```
-$ bundle install
-$ bundle exec jbundle install
-$
-$ jruby --server -S scripts/server
+$ make install
+$ make start-server
 ```
 
 ## Requests

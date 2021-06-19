@@ -12,6 +12,7 @@
 - io.netty:netty-transport:jar:4.1.5.Final
 - io.netty:netty-codec-http:jar:4.1.5.Final
 - io.netty:netty-codec:jar:4.1.5.Final
+- javax.activation:activation:jar:1.1.1
 - com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.7.5
 - org.yaml:snakeyaml:jar:1.15
 - org.slf4j:slf4j-simple:jar:1.7.10

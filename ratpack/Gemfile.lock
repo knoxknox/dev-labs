@@ -13,21 +13,21 @@ GEM
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     ice_nine (0.11.2)
-    jar-dependencies (0.3.7)
+    jar-dependencies (0.4.1)
     jbundler (0.9.3)
       bundler (~> 1.5)
       jar-dependencies (~> 0.3)
       maven-tools (~> 1.1)
       ruby-maven (~> 3.3, >= 3.3.8)
-    jruby-openssl (0.9.19-java)
+    jruby-openssl (0.9.21-java)
     maven-tools (1.1.6)
       virtus (~> 1.0)
     multi_xml (0.6.0)
-    rake (12.0.0)
+    rake (12.3.3)
     ruby-maven (3.3.12)
       ruby-maven-libs (~> 3.3.9)
     ruby-maven-libs (3.3.9)
-    thread_safe (0.3.5-java)
+    thread_safe (0.3.6-java)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -44,7 +44,7 @@ DEPENDENCIES
   rake (~> 12.0)
 
 RUBY VERSION
-   ruby 2.5.3p0 (jruby 9.2.7.0)
+   ruby 2.5.8p0 (jruby 9.2.17.0)
 
 BUNDLED WITH
-   1.16.6
+   1.17.3

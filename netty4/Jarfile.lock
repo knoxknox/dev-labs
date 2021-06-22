@@ -1,14 +1,17 @@
-org.slf4j:slf4j-simple:jar:1.7.26
-org.slf4j:slf4j-api:jar:1.7.26
-com.google.guava:guava:jar:23.0
-com.google.code.findbugs:jsr305:jar:1.3.9
-com.google.errorprone:error_prone_annotations:jar:2.0.18
-com.google.j2objc:j2objc-annotations:jar:1.1
-org.codehaus.mojo:animal-sniffer-annotations:jar:1.14
-io.netty:netty-all:jar:4.1.37.Final
-io.netty:netty-transport-native-epoll:jar:4.1.37.Final
-io.netty:netty-common:jar:4.1.37.Final
-io.netty:netty-buffer:jar:4.1.37.Final
-io.netty:netty-transport:jar:4.1.37.Final
-io.netty:netty-resolver:jar:4.1.37.Final
-io.netty:netty-transport-native-unix-common:jar:4.1.37.Final
+---
+:runtime:
+- com.google.code.findbugs:jsr305:jar:1.3.9
+- io.netty:netty-transport-native-epoll:jar:4.1.65.Final
+- com.google.j2objc:j2objc-annotations:jar:1.1
+- org.codehaus.mojo:animal-sniffer-annotations:jar:1.14
+- org.slf4j:slf4j-simple:jar:1.7.31
+- io.netty:netty-resolver:jar:4.1.65.Final
+- io.netty:netty-buffer:jar:4.1.65.Final
+- io.netty:netty-transport:jar:4.1.65.Final
+- jline:jline:jar:2.14.6
+- io.netty:netty-all:jar:4.1.65.Final
+- com.google.errorprone:error_prone_annotations:jar:2.0.18
+- io.netty:netty-common:jar:4.1.65.Final
+- io.netty:netty-transport-native-unix-common:jar:4.1.65.Final
+- com.google.guava:guava:jar:23.0
+- org.slf4j:slf4j-api:jar:1.7.31

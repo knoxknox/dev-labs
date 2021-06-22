@@ -2,14 +2,17 @@
 
 Setup:
 ```
-$ sh scripts/setup.sh
+$ make install
 ```
 
 How to run:
 ```
-$ bundle exec rake -T
+$ make server    # to run server
+$ make console   # to run console
 ```
+
+Available scripts:
 ```
-$ bundle exec rake server    # to run server
-$ bundle exec rake console   # to run console
+$ sh scripts/http.sh   # to run health check
+$ sh scripts/perf.sh   # to run performance check
 ```

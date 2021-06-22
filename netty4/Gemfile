@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'pry'
-gem 'rake'
-gem 'jbundler'
-gem 'configatron'
+gem 'pry', '~> 0.14'
+gem 'rake', '~> 13.0'
+gem 'jbundler', '~> 0.9.3'
+gem 'configatron', '~> 4.5'

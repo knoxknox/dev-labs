@@ -8,9 +8,9 @@ Run `make install` to install dependencies.
 
 Start development server with `make server`.
 ```
-$ curl 0.0.0.0:3000/health
-$ curl 0.0.0.0:3000/protected -H 'Auth-Token: NONE'
-$ curl 0.0.0.0:3000/protected -H 'Auth-Token: SECRET'
+$ curl 0.0.0.0:3000/health -v
+$ curl 0.0.0.0:3000/protected -H 'Auth-Token: NONE' -v
+$ curl 0.0.0.0:3000/protected -H 'Auth-Token: SECRET' -v
 ```
 
 ## Documentation

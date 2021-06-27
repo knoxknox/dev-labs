@@ -1,5 +1,7 @@
 # ratpack
 
+jruby 9.2.19.0 (2.5.8) OpenJDK 11.0.2
+
 ## Setup
 
 Run `make install` to install dependencies.

@@ -6,7 +6,7 @@ module Qustreax
         router = Router.new(routes)
 
         routes.each do |route|
-          chain.public_send(route[:method], route[:path], router)
+          chain.public_send(route.method, route.path, router)
         end
       end
 

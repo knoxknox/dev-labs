@@ -21,8 +21,8 @@ module Qustreax
 
       def define_routes(routes)
         routes.each_with_object({}) do |route, result|
-          route_path = "#{route[:method]} #{route[:path]}"
-          result[route_path] = ->(ctx) { create_chain(ctx, *route[:handlers]) }
+          route_path = "#{route.method} #{route.path}"
+          result[route_path] = ->(ctx) { create_chain(ctx, *route.handlers) }
         end
       end
 

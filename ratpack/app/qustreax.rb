@@ -10,6 +10,7 @@ module Qustreax
 
   module Routing
     autoload :Chain, 'qustreax/routing/chain'
+    autoload :Route, 'qustreax/routing/route'
     autoload :Router, 'qustreax/routing/router'
     autoload :Routes, 'qustreax/routing/routes'
   end

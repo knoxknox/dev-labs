@@ -1,5 +1,5 @@
 module Traversal
-  def bfs(root)
+  def self.bfs(root)
     queue = Queue.new
 
     visited = {}
@@ -14,7 +14,7 @@ module Traversal
     end
   end
 
-  def dfs(root)
+  def self.dfs(root)
     stack = []
 
     visited = {}
@@ -29,7 +29,7 @@ module Traversal
     end
   end
 
-  def dfs_recursive(node, visited = {})
+  def self.dfs_recursive(node, visited = {})
     puts node.name
     visited[node.name] = true
     node.edges.each do |current|

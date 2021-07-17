@@ -1,13 +1,10 @@
-# graph traversal
-
-Usage:
-```
+```ruby
 ##
-#    A
-#   / \
-#   B  C
-#  / \  \
-# D   E--F
+#     A
+#    / \
+#   B   C
+#  / \   \
+# D   E---F
 #
 
 graph = Graph.new

@@ -23,7 +23,7 @@ graph.add_edge(:f, :e)
 Printer.new(graph).show_info
 
 root = graph.nodes[:a]
-puts "BFS: #{Traversal.bfs(root)}"
-puts "DFS: #{Traversal.dfs(root)}"
-puts "DFS (R): #{Traversal.dfs_recursive(root)}"
+puts "BFS:"; Traversal.bfs(root)
+puts "DFS:"; Traversal.dfs(root)
+puts "DFS (R):"; Traversal.dfs_recursive(root)
 ```

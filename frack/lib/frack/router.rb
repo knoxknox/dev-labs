@@ -12,7 +12,7 @@ module Frack
         env.merge!(controller_action(mapping))
         app.call(env)
       else
-        Rack::Response.new('Path not found', 404)
+        Rack::Response.new('Path not found', 404).to_a
       end
     end
 

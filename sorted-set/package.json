@@ -5,11 +5,11 @@
     "node": "babel-node src/app.js"
   },
   "devDependencies": {
-    "jest": "27.0.4",
-    "eslint": "7.28.0",
-    "babel-jest": "27.0.2",
-    "@babel/core": "7.14.3",
-    "@babel/node": "7.14.2",
-    "@babel/preset-env": "7.14.4"
+    "jest": "27.0.6",
+    "eslint": "7.32.0",
+    "babel-jest": "27.0.6",
+    "@babel/core": "7.15.0",
+    "@babel/node": "7.14.9",
+    "@babel/preset-env": "7.15.0"
   }
 }

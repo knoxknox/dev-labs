@@ -1,7 +1,9 @@
 # docker
 
-Example of dockerized application.<br/>
-Online playground: https://labs.play-with-docker.com
+Example of dockerized application.
+1. Login to the https://labs.play-with-docker.com
+2. Copy files from this repo to the created container
+3. Run command `./docker-aliases.sh` to setup dc aliases
 
 How to run:
 ```

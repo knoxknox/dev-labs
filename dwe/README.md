@@ -10,10 +10,10 @@ Cheat Sheets for various Data Tools.
 
 ## Packages
 ```
-$ wget http://apache.ip-connect.vn.ua/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+$ wget http://apache.ip-connect.vn.ua/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+$ wget http://apache.ip-connect.vn.ua/spark/spark-2.4.8/spark-2.4.8-bin-hadoop2.7.tgz
 $ wget http://apache.ip-connect.vn.ua/storm/apache-storm-1.2.3/apache-storm-1.2.3.tar.gz
-$ wget http://apache.ip-connect.vn.ua/cassandra/3.11.5/apache-cassandra-3.11.5-bin.tar.gz
-$ wget http://mirror.cc.columbia.edu/pub/software/apache/kafka/2.4.0/kafka_2.11-2.4.0.tgz
+$ wget http://apache.ip-connect.vn.ua/cassandra/3.11.11/apache-cassandra-3.11.11-bin.tar.gz
 ```
 
 ## Services

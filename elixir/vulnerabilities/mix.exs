@@ -21,7 +21,7 @@ defmodule Vulnerabilities.MixProject do
 
   defp deps do
     [
-      {:excoveralls, "~> 0.13", only: :test}
+      {:excoveralls, "~> 0.14", only: :test}
     ]
   end
 end

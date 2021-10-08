@@ -1,28 +1,30 @@
 # app
 
-Setup:
-```
-$ git clone <project> /tmp/project
-$ sh /tmp/project/goimc/scripts/setup.sh
-```
+## Setup
 
-Install libs:
-```
-~/workspace/src/app $ make init
-~/workspace/src/app $ make deps
-```
+Install asdf and golang plugin:
+- follow instructions here https://github.com/asdf-vm/asdf
+- run `asdf plugin-add golang https://github.com/kennyp/asdf-golang.git`
 
-Run app/tests:
-```
-~/workspace/src/app $ make run
-~/workspace/src/app $ make test
-```
+Install golang latest version via asdf:
+- install golang via `asdf install golang 1.17`
+- set global golang version `asdf global golang 1.17`
 
-Debug app/tests:
-```
-import "runtime"
-runtime.Breakpoint()
-```
-```
-~/workspace/src/app $ make debug
-```
+Install development packages and reshim:
+- run `make setup && asdf reshim golang` to complete setup
+
+## Development
+
+Available commands:
+- `make fmt` to format code
+- `make run` to start project
+- `make test` to run test suite
+- `make debug` to start debugger
+- `make build-linux` to build linux binary
+- `make build-darwin` to build darwin binary
+
+Debug app/tests instructions:
+- open required file to debug;
+- add `import "runtime"` to list of imports;
+- add `runtime.Breakpoint()` to the source code;
+- run `make debug` and wait while delve start app;

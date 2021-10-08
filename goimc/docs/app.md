@@ -27,4 +27,4 @@ Debug app/tests instructions:
 - open required file to debug;
 - add `import "runtime"` to list of imports;
 - add `runtime.Breakpoint()` to the source code;
-- run `make debug` and wait while delve start app;
+- run `make debug` and type `continue` to start server;

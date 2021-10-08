@@ -1,9 +1,9 @@
 package cmd
 
 import (
-  "app/resp"
-  "app/storage"
-  "app/server/reply"
+  "github.com/knoxknox/dev-labs/goimc/app/resp"
+  "github.com/knoxknox/dev-labs/goimc/app/storage"
+  "github.com/knoxknox/dev-labs/goimc/app/server/reply"
 )
 
 var Commands = map[string]func(*reply.Reply, *resp.Command, *storage.Storage) {

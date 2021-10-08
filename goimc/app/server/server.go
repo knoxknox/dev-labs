@@ -5,11 +5,11 @@ import (
   "os"
   "fmt"
   "net"
-  "app/log"
-  "app/resp"
-  "app/storage"
-  "app/server/cmd"
-  "app/server/reply"
+  "github.com/knoxknox/dev-labs/goimc/app/log"
+  "github.com/knoxknox/dev-labs/goimc/app/resp"
+  "github.com/knoxknox/dev-labs/goimc/app/storage"
+  "github.com/knoxknox/dev-labs/goimc/app/server/cmd"
+  "github.com/knoxknox/dev-labs/goimc/app/server/reply"
 )
 
 type client struct {

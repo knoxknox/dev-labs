@@ -2,7 +2,7 @@ package reply
 
 import (
   "net"
-  "app/resp"
+  "github.com/knoxknox/dev-labs/goimc/app/resp"
 )
 
 type Reply struct {

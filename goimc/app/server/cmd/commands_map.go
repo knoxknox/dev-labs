@@ -2,10 +2,10 @@ package cmd
 
 import (
   "fmt"
-  "app/resp"
-  "app/storage"
-  "app/server/reply"
-  "app/storage/structs"
+  "github.com/knoxknox/dev-labs/goimc/app/resp"
+  "github.com/knoxknox/dev-labs/goimc/app/storage"
+  "github.com/knoxknox/dev-labs/goimc/app/server/reply"
+  "github.com/knoxknox/dev-labs/goimc/app/storage/structs"
 )
 
 /**

@@ -7,12 +7,13 @@ defmodule RespServer.Mixfile do
       version: "1.0.0",
       elixir: "~> 1.12",
       app: :resp_server,
-      start_permanent: Mix.env == :prod
+      start_permanent: Mix.env() == :prod
     ]
   end
 
   def application do
     [
+      mod: {RespServer.App, []},
       extra_applications: [:logger]
     ]
   end

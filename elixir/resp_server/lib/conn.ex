@@ -38,7 +38,7 @@ defmodule RespServer.Conn do
   defp serve(socket, %{continuation: fun}) do
     case :gen_tcp.recv(socket, 0) do
       {:error, :closed} -> :ok
-      {:ok, data} -> parse(socket, fun.(data))
+      {:ok, data} -> parse(socket, fun.(data)) # next chunk of data
     end
   end
 

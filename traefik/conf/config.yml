@@ -1,0 +1,29 @@
+http:
+  routers:
+    apps:
+      service: apps
+      rule: Path(`/`)
+    app1:
+      service: app1
+      rule: Path(`/app1`)
+    app2:
+      service: app2
+      rule: Path(`/app2`)
+  services:
+    app1:
+      loadBalancer:
+        servers:
+          - url: "http://server9001:9001"
+          - url: "http://server9002:9002"
+    app2:
+      loadBalancer:
+        servers:
+          - url: "http://server9003:9003"
+          - url: "http://server9004:9004"
+    apps:
+      loadBalancer:
+        servers:
+          - url: "http://server9001:9001"
+          - url: "http://server9002:9002"
+          - url: "http://server9003:9003"
+          - url: "http://server9004:9004"

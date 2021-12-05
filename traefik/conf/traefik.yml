@@ -1,0 +1,12 @@
+# static configuration
+log:
+  level: ERROR
+entrypoints:
+  main:
+    address: 0.0.0.0:80
+
+# dynamic configuration
+providers:
+  file:
+    watch: true
+    filename: /etc/traefik/config.yml

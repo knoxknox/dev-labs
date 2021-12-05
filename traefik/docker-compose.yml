@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  traefik:
+    image: traefik
+    ports:
+      - '3000:80'
+    volumes:
+      - ./conf:/etc/traefik
+  server9001:
+    image: hashicorp/http-echo
+    ports:
+      - '9001:9001'
+    command: ['-text', '9001', '-listen', '0.0.0.0:9001']
+  server9002:
+    image: hashicorp/http-echo
+    ports:
+      - '9002:9002'
+    command: ['-text', '9002', '-listen', '0.0.0.0:9002']
+  server9003:
+    image: hashicorp/http-echo
+    ports:
+      - '9003:9003'
+    command: ['-text', '9003', '-listen', '0.0.0.0:9003']
+  server9004:
+    image: hashicorp/http-echo
+    ports:
+      - '9004:9004'
+    command: ['-text', '9004', '-listen', '0.0.0.0:9004']

@@ -1,19 +1,19 @@
-version: "3"
+version: '3.9'
 services:
   consul-server:
     image: consul
     volumes:
       - ./consul/server.d/:/etc/consul.d/
-    command: "consul agent -config-file=/etc/consul.d/config.json"
+    command: 'consul agent -config-file=/etc/consul.d/config.json'
 
   nomad-server:
     build: ./node
     expose:
-      - "4646"
-      - "4647"
-      - "4648"
+      - '4646'
+      - '4647'
+      - '4648'
     ports:
-      - "4646:4646"
+      - '4646:4646'
     privileged: true
     volumes:
       - ./nomad/server.d/:/etc/nomad.d/
@@ -24,7 +24,7 @@ services:
   nomad-follower-1:
     build: ./node
     expose:
-      - "4647"
+      - '4647'
     privileged: true
     volumes:
       - ./nomad/server.d/:/etc/nomad.d/
@@ -35,7 +35,7 @@ services:
   nomad-follower-2:
     build: ./node
     expose:
-      - "4648"
+      - '4648'
     privileged: true
     volumes:
       - ./nomad/server.d/:/etc/nomad.d/

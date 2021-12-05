@@ -1,0 +1,13 @@
+tcp:
+  routers:
+    apps:
+      service: apps
+      rule: HostSNI(`*`)
+  services:
+    apps:
+      loadBalancer:
+        servers:
+          - address: "server9001:9001"
+          - address: "server9002:9002"
+          - address: "server9003:9003"
+          - address: "server9004:9004"

@@ -1,0 +1,13 @@
+http:
+  routers:
+    apps:
+      service: apps
+      rule: Path(`/`)
+  services:
+    apps:
+      loadBalancer:
+        servers:
+          - url: "http://server9001:9001"
+          - url: "http://server9002:9002"
+          - url: "http://server9003:9003"
+          - url: "http://server9004:9004"

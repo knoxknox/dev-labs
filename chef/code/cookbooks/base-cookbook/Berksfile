@@ -1,0 +1,7 @@
+source 'https://supermarket.chef.io'
+
+metadata
+
+cookbook 'java' # https://supermarket.chef.io/cookbooks/java
+cookbook 'nginx' # https://supermarket.chef.io/cookbooks/nginx
+cookbook 'logrotate' # https://supermarket.chef.io/cookbooks/logrotate

@@ -1,0 +1,22 @@
+DEPENDENCIES
+  base-cookbook
+    path: .
+    metadata: true
+  java
+  logrotate
+  nginx
+
+GRAPH
+  apt (7.4.0)
+  base-cookbook (1.0.0)
+    apt (>= 0.0.0)
+    java (>= 0.0.0)
+    logrotate (>= 0.0.0)
+    nginx (>= 0.0.0)
+    sudo (>= 0.0.0)
+  java (10.1.1)
+    line (>= 0.0.0)
+  line (4.4.2)
+  logrotate (3.0.5)
+  nginx (12.0.10)
+  sudo (5.4.7)

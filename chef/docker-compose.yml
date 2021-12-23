@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  chef:
+    build: .
+  test:
+    image: base_chef
+    volumes:
+      - ./code:/code
+    command: '/bin/bash'

@@ -45,8 +45,11 @@ Run deployment:
 - `kubectl apply -f deploy.yaml` to start deployment;
 
 Delete resources:
-- `kubectl delete service {id}` to remove service with given id;
-- `kubectl delete deployment {id}` to remove deployment with given id;
+- `kubectl delete service {name}` to remove service by name;
+- `kubectl delete deployment {name}` to remove deployment by name;
+
+Describe resources:
+- `kubectl describe {resource} {name}` where resource=pod,service,etc;
 
 ## Forwarding ports
 

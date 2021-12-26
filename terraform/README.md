@@ -5,11 +5,11 @@ Terraform workshop based on step-by-step tutorial:
 
 ## Commands
 
-List of useful commands:
-- `./terraform.sh -chdir=example` - print help
-- `./terraform.sh -chdir=example fmt` - format configuration
-- `./terraform.sh -chdir=example init` - init terraform modules (.terraform/)
-- `./terraform.sh -chdir=example plan` - show changes in the current infrastructure
-- `./terraform.sh -chdir=example apply` - deploy the resources to the cloud (tfstate)
-- `./terraform.sh -chdir=example destroy` - remove the resources from the cloud (tfstate)
-- `./terraform.sh -chdir=example validate` - check whether the configuration is valid or not
+Useful commands in dev/prod envs:
+- `./terraform.sh dev` - print help
+- `./terraform.sh dev fmt` - format configuration
+- `./terraform.sh dev init` - init terraform modules (.terraform/)
+- `./terraform.sh dev plan` - show changes in the current infrastructure
+- `./terraform.sh dev apply` - deploy the resources to the cloud (tfstate)
+- `./terraform.sh dev destroy` - remove the resources from the cloud (tfstate)
+- `./terraform.sh dev validate` - check whether the configuration is valid or not

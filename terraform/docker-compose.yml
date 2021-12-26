@@ -1,8 +1,9 @@
 version: '3.9'
 services:
   terraform:
-    working_dir: /modules
+    working_dir: /envs
     volumes:
+      - ./envs:/envs
       - ./modules:/modules
     image: hashicorp/terraform:0.14.10
     environment:

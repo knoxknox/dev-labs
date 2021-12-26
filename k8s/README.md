@@ -4,7 +4,7 @@
 +-Master Node---------------------+
 | +------------+                  |
 | |            | <--> etcd        |
-| | API server | <--> scheduler   |<-- Developer
+| | API server | <--> scheduler   |<-- kubectl (kubeconfig)
 | |            | <--> controllers |
 | +------------+                  |
 +---------------------------------+

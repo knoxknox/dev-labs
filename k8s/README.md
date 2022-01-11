@@ -42,7 +42,7 @@ Show resources:
 - `kubectl get deployments` to list deployments;
 
 Run deployment:
-- `kubectl apply -f deploy.yaml` to start deployment;
+- `kubectl apply -f service.yaml` to start deployment;
 
 Delete resources:
 - `kubectl delete service {name}` to remove service by name;
@@ -62,3 +62,24 @@ $ kubectl get pods
 $ kubectl port-forward echo-deployment-65f58745f-98cvn 8000:9000
 ```
 Then it's possible to use `curl 0.0.0.0:8000` to proxy requests to pod.
+
+## Ingress controllers
+
+```
+$ kubectl apply -f ingress.yaml
+$ kubectl apply -f service.yaml
+```
+
+To bootstrap ingress controller:
+```
+$ sh bin/ingress-nginx-controller.sh
+$ sh bin/ingress-nginx-port-forward.sh
+```
+
+To validate that ingress controller works:
+```
+$ kubectl get ingress
+$ kubectl describe ingress
+$
+$ curl localhost:8080/{path} => where {path} is /foo or /bar based on rules
+```

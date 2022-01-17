@@ -22,8 +22,9 @@ k8s terminology: https://www.youtube.com/watch?v=Ero82CCQIGk
 
 ## Setup
 
-Install k8s and k9s:
+Install required tools:
 - run `brew install k9s` (https://k9scli.io);
+- run `brew install helm` (https://helm.sh/docs);
 - run `brew install kind` (https://kind.sigs.k8s.io);
 
 ## Cluster

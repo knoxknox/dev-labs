@@ -1,34 +1,34 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: echo-service
+  name: {{ .Release.Name }}-service
 spec:
   type: LoadBalancer
   selector:
-    app: echo-server
+    app: {{ .Release.Name }}-server
   ports:
     - name: http
-      port: 8000
+      port: {{ .Values.service.port }}
       protocol: TCP
-      targetPort: 9000
+      targetPort: {{ .Values.container.port }}
 ---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: echo-deployment
+  name: {{ .Release.Name }}-deployment
 spec:
-  replicas: 3
+  replicas: {{ .Values.container.replicas }}
   selector:
     matchLabels:
-      app: echo-server
+      app: {{ .Release.Name }}-server
   template:
     metadata:
       labels:
-        app: echo-server
+        app: {{ .Release.Name }}-server
     spec:
       containers:
-        - name: echo-server
+        - name: {{ .Release.Name }}-server
+          image: {{ .Values.container.image }}
           ports:
-            - containerPort: 9000
-          image: hashicorp/http-echo
-          args: ['-text', 'OK', '-listen', ':9000']
+            - containerPort: {{ .Values.container.port }}
+          args: ['-text', 'OK', '-listen', ':{{ .Values.container.port }}']

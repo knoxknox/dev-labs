@@ -13,13 +13,13 @@ spec:
             pathType: Exact
             backend:
               service:
+                name: {{ .Release.Name }}-service
                 port:
-                  number: 8000
-                name: echo-service
+                  number: {{ .Values.service.port }}
           - path: /bar
             pathType: Prefix
             backend:
               service:
+                name: {{ .Release.Name }}-service
                 port:
-                  number: 8000
-                name: echo-service
+                  number: {{ .Values.service.port }}

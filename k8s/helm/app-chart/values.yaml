@@ -1,1 +1,7 @@
-replicas: 3
+service:
+  port: 8000
+
+container:
+  port: 9000
+  replicas: 3
+  image: hashicorp/http-echo

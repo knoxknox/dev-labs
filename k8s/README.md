@@ -42,7 +42,7 @@ Show resources:
 - `kubectl get deployments` to list deployments;
 
 Run deployment:
-- `kubectl apply -f service.yaml` to start deployment;
+- `kubectl apply -f app/service.yaml` to start deployment;
 
 Delete resources:
 - `kubectl delete service {name}` to remove service by name;
@@ -66,14 +66,14 @@ Then it's possible to use `curl 0.0.0.0:8000` to proxy requests to pod.
 ## Ingress controllers
 
 ```
-$ kubectl apply -f ingress.yaml
-$ kubectl apply -f service.yaml
+$ kubectl apply -f app/ingress.yaml
+$ kubectl apply -f app/service.yaml
 ```
 
 To bootstrap ingress controller:
 ```
-$ sh bin/ingress-nginx-controller.sh
-$ sh bin/ingress-nginx-port-forward.sh
+$ sh app/bin/ingress-nginx-controller.sh
+$ sh app/bin/ingress-nginx-port-forward.sh
 ```
 
 To validate that ingress controller works:

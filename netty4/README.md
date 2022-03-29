@@ -1,6 +1,6 @@
 # netty
 
-jruby 9.2.19.0 (2.5.8) OpenJDK 11.0.2
+jruby 9.3.4.0 (2.6.8) OpenJDK 11.0.2
 
 Setup:
 ```

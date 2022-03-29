@@ -2,7 +2,7 @@ module Labs
   class HealthHandler < BaseHandler
 
     def process(ctx, msg)
-      if msg.java_kind_of?(HttpRequest)
+      if msg.kind_of?(HttpRequest)
         @executor_service.submit(
           ProcessHealthCallable.new(ctx, self),
           ProcessHealthCallback.new(ctx, self))

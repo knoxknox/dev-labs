@@ -8,7 +8,7 @@ module Labs
   class RequestHandler < ChannelInboundHandlerAdapter
 
     def channelRead(ctx, msg)
-      if msg.java_kind_of?(HttpRequest)
+      if msg.kind_of?(HttpRequest)
         @handler = HandlerFinder::process(ctx, msg)
       end
 

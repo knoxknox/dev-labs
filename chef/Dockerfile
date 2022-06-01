@@ -1,4 +1,4 @@
-FROM ruby:2.7.5
+FROM ruby:2.7.6
 
 WORKDIR /code
 RUN apt-get update -qq && apt-get install -y curl build-essential

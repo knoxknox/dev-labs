@@ -5,3 +5,4 @@ sudo apt-get -y install curl
 sudo apt-get -y install htop
 sudo apt-get -y install wget
 sudo apt-get -y install unzip
+sudo apt-get -y install httpie

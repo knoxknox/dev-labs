@@ -1,6 +1,7 @@
 # sh boot.sh
 
 sh bin/apt.sh
+sh bin/asdf.sh
 
 mkdir -p ~/.vim/colors
 cp home/.bash_prompt ~/.bash_prompt

@@ -1,10 +1,6 @@
 # sh boot.sh
 
 sh bin/apt.sh
-sh dev/pip.sh
-sh bin/pip.sh
-sh dev/jvm.sh
-sh dev/rvm.sh
 
 mkdir -p ~/.vim/colors
 cp home/.bash_prompt ~/.bash_prompt

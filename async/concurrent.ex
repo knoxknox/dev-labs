@@ -45,3 +45,28 @@ Agent.update(:counter, fn current_value -> current_value + 3 end)
 result = Agent.get(:counter, fn current_value -> current_value end)
 
 IO.puts("Counter = #{result} (shared state across multiple processes)")
+
+# GenServer example
+
+defmodule Counter do
+  use GenServer
+
+  # Public API
+  def stats(pid), do: GenServer.call(pid, {:stats})
+  def increment(pid, value), do: GenServer.cast(pid, {:increment, value})
+  def decrement(pid, value), do: GenServer.cast(pid, {:decrement, value})
+
+  # GenServer API
+  def init(counter), do: {:ok, counter}
+  def start_link, do: GenServer.start_link(__MODULE__, 0)
+  def handle_call({:stats}, _, counter), do: {:reply, counter, counter}
+  def handle_cast({:increment, value}, counter), do: {:noreply, counter + value}
+  def handle_cast({:decrement, value}, counter), do: {:noreply, counter - value}
+end
+
+{:ok, pid} = Counter.start_link
+Counter.increment(pid, 1) # 0 + 1
+Counter.increment(pid, 2) # 1 + 2
+Counter.increment(pid, 3) # 3 + 3
+Counter.decrement(pid, 4) # 6 - 4
+IO.puts("Counter = #{Counter.stats(pid)}")

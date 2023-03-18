@@ -6,6 +6,7 @@ import (
   "time"
   "net/http"
   "math/rand"
+  "sync/atomic"
 )
 
 // Mutex example
@@ -73,6 +74,7 @@ func waitGroupEx() {
     "http://www.google.com",
   }
 
+  var visited int32
   for _, url := range urls {
     wg.Add(1) // increment WG counter on start
     go func(url string) {
@@ -80,6 +82,7 @@ func waitGroupEx() {
 
       http.Get(url)
       fmt.Println(url)
+      atomic.AddInt32(&visited, 1)
     }(url)
   }
   wg.Wait() // wait when all HTTP requests from list will be ready

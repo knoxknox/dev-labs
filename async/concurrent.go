@@ -94,7 +94,7 @@ func conditionVariableEx() {
   state := "idle"
 
   mutex := sync.Mutex{}
-  condition = sync.NewCond(&mutex)
+  condition := sync.NewCond(&mutex)
 
   go func() {
     condition.L.Lock()
@@ -108,11 +108,11 @@ func conditionVariableEx() {
   }()
 
   go func() {
-    time.Sleep(10 * time.Second)
+    time.Sleep(5 * time.Second)
 
     state = "running"
     condition.Signal() // notify single waiting goroutine
-    condigion.Broadcast() // notify all waiting goroutines
+    condition.Broadcast() // notify all waiting goroutines
   }()
 }
 

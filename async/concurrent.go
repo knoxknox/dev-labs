@@ -88,8 +88,37 @@ func waitGroupEx() {
   wg.Wait() // wait when all HTTP requests from list will be ready
 }
 
+// ConditionVariable example
+
+func conditionVariableEx() {
+  state := "idle"
+
+  mutex := sync.Mutex{}
+  condition = sync.NewCond(&mutex)
+
+  go func() {
+    condition.L.Lock()
+    defer condition.L.Unlock()
+
+    for state == "idle" {
+      condition.Wait() // waiting to unblock
+    }
+
+    fmt.Println("Unblocked after state changed")
+  }()
+
+  go func() {
+    time.Sleep(10 * time.Second)
+
+    state = "running"
+    condition.Signal() // notify single waiting goroutine
+    condigion.Broadcast() // notify all waiting goroutines
+  }()
+}
+
 func main() {
   mutexEx()
   channelsEx()
   waitGroupEx()
+  conditionVariableEx()
 }

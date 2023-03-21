@@ -108,6 +108,8 @@ func conditionVariableEx() {
   }()
 
   go func() {
+    condition.L.Lock()
+    defer condition.L.Unlock()
     time.Sleep(5 * time.Second)
 
     state = "running"

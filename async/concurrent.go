@@ -9,6 +9,18 @@ import (
   "sync/atomic"
 )
 
+// Once example
+
+func onceEx() {
+  var once sync.Once
+
+  for i := 0; i < 10; i++ {
+    once.Do(func() {
+      fmt.Println("Run once on initialization")
+    })
+  }
+}
+
 // Mutex example
 
 type Storage struct {
@@ -119,6 +131,7 @@ func conditionVariableEx() {
 }
 
 func main() {
+  onceEx()
   mutexEx()
   channelsEx()
   waitGroupEx()

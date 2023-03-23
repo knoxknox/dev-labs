@@ -133,3 +133,17 @@ Async System Call:
 - Goroutine GR enters the Network Poller and waits for the completion event
 - Network Poller receives the completion event of system call and moves goroutine to LRQ
 - Network Poller operates in a separate background thread and receives events via epoll in Linux
+
+### Work Stealing
+
+```go
+runtime.schedule() {
+  // Check GRQ for a G only 1/61 of the time
+  //
+  // If not found, check LRQ for a G
+  // If there are no goroutines in the LRQ
+  //   Try to steal 50% of goroutines from other LRQ
+  //   If there are no goroutines in other LRQ check GRQ
+  //   If there are no goroutines in GRQ check Net Poller
+}
+```

@@ -80,3 +80,56 @@ All the blocked goroutines are stored inside the `recvq` queue (linked list).<br
 
 Receive goroutine to get resumed:
 <br/><img src="assets/channels-08.gif" />
+
+## scheduler
+
+<img src="assets/scheduler-01.png" width="700px" />
+
+Many goroutines run on a small number of threads.<br/>
+Image above shows the Goroutine Scheduling process.<br/>
+Abbreviation: [M] = Thread, [P] = Processor, [G] = Goroutine.<br/>
+Processor means a virtual processor (Virtual CPU Core), not the actual number of CPU cores.<br/>
+In image, there are 4 CPU cores, and a number of threads are scheduled and operated by the OS scheduler.<br/>
+
+Network poller means a separate independent thread that processes network.<br/>
+There are two types of run queues: LRQ (Local Run Queue) and GRQ (Global Run Queue).<br/>
+LRQ plays the role of local Goroutine Queue and GRQ plays the role of global Goroutine Queue.<br/>
+
+### Goroutine State
+
+Goroutines may be represented with the following three states:
+- waiting: waiting for an external event (Network Poller, Blocking State)
+- runnable: means that the goroutine is in an executable state (LRQ or GRQ)
+- executing: means that the goroutine is running (exists with Thread=M and Processor=P)
+
+Maximum number of parallel goroutines is determined by number of Processors=P (GOMAXPROCS).
+
+### Run Queue
+
+<img src="assets/scheduler-02.png" width="600px" />
+
+LRQ is a Run Queue that exists for each Processor=P.<br/>
+P brings goroutines one by one from LRQ it owns and runs it.<br/>
+
+GRQ is a Run Queue where most not assigned goroutines are gathered.<br/>
+When LRQ is full or goroutine execution time > 10ms it moves to the GRQ.<br/>
+
+### System Call
+
+Sync System Call:
+<br/><img src="assets/scheduler-03.png" width="500px" />
+
+Sync System Call:
+- M1 executes GR which cause Sync System Call
+- A new thread M2 is assigned to the processor P1
+- P1 fetches next goroutine GB from LRQ and executes it
+- After goroutine GR will complete system call it moves to the LRQ
+- Thread M1 is stay for the case of calling Sync System Call from another goroutine
+
+Async System Call:
+<br/><img src="assets/scheduler-04.png" width="500px" />
+
+Async System Call:
+- Goroutine GR enters the Network Poller and waits for the completion event
+- Network Poller receives the completion event of system call and moves goroutine to LRQ
+- Network Poller operates in a separate background thread and receives events via epoll in Linux

@@ -7,8 +7,8 @@ Install asdf and golang plugin:
 - run `asdf plugin-add golang https://github.com/kennyp/asdf-golang.git`
 
 Install golang latest version via asdf:
-- install golang via `asdf install golang 1.17`
-- set global golang version `asdf global golang 1.17`
+- install golang via `asdf install golang 1.20`
+- set global golang version `asdf global golang 1.20`
 
 Install development packages and reshim:
 - run `make setup && asdf reshim golang` to complete setup

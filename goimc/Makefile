@@ -11,8 +11,8 @@ debug:
 	@dlv debug app/main.go
 
 setup:
-	go get github.com/kyoh86/richgo
-	go get github.com/go-delve/delve/cmd/dlv
+	go install github.com/kyoh86/richgo@latest
+	go install github.com/go-delve/delve/cmd/dlv@latest
 
 coverage:
 	@richgo test -v ./... -coverprofile=/tmp/coverage.out

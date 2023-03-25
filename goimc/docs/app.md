@@ -11,7 +11,7 @@ Install golang latest version via asdf:
 - set global golang version `asdf global golang 1.20`
 
 Install development packages and reshim:
-- run `make setup && asdf reshim golang` to complete setup
+- run `make install && asdf reshim golang` to complete setup
 
 ## Development
 
@@ -20,6 +20,7 @@ Available commands:
 - `make run` to start project
 - `make test` to run test suite
 - `make debug` to start debugger
+- `make update` to update dependencies
 - `make build-linux` to build linux binary
 - `make build-darwin` to build darwin binary
 

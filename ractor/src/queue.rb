@@ -24,6 +24,15 @@ end
   end
 end
 
+##
+# Sending a message
+# - ractor.send(message) - know your recipient
+# - Ractor.yield(message) - don't know recipient
+#
+# Receiving a message
+# - ractor.take - know a ref to actor sending the message
+# - Ractor.receive - don't know who is sending the message
+#
 loop do
   input = gets.chomp
   queue.send(input.to_i)

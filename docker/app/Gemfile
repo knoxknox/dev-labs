@@ -5,5 +5,5 @@ gem 'sinatra'
 gem 'sinatra-reloader'
 
 group :test do
-  gem 'minitest', '~> 5.11.3'
+  gem 'minitest', '~> 5.18.0'
 end

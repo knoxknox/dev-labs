@@ -1,4 +1,4 @@
-FROM ruby:2.7.6
+FROM ruby:3.2.2
 
 WORKDIR /src
 ADD /app/Gemfile /src/Gemfile

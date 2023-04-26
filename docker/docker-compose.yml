@@ -4,12 +4,16 @@ services:
     build:
       context: .
       dockerfile: infra/Dockerfile
-    ports:
-      - 4567:4567
     volumes:
       - ./app:/src
-    command: bundle exec puma -p 4567
+    command: bundle exec puma -p 9001
   redis:
+    image: redis:alpine
     ports:
       - 6379:6379
-    image: redis:alpine
+  nginx:
+    image: nginx:1.24-alpine
+    ports:
+      - 9000:80
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf

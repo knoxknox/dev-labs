@@ -39,4 +39,5 @@ Algorithms:
 Redis Scripting:
 - https://redis.io/commands/eval/
 - https://redis.io/commands/evalsha/
+- https://redis.io/commands/script-flush/
 - https://developer.redis.com/develop/java/spring/rate-limiting/fixed-window/reactive-lua/

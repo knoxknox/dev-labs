@@ -14,7 +14,7 @@ In this app we assume that we have 3 hosts: 1 = server, 1 = agent+service, 1 = a
 Run cluster with `dc start`.<br/>
 Visit http://localhost:8500 for the UI.
 
-$ dc consul_consul-server_1 consul members
+$ dc consul-consul-server-1 consul members
 ```
 Node          Address          Status  Type    Build  Protocol  DC   Segment
 dc838d795391  172.18.0.6:8301  alive   server  1.8.0  2         dc1  <all>

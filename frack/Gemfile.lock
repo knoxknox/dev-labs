@@ -1,18 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    haml (5.2.2)
-      temple (>= 0.8.0)
+    haml (6.1.1)
+      temple (>= 0.8.2)
+      thor
       tilt
-    nio4r (2.5.8)
-    puma (5.6.4)
+    nio4r (2.5.9)
+    puma (6.2.2)
       nio4r (~> 2.0)
-    rack (2.2.6.4)
-    temple (0.8.2)
-    tilt (2.0.10)
+    rack (3.0.7)
+    temple (0.10.0)
+    thor (1.2.1)
+    tilt (2.1.0)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-21
 
 DEPENDENCIES
   haml
@@ -21,4 +23,4 @@ DEPENDENCIES
   tilt
 
 BUNDLED WITH
-   2.1.4
+   2.3.10

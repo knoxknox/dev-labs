@@ -38,6 +38,7 @@ module RateLimiter
 
     def used
       return 0 if rate < 1
+      return 0 if period < 1
       expiry = redis.pttl(key)
       return 0 if expiry == -2
       return rate if expiry == -1
@@ -47,6 +48,7 @@ module RateLimiter
 
     def increment
       return false if rate < 1
+      return false if period < 1
       max_limit_msec = period * 1000
       increment_msec = (max_limit_msec / rate).to_i
 

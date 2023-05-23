@@ -30,4 +30,4 @@ $ dc docker-redis-1 redis-cli info server
 
 Network availability:
 - use special DNS name `host.docker.internal` to connect to the host;
-- use services names (ex: `app`, `nginx`, `redis`) inside docker network;
+- use services names (ex: `app`, `nginx`, `redis`) inside the docker network;

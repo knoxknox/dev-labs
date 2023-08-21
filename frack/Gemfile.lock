@@ -6,7 +6,7 @@ GEM
       thor
       tilt
     nio4r (2.5.9)
-    puma (6.2.2)
+    puma (6.3.1)
       nio4r (~> 2.0)
     rack (3.0.7)
     temple (0.10.0)
@@ -15,6 +15,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   haml

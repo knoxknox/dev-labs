@@ -18,7 +18,7 @@ class Mining
     nonce = 0
     transactions = @blockchain.transactions.dup
     previous_hash = @blockchain.chain.last.current_hash
-    nonce += 1 unless valid_proof?(nonce, previous_hash, transactions)
+    nonce += 1 while !valid_proof?(nonce, previous_hash, transactions)
 
     nonce
   end

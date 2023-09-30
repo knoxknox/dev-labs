@@ -32,6 +32,10 @@ module Crypto
       Digest::SHA256.hexdigest([hex].pack('H*'))
     end
 
+    ##
+    # Algorithm to generate blockchain address:
+    # https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
+    #
     def generate_address
       public_key_sha256 = sha256_hash(public_key.to_hex)
       public_key_sha256_rmd160 = rmd160_hash(public_key_sha256)

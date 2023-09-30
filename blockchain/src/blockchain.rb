@@ -1,3 +1,6 @@
+require_relative 'block'
+require_relative 'transaction'
+
 class Blockchain
   attr_reader :chain # Array[Block]
   attr_reader :transactions # Array[Transaction]
@@ -5,7 +8,7 @@ class Blockchain
   def initialize
     @chain = []
     @transactions = []
-    @chain << Block.new(0, nil, []))
+    @chain << Block.new(0, nil, [])
   end
 
   def create_block(nonce, parent_hash)

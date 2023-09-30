@@ -1,3 +1,6 @@
+require 'json'
+require 'digest'
+
 class Block
   attr_reader :nonce # Integer
   attr_reader :timestamp # Float

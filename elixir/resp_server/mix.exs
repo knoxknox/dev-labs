@@ -20,7 +20,7 @@ defmodule RespServer.Mixfile do
 
   defp deps do
     [
-      {:redix, "~> 1.1"}
+      {:redix, "~> 1.3"}
     ]
   end
 end

@@ -19,7 +19,7 @@ defmodule Cluster.Mixfile do
 
   defp deps do
     [
-      {:gproc, "~> 0.9.0"}
+      {:gproc, "~> 0.9.1"}
     ]
   end
 end

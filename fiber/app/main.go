@@ -1,8 +1,9 @@
 package main
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -12,18 +13,18 @@ func main() {
 
 		if !query.Has("id") {
 			body = "Index page"
-			log.Println("Handle index page")
+			logrus.Info("Handle index page")
 		} else {
 			id := query.Get("id")
 			body = "Details page " + id
-			log.Printf("Handle details page with %s", id)
+			logrus.Infof("Handle details page with %s", id)
 		}
 
 		response.Write([]byte(body))
 	})
 
-	port := ":9000"
+	port := ":8080"
 	host := "0.0.0.0"
-	log.Printf("Listen on %s%s", host, port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	logrus.Infof("Listen on %s%s", host, port)
+	logrus.Fatal(http.ListenAndServe(port, nil))
 }

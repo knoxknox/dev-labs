@@ -11,15 +11,15 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(ctx *fiber.Ctx) error {
-		logrus.Info("Handle index page")
-		return ctx.Status(http.StatusOK).SendString("Index page")
+	app.Get("/users", func(ctx *fiber.Ctx) error {
+		logrus.Info("Handle users page")
+		return ctx.Status(http.StatusOK).SendString("Users page")
 	})
 
-	app.Get("/:id", func(ctx *fiber.Ctx) error {
-		id := ctx.Query("id")
-		logrus.Infof("Handle details page id=%s", id)
-		return ctx.Status(http.StatusOK).SendString(fmt.Sprintf("Details page id=%s", id))
+	app.Get("/users/:id", func(ctx *fiber.Ctx) error {
+		id := ctx.Params("id")
+		logrus.Infof("Handle users %s page", id)
+		return ctx.Status(http.StatusOK).SendString(fmt.Sprintf("Users %s page", id))
 	})
 
 	logrus.Fatal(app.Listen(":8080"))

@@ -4,9 +4,9 @@
 # > RespServer.Redix.send(["TEST", 42])
 #
 defmodule RespServer.Redix do
-  def send(command) do
-    {:ok, connection} = redix_connect
-    Redix.command(connection, command)
+  def send(command, opts \\ []) do
+    {:ok, connection} = redix_connect()
+    Redix.command(connection, command, opts)
   end
 
   defp redix_connect do

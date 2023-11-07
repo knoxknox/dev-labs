@@ -3,7 +3,7 @@ defmodule Crawler.Requests.Circl do
   @url "https://cve.circl.lu/api/cve"
 
   def get(cve_id, retries \\ 3) do
-    case client.get("#{@url}/#{cve_id}") do
+    case client().get("#{@url}/#{cve_id}") do
       {:ok, json} -> {:ok, Jason.decode!(json)}
       {:error, :retry} -> retry_after(cve_id, retries)
       {:error, :closed} -> retry_after(cve_id, retries)

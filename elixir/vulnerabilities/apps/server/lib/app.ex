@@ -8,7 +8,7 @@ defmodule Server.App do
 
   defp children do
     [
-      Plug.Adapters.Cowboy.child_spec(plug: @plug, scheme: :http, options: [port: 8080])
+      Plug.Cowboy.child_spec(plug: @plug, scheme: :http, options: [port: 8080])
     ]
   end
 end

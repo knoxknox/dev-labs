@@ -1,30 +1,26 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
-	http.HandleFunc("/", func(response http.ResponseWriter, request *http.Request) {
-		body := ""
-		query := request.URL.Query()
+	app := fiber.New()
 
-		if !query.Has("id") {
-			body = "Index page"
-			logrus.Info("Handle index page")
-		} else {
-			id := query.Get("id")
-			body = "Details page " + id
-			logrus.Infof("Handle details page with %s", id)
-		}
-
-		response.Write([]byte(body))
+	app.Get("/", func(ctx *fiber.Ctx) error {
+		logrus.Info("Handle index page")
+		return ctx.Status(http.StatusOK).SendString("Index page")
 	})
 
-	port := ":8080"
-	host := "0.0.0.0"
-	logrus.Infof("Listen on %s%s", host, port)
-	logrus.Fatal(http.ListenAndServe(port, nil))
+	app.Get("/:id", func(ctx *fiber.Ctx) error {
+		id := ctx.Query("id")
+		logrus.Infof("Handle details page id=%s", id)
+		return ctx.Status(http.StatusOK).SendString(fmt.Sprintf("Details page id=%s", id))
+	})
+
+	logrus.Fatal(app.Listen(":8080"))
 }

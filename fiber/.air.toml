@@ -1,3 +1,4 @@
 [build]
-  cmd = "go build -o ./tmp/main ./..."
+  post_cmd = ["rm -rf ./tmp"]
+  cmd = "go build -o ./tmp/main ./app"
   exclude_dir = ["tmp", "assets", "scripts"]

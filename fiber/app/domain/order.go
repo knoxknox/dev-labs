@@ -1,7 +1,7 @@
 package domain
 
 type Order struct {
-	ID        int64
+	ID        string
 	Name      string
-	CreatedAt string
+	CreatedAt int64
 }

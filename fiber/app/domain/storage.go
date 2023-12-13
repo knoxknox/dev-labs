@@ -3,36 +3,37 @@ package domain
 import (
 	"errors"
 	"fmt"
-	"math/rand"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type Storage struct {
-	orders map[int64]Order
+	orders map[string]Order
 }
 
 func NewStorage() *Storage {
 	return &Storage{
-		orders: make(map[int64]Order),
+		orders: make(map[string]Order),
 	}
 }
 
-func (storage *Storage) GetOrder(id int64) (Order, error) {
+func (storage *Storage) GetOrder(id string) (Order, error) {
 	order, ok := storage.orders[id]
 	if ok {
 		return order, nil
 	}
 
-	return Order{}, errors.New(fmt.Sprintf("Order %d not found", id))
+	return Order{}, errors.New(fmt.Sprintf("Order %s not found", id))
 }
 
 func (storage *Storage) CreateOrder(name string) (Order, error) {
-	id := rand.Int63()
-	storage.orders[id] = Order{
-		ID:        id,
+	uuid := uuid.New().String()
+	storage.orders[uuid] = Order{
+		ID:        uuid,
 		Name:      name,
-		CreatedAt: time.Now().Format(time.DateTime),
+		CreatedAt: time.Now().Unix(),
 	}
 
-	return storage.GetOrder(id)
+	return storage.GetOrder(uuid)
 }

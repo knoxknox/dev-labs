@@ -12,9 +12,9 @@ type PostOrderRequest struct {
 }
 
 type PostOrderResponse struct {
-	ID        int64  `json:"id"`
+	ID        string `json:"uuid"`
 	Name      string `json:"name"`
-	CreatedAt string `json:"created_at"`
+	CreatedAt int64  `json:"created_at"`
 }
 
 func PostOrder(route *Route) error {

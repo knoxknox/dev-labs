@@ -2,7 +2,7 @@ install:
 	@poetry install
 
 outdated:
-	@poetry show --outdated
+	@poetry show --latest
 
 test:
 	@poetry run pytest -s -v

@@ -7,6 +7,7 @@ description = "python3 labs"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+bpython = "^0.24"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.2"

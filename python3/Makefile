@@ -7,8 +7,8 @@ outdated:
 console:
 	@poetry run bpython
 
-test:
-	@poetry run pytest -s -v
-
 run:
 	@poetry run python src/main.py
+
+test:
+	@poetry run pytest --no-header -rN

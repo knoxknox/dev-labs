@@ -7,12 +7,12 @@ description = "python3 labs"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-bpython = "^0.24"
-ipdb = "^0.13.13"
-ruff = "^0.4.7"
 
 [tool.poetry.group.dev.dependencies]
+ruff = "^0.4.7"
+ipdb = "^0.13.13"
 pytest = "^8.0.2"
+bpython = "^0.24"
 
 [build-system]
 requires = ["poetry-core"]

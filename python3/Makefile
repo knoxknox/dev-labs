@@ -18,3 +18,6 @@ run:
 
 test:
 	@poetry run pytest --no-header -rN
+
+coverage:
+	@poetry run pytest --cov=src --no-header -rN

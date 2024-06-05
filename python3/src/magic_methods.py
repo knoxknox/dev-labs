@@ -6,6 +6,7 @@ from queue import Queue as BaseQueue
 class Queue(BaseQueue):
   def __add__(self, value):
     self.put(value)
+
   def __repr__(self):
     result = []
     while not self.empty():
@@ -24,12 +25,16 @@ print(queue) # calls __repr__ => 1,2
 class Person:
   def __init__(self, name):
     self.name = name
+
   def __len__(self):
     return len(self.name)
+
   def __repr__(self):
     return f'Person: {self.name}'
+
   def __call__(self, arg):
     print('Called with arg', arg)
+
   def __mul__(self, times):
     if type(times) is int:
       self.name = self.name * times

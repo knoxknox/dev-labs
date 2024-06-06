@@ -1,3 +1,6 @@
+update:
+	@poetry update
+
 install:
 	@poetry install
 

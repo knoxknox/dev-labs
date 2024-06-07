@@ -55,3 +55,26 @@ print(queue.__class__) # <class 'DoubleLinkedListQueue'>
 print(type(DoubleLinkedListQueue)) # <class 'metaclasses.utype'>
 print(DoubleLinkedListQueue.__bases__) # <class 'metaclasses.Queue'>
 print(DoubleLinkedListQueue.__mro__) # <class 'DoubleLinkedListQueue'>, <class 'Queue'>, <class 'object'>
+
+##
+# Metaclass which converts methods to upcase.
+#
+class UpCase(type):
+  @staticmethod
+  def __new__(self, name, bases, attributes):
+    modified_attributes = {}
+    for key, value in attributes.items():
+      if key.startswith('__'):
+        modified_attributes[key] = value
+      else:
+        modified_attributes[key.upper()] = value
+    return type(name, bases, modified_attributes)
+
+class Ferrari(metaclass=UpCase):
+  color = 'red'
+  founder = 'Enzo Ferrari'
+
+  def move_to(self):
+    return 'not implemented method'
+
+print(Ferrari.__dict__) # 'COLOR': 'red', 'FOUNDER': 'Enzo Ferrari', 'MOVE_TO': <function>

@@ -17,6 +17,7 @@ class LinkedBlockingQueue(BlockingQueue): pass
 
 add([], 42) # object caller
 print(id(insert)) # object id
+print(type(insert)) # object type
 print(dir(BaseQueue)) # object methods
 print(ArrayBlockingQueue.mro()) # object ancestors
 print(inspect.getsource(Queue)) # object source code

@@ -19,6 +19,7 @@ add([], 42) # object caller
 print(id(insert)) # object id
 print(type(insert)) # object type
 print(dir(BaseQueue)) # object methods
+print(vars(BaseQueue)) # object attributes
 print(ArrayBlockingQueue.mro()) # object ancestors
 print(inspect.getsource(Queue)) # object source code
 print(inspect.getsourcefile(Queue)) # object source location

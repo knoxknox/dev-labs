@@ -1,4 +1,5 @@
 import asyncio
+import concurrent.futures
 
 ##
 # built-in: Awaitable, Coroutine
@@ -49,6 +50,7 @@ async def tasks():
   await asyncio.create_task(sleep1())
   await asyncio.create_task(sleep5())
 
+print('tasks')
 asyncio.run(tasks()) # awaits tasks to complete
 
 async def task_group():
@@ -56,4 +58,30 @@ async def task_group():
     group.create_task(sleep1())
     group.create_task(sleep5())
 
+print('task_group')
 asyncio.run(task_group()) # awaits tasks to complete
+
+##
+# IO / CPU bound operations.
+#
+def io_bound():
+  with open('/dev/urandom', 'rb') as file:
+    return file.read(100) # can block the event loop
+
+def cpu_bound():
+  return sum(i * i for i in range(10 ** 7)) # can block the event loop
+
+async def execute():
+  loop = asyncio.get_running_loop()
+
+  # IO bound operations should run in thread pool
+  with concurrent.futures.ThreadPoolExecutor() as pool:
+    result = await loop.run_in_executor(pool, io_bound)
+    print('Result of io bound task from thread pool executor', result)
+
+  # CPU bound operations should run in process pool
+  with concurrent.futures.ProcessPoolExecutor() as pool:
+    result = await loop.run_in_executor(pool, cpu_bound)
+    print('Result of cpu bound task from process pool executor', result)
+
+asyncio.run(execute())

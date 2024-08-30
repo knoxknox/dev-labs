@@ -13,3 +13,23 @@ def generator(limit):
     yield index
 
 for i in generator(1_000_000_000): print(i)
+
+##
+# Generator can also receive values, they support bi-directional communication.
+# The `yield` keyword can also receive values, a generator becomes a listener in such case.
+#
+
+def coroutine():
+  result = ''
+  while True:
+    input = yield result
+    result = input.upper()
+
+  return result
+
+generator = coroutine()
+
+next(generator) # init generator
+print(generator.send('test1')) # TEST1
+print(generator.send('test2')) # TEST2
+generator.close() # clean itself up and exit

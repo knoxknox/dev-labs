@@ -72,8 +72,7 @@ App deployment:
 - `kubectl delete -f app/service.yaml` to delete resources;
 
 Delete resources:
-- `kubectl delete service {name}` to remove service by name;
-- `kubectl delete deployment {name}` to remove deployment by name;
+- `kubectl delete {resource} {name}` where resource=pod,service,etc;
 
 Describe resources:
 - `kubectl describe {resource} {name}` where resource=pod,service,etc;

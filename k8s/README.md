@@ -77,6 +77,11 @@ Delete resources:
 Describe resources:
 - `kubectl describe {resource} {name}` where resource=pod,service,etc;
 
+## Run commands
+
+Run command in the container:
+- `kubectl exec -it {pod} --container {container} -- /bin/bash` to run shell;
+
 ## Forwarding ports
 
 ```

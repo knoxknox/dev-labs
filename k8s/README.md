@@ -80,6 +80,7 @@ Describe resources:
 ## Run commands
 
 Run command in the container:
+- `kubectl logs -f {pod} --container {container}` to view logs;
 - `kubectl exec -it {pod} --container {container} -- /bin/bash` to run shell;
 
 ## Forwarding ports

@@ -17,6 +17,15 @@
 | | Pod |          | kube-proxy |-|--> Worker Nodes network
 | +-----+          +------------+ |
 +---------------------------------+
+
++-Worker Node Pod-----------------+
+| +-----------+ +-----------+     |
+| | Container | | Container |     |
+| +-----------+ +-----------+     |<-- Multiple containers in pod
+| +-----------+                   |
+| | Container |                   |
+| +-----------+                   |
++---------------------------------+
 ```
 k8s terminology: https://www.youtube.com/watch?v=Ero82CCQIGk
 

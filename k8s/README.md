@@ -67,8 +67,9 @@ Show resources:
 - `kubectl get services` to list services;
 - `kubectl get deployments` to list deployments;
 
-Run deployment:
-- `kubectl apply -f app/service.yaml` to start deployment;
+App deployment:
+- `kubectl apply -f app/service.yaml` to apply resources;
+- `kubectl delete -f app/service.yaml` to delete resources;
 
 Delete resources:
 - `kubectl delete service {name}` to remove service by name;

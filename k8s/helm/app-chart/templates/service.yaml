@@ -1,5 +1,5 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: {{ .Release.Name }}-service
 spec:
@@ -12,8 +12,8 @@ spec:
       protocol: TCP
       targetPort: {{ .Values.container.port }}
 ---
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{ .Release.Name }}-deployment
 spec:

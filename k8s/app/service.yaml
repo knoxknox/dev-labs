@@ -30,5 +30,5 @@ spec:
         - name: echo-server
           ports:
             - containerPort: 9000
-          image: hashicorp/http-echo
+          image: hashicorp/http-echo:1.0
           args: ['-text', 'OK', '-listen', ':9000']

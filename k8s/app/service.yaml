@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: echo-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: echo-server
   ports:

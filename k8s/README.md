@@ -104,7 +104,7 @@ $ kubectl apply -f app/service.yaml
 
 To bootstrap ingress controller:
 ```
-$ sh app/bin/ingress-nginx-controller.sh
+$ sh app/bin/ingress-nginx-apply.sh
 $ sh app/bin/ingress-nginx-port-forward.sh
 ```
 

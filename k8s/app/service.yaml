@@ -28,7 +28,9 @@ spec:
     spec:
       containers:
         - name: echo-server
+          image: ealen/echo-server
+          env:
+            - name: PORT
+              value: '9000'
           ports:
             - containerPort: 9000
-          image: hashicorp/http-echo:1.0
-          args: ['-text', 'OK', '-listen', ':9000']

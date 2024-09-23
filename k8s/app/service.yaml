@@ -34,3 +34,11 @@ spec:
               value: '9000'
           ports:
             - containerPort: 9000
+          readinessProbe:
+            periodSeconds: 3
+            successThreshold: 3
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            httpGet:
+              port: 9000
+              path: /?echo_code=200

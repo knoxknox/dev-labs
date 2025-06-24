@@ -2,6 +2,7 @@
 name = "python3"
 version = "0.1.0"
 readme = "README.md"
+package-mode = false
 authors = ["knoxknox"]
 description = "python3 labs"
 

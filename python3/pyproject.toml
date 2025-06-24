@@ -6,7 +6,7 @@ authors = ["knoxknox"]
 description = "python3 labs"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13.5"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.12"

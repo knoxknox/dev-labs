@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 # Descriptor:
 # - attribute value that has one of the methods from the descriptor protocol
 # - descriptor protocol should define any of: __get__(), __set__() or __delete__()
+# - slots, properties, class methods, static methods are all based on the descriptor protocol
 #
 
 class Validator(ABC):

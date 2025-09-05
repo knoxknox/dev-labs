@@ -15,7 +15,7 @@ python = "^3.13.5"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.12"
 ipdb = "^0.13.13"
-pytest = "^8.4.1"
+pytest = "^8.4.2"
 bpython = "^0.25"
 pytest-cov = "^6.2.1"
 

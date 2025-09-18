@@ -15,6 +15,6 @@ update:
 
 install:
 	go get ./...
-	go install github.com/cosmtrek/air@latest
 	go install github.com/kyoh86/richgo@latest
+	go install github.com/air-verse/air@latest
 	go install github.com/go-delve/delve/cmd/dlv@latest

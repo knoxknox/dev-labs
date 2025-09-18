@@ -3,14 +3,11 @@
 ## Setup
 
 Install asdf and golang plugin:
-- follow instructions here https://github.com/asdf-vm/asdf
-- run `asdf plugin-add golang https://github.com/kennyp/asdf-golang.git`
+- follow instructions here https://asdf-vm.com/guide/getting-started.html
+- run `asdf plugin-add golang https://github.com/asdf-community/asdf-golang.git`
 
-Install golang latest version via asdf:
+Install golang and project dependencies:
 - install golang via `asdf install golang 1.25.1`
-- set global golang version `asdf global golang 1.25.1`
-
-Install development packages and reshim:
 - run `make install && asdf reshim golang` to complete setup
 
 ## Development

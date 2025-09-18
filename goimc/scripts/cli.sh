@@ -6,4 +6,4 @@
 # ./scripts/cli.sh '*2\r\n$3\r\nGET\r\n$3\r\nkey\r\n'
 # ./scripts/cli.sh '*3\r\n$3\r\nSET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n'
 #
-echo -ne $1 | nc 0.0.0.0 6379 -v # $1 => command encoded in single quotes
+printf $1 | nc 0.0.0.0 6379 -v # $1 => command encoded in single quotes

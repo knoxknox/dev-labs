@@ -1,0 +1,13 @@
+services:
+  cassandra:
+    image: cassandra
+    ports:
+      - '9042:9042'
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_NUM_TOKENS=256
+      - CASSANDRA_CLUSTER_NAME=DevCluster
+
+volumes:
+  cassandra_data: {}

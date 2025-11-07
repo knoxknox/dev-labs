@@ -4,20 +4,32 @@
   <img src="images/kafka.png" />
 </p>
 
+# Commands
+
+Run kafka with `dc start`.<br/>
+Open a shell with `dc kafka-kafka-1`.
+
+List topics:
 ```
-$ cd kafka/bin
-$ ./zookeeper-server-start.sh ../config/zookeeper.properties
+$ ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
+
+Delete a topic:
 ```
-$ ./kafka-topics.sh --list --zookeeper localhost:2181
-$ ./kafka-server-start.sh /kafka/config/server.properties
-$
-$ ./kafka-console-producer.sh --topic demo --broker localhost:9092
-$ ./kafka-console-consumer.sh --topic demo --zookeeper localhost:2181
-$ ./kafka-topics.sh --create --zookeeper localhost:2181 --topic demo --partitions 1 --replication-factor 1
-$
-$ ./kafka-console-producer.sh --topic demo --broker localhost:9092 --new-producer
-$ ./kafka-console-consumer.sh --topic demo --zookeeper localhost:2181 --consumer.config=consumer1.conf
-$ ./kafka-console-consumer.sh --topic demo --zookeeper localhost:2181 --consumer.config=consumer2.conf
-$ ./kafka-topics.sh --create --zookeeper localhost:2181 --topic demo --partitions 2 --replication-factor 1
+$ ./kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic test-topic
+```
+
+Create a topic
+```
+$ ./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test-topic --partitions 1 --replication-factor 1
+```
+
+Start a consumer:
+```
+$ ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic
+```
+
+Start a producer:
+```
+$ ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
 ```

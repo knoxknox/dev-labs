@@ -7,7 +7,7 @@ disable_info_logs(sc)
 data = sc.textFile('apache.log')
 
 # SQL
-print "SQL example"
+print("SQL example")
 from queries.df.context import *
 from queries.df.operations import *
 context = Context().current(sc, data)
@@ -18,14 +18,14 @@ operations.content_sizes().show()
 operations.response_codes().show()
 
 # RDD
-print "RDD example"
+print("RDD example")
 from queries.rdd.context import *
 from queries.rdd.operations import *
 context = Context().current(sc, data)
 operations = Operations(context)
-print operations.client_ips()
-print operations.top_endpoints()
-print operations.response_codes()
-print operations.content_sizes().min()
-print operations.content_sizes().max()
-print operations.content_sizes().count()
+print(operations.client_ips())
+print(operations.top_endpoints())
+print(operations.response_codes())
+print(operations.content_sizes().min())
+print(operations.content_sizes().max())
+print(operations.content_sizes().count())

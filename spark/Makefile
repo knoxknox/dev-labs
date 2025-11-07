@@ -1,5 +1,7 @@
-run:
+build:
 	rm -f /tmp/modules.zip
-	cd ~/workspace/src && find . -name '*.pyc' | xargs rm
-	cd ~/workspace/src && zip -x main.py -r /tmp/modules.zip .
-	cd ~/workspace && ./spark/bin/spark-submit --py-files /tmp/modules.zip src/main.py
+	find src -name '*.pyc' | xargs rm
+	cd src && zip -x main.py -r /tmp/modules.zip .
+
+submit:
+	./spark/bin/spark-submit --py-files /tmp/modules.zip src/main.py

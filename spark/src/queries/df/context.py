@@ -1,7 +1,7 @@
-from parser.log_parser import *
 from pyspark.sql import SQLContext
-from pyspark.sql.types import StructType, StructField
-from pyspark.sql.types import DoubleType, IntegerType, StringType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+
+from parser.log_parser import LogParser
 
 class Context:
 
@@ -10,6 +10,7 @@ class Context:
     sql_context = SQLContext(sc)
     schema = StructType([
       StructField('ip', StringType()),
+      StructField('method', StringType()),
       StructField('endpoint', StringType()),
       StructField('content_size', IntegerType()),
       StructField('response_code', IntegerType())
@@ -17,4 +18,5 @@ class Context:
     df = data.map(lambda row: parser.parse_row(row))
     data_frame = sql_context.createDataFrame(df, schema=schema)
     data_frame.registerTempTable('logs')
+
     return sql_context

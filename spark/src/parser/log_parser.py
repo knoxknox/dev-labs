@@ -1,6 +1,8 @@
 import re
-from log_entity import *
+
 from pyspark.sql import Row
+
+from parser.log_entity import LogEntity
 
 class LogParser:
 
@@ -10,6 +12,7 @@ class LogParser:
 
   def parse(self, line):
     matcher = self.regexp.match(line)
+
     log_entity = LogEntity()
     log_entity.method(matcher.group(5))
     log_entity.user_id(matcher.group(3))
@@ -20,10 +23,12 @@ class LogParser:
     log_entity.content_size(matcher.group(9))
     log_entity.response_code(matcher.group(8))
     log_entity.client_identity(matcher.group(2))
+
     return log_entity
 
   def parse_row(self, line):
     log_entity = self.parse(line)
+
     return Row(
       ip=log_entity.client_ip,
       method=log_entity.method,

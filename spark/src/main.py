@@ -1,17 +1,20 @@
 from pyspark import SparkContext
+
 from settings import disable_info_logs
+from queries.df.context import Context as DfContext
+from queries.df.operations import Operations as DfOperations
+from queries.rdd.context import Context as RddContext
+from queries.rdd.operations import Operations as RddOperations
 
 sc = SparkContext('local', 'Log analyzer')
 
 disable_info_logs(sc)
-data = sc.textFile('apache.log')
+data = sc.textFile('access.log')
 
 # SQL
 print("SQL example")
-from queries.df.context import *
-from queries.df.operations import *
-context = Context().current(sc, data)
-operations = Operations(context)
+context = DfContext().current(sc, data)
+operations = DfOperations(context)
 operations.client_ips().show()
 operations.top_endpoints().show()
 operations.content_sizes().show()
@@ -19,10 +22,8 @@ operations.response_codes().show()
 
 # RDD
 print("RDD example")
-from queries.rdd.context import *
-from queries.rdd.operations import *
-context = Context().current(sc, data)
-operations = Operations(context)
+context = RddContext().current(sc, data)
+operations = RddOperations(context)
 print(operations.client_ips())
 print(operations.top_endpoints())
 print(operations.response_codes())

@@ -1,4 +1,4 @@
-from parser.log_parser import *
+from parser.log_parser import LogParser
 
 class Context:
 

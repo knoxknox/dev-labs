@@ -80,3 +80,8 @@ Consume messages between two dates (epoch timestamps):
 ```
 kcat -b localhost:9092 -C -t test-topic -o s@1762530534942 -o e@1762530752537 -e -q -f 'Offset: %o\tPartition: %p\tKey: %k\tValue: %s\n'
 ```
+
+## References
+
+- https://medium.com/@souzaluis/apache-kafka-patterns-6def9295cb6f
+- https://dzone.com/articles/kafka-clients-at-most-once-at-least-once-exactly-o

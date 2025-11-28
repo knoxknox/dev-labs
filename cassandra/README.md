@@ -37,5 +37,6 @@ INSERT INTO demo.users(id, name, updated_at) VALUES (5, 'Test User #5', toTimeSt
 Run `SELECT * FROM demo.users WHERE id IN (1, 2, 3);` to select first three users from database.
 
 ## References
+
 - http://dzone.com/articles/introduction-apache-cassandras
 - https://github.com/knoxknox/cs186-course/blob/master/materials/indexes/dse.md

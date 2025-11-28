@@ -3,6 +3,7 @@ package actions
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/knoxknox/dev-labs/fiber/app/domain"
+	"github.com/sirupsen/logrus"
 )
 
 type Route struct {
@@ -15,6 +16,7 @@ type FiberResult func(ctx *fiber.Ctx) error
 
 func (action *Route) Call(handler Handler) FiberResult {
 	return func(ctx *fiber.Ctx) error {
+		logrus.Info(ctx)
 		action.Ctx = ctx
 		return handler(action)
 	}

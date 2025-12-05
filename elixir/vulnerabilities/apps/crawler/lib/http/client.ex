@@ -2,7 +2,7 @@ defmodule Crawler.Http.Client do
   @behaviour Crawler.Http.Base
 
   def get(url) do
-    case HTTPoison.get(url) do
+    case HTTPoison.get(url, [], [recv_timeout: 10_000]) do
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} -> {:ok, body}
       {:error, %HTTPoison.Error{id: nil, reason: :closed}} -> {:error, :closed}
       {:error, %HTTPoison.Error{id: nil, reason: :timeout}} -> {:error, :timeout}

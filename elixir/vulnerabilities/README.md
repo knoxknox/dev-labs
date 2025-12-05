@@ -1,5 +1,6 @@
 # vulnerabilities
 
+To start crawler:
 ```
 $ make console
 $

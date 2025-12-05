@@ -1,6 +1,6 @@
 defmodule Crawler.Requests.Circl do
   @retry_after :timer.seconds(10)
-  @url "https://cve.circl.lu/api/cve"
+  @url "https://vulnerability.circl.lu/api/vulnerability"
 
   def get(cve_id, retries \\ 3) do
     case client().get("#{@url}/#{cve_id}") do

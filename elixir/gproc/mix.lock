@@ -1,3 +1,3 @@
 %{
-  "gproc": {:hex, :gproc, "0.9.1", "f1df0364423539cf0b80e8201c8b1839e229e5f9b3ccb944c5834626998f5b8c", [:rebar3], [], "hexpm", "905088e32e72127ed9466f0bac0d8e65704ca5e73ee5a62cb073c3117916d507"},
+  "gproc": {:hex, :gproc, "1.0.0", "aa9ec57f6c9ff065b16d96924168d7c7157cd1fd457680efe4b1274f456fa500", [:rebar3], [], "hexpm", "109f253c2787de8a371a51179d4973230cbec6239ee673fa12216a5ce7e4f902"},
 }

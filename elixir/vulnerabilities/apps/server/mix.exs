@@ -27,9 +27,9 @@ defmodule Server.MixProject do
     [
       {:plug, "~> 1.9"},
       {:jason, "~> 1.4"},
-      {:cowboy, "~> 2.10"},
-      {:plug_cowboy, "~> 2.6"},
-      {:ex_json_schema, "~> 0.10"}
+      {:cowboy, "~> 2.14"},
+      {:plug_cowboy, "~> 2.7"},
+      {:ex_json_schema, "~> 0.11"}
     ]
   end
 end

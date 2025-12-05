@@ -21,7 +21,6 @@ defmodule Vulnerabilities.MixProject do
 
   defp deps do
     [
-      {:castore, "~> 1.0", only: :test},
       {:excoveralls, "~> 0.18", only: :test}
     ]
   end

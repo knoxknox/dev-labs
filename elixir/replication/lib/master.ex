@@ -18,17 +18,6 @@ defmodule Master do
   def init(_), do: {:ok, %State{balances: %{}, replicas: []}}
   def broadcast(replicas, event), do: replicas |> Enum.each(fn replica -> GenServer.cast(replica, event) end)
 
-  def handle_cast(
-    %Create{name: name} = event,
-    %State{balances: balances, replicas: replicas} = state) do
-
-    balance = balances |> Map.get(name)
-    new_state = if balance, do: balances, else: balances |> Map.put(name, 0)
-
-    broadcast(replicas, event)
-    {:noreply, %{state | balances: new_state}}
-  end
-
   def handle_call(
     %Balance{name: name},
     _,
@@ -38,6 +27,27 @@ defmodule Master do
     reply = if balance, do: {:ok, balance}, else: {:error, :not_found}
 
     {:reply, reply, state}
+  end
+
+  def handle_call(
+    %Register{name: name},
+    _,
+    %State{balances: balances, replicas: replicas} = state) do
+
+    Process.monitor(name)
+    Logger.info("Join #{inspect name} as replica")
+    {:reply, {:ok, balances}, %{state | replicas: [name | replicas]}}
+  end
+
+  def handle_cast(
+    %Create{name: name} = event,
+    %State{balances: balances, replicas: replicas} = state) do
+
+    balance = balances |> Map.get(name)
+    new_state = if balance, do: balances, else: balances |> Map.put(name, 0)
+
+    broadcast(replicas, event)
+    {:noreply, %{state | balances: new_state}}
   end
 
   def handle_cast(
@@ -60,16 +70,6 @@ defmodule Master do
 
     broadcast(replicas, event)
     {:noreply, %{state | balances: new_state}}
-  end
-
-  def handle_call(
-    %Register{name: name},
-    _,
-    %State{balances: balances, replicas: replicas} = state) do
-
-    Process.monitor(name)
-    Logger.info("Join #{inspect name} as replica")
-    {:reply, {:ok, balances}, %{state | replicas: [name | replicas]}}
   end
 
   def handle_info(

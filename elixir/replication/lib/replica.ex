@@ -11,18 +11,18 @@ defmodule Replica do
   def start_link(name), do: GenServer.start_link(__MODULE__, name, name: name)
   def init(name), do: GenServer.call(:master, %Register{name: name})
 
-  def handle_cast(%Create{name: name}, state) do
-    balance = state |> Map.get(name)
-    new_state = if balance, do: state, else: state |> Map.put(name, 0)
-
-    {:noreply, new_state}
-  end
-
   def handle_call(%Balance{name: name}, _, state) do
     balance = state |> Map.get(name)
     reply = if balance, do: {:ok, balance}, else: {:error, :not_found}
 
     {:reply, reply, state}
+  end
+
+  def handle_cast(%Create{name: name}, state) do
+    balance = state |> Map.get(name)
+    new_state = if balance, do: state, else: state |> Map.put(name, 0)
+
+    {:noreply, new_state}
   end
 
   def handle_cast(%Increment{name: name, amount: amount}, state) do

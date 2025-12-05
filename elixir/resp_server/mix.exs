@@ -5,7 +5,7 @@ defmodule RespServer.Mixfile do
     [
       deps: deps(),
       version: "1.0.0",
-      elixir: "~> 1.14",
+      elixir: "~> 1.19",
       app: :resp_server,
       start_permanent: Mix.env() == :prod
     ]

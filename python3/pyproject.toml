@@ -10,7 +10,7 @@ description = "python3 labs"
 line-length = 120
 
 [tool.poetry.dependencies]
-python = "^3.13.5"
+python = "^3.14"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.12"

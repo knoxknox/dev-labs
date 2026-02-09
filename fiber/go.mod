@@ -3,7 +3,7 @@ module github.com/knoxknox/dev-labs/fiber
 go 1.25.1
 
 require (
-	github.com/gofiber/fiber/v2 v2.52.9
+	github.com/gofiber/fiber/v2 v2.52.11
 	github.com/google/uuid v1.6.0
 	github.com/sirupsen/logrus v1.9.3
 )

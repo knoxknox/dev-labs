@@ -2,7 +2,7 @@ install:
 	@uv sync
 
 update:
-	@uv lock --upgrade
+	@uv sync --upgrade
 
 outdated:
 	@uv tree --outdated --depth 1

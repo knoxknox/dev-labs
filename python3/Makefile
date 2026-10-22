@@ -1,26 +1,26 @@
-update:
-	@poetry update
-
 install:
-	@poetry install
+	@uv sync
+
+update:
+	@uv lock --upgrade
 
 outdated:
-	@poetry show --latest
+	@uv tree --outdated --depth 1
 
 console:
-	@poetry run bpython
+	@uv run bpython
 
 lint:
-	@poetry run ruff check
+	@uv run ruff check
 
 format:
-	@poetry run ruff format
+	@uv run ruff format
 
 run:
-	@poetry run python src/main.py
+	@uv run python src/main.py
 
 test:
-	@poetry run pytest --no-header -rN
+	@uv run pytest --no-header -rN
 
 coverage:
-	@poetry run pytest --cov=src --no-header -rN
+	@uv run pytest --cov=src --no-header -rN

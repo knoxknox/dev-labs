@@ -7,24 +7,20 @@ readme = "README.md"
 description = "python3 labs"
 authors = [{ name = "knoxknox" }]
 
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+
 dependencies = [
 ]
 
 [dependency-groups]
 dev = [
-  "ipdb (>=0.13,<0.14)",
-  "ruff (>=0.14,<0.15)",
-  "pytest (>=9.0.3,<10.0)",
-  "bpython (>=0.26,<0.27)",
-  "pytest-cov (>=7.0,<8.0)"
+  "ipdb>=0.13,<0.14",
+  "ruff>=0.14,<0.15",
+  "pytest>=9.0.3,<10.0",
+  "bpython>=0.26,<0.27",
+  "pytest-cov>=7.0,<8.0",
 ]
-
-[tool.ruff]
-line-length = 120
-
-[tool.poetry]
-package-mode = false
-
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"

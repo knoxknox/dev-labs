@@ -24,7 +24,7 @@ defmodule Client.MixProject do
 
   defp deps do
     [
-      {:httpoison, "~> 2.3"},
+      {:httpoison, "~> 3.0"},
       {:xml_builder, "~> 2.4"}
     ]
   end

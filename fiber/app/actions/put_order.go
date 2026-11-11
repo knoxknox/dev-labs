@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/sirupsen/logrus"
 )
 
 type PutOrderRequest struct {
@@ -23,7 +22,7 @@ func PutOrder(route *Route) error {
 
 	var request PutOrderRequest
 	if err := route.Ctx.BodyParser(&request); err != nil {
-		logrus.WithError(err).Error("Could not parse JSON")
+		route.Log.WithError(err).Error("Could not parse JSON")
 		return route.Ctx.Status(http.StatusBadRequest).JSON(fiber.Map{"error": "JSON parse error"})
 	}
 

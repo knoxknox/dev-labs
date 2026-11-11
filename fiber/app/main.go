@@ -3,13 +3,18 @@ package main
 import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/requestid"
 	"github.com/knoxknox/dev-labs/fiber/app/actions"
 	"github.com/knoxknox/dev-labs/fiber/app/domain"
+	"github.com/knoxknox/dev-labs/fiber/app/middleware"
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	app := fiber.New()
+	app.Use(requestid.New())
+	app.Use(middleware.Logger())
+
 	storage := domain.NewStorage()
 	action := &actions.Route{Storage: storage, Validator: validator.New()}
 

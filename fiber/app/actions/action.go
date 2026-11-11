@@ -9,6 +9,7 @@ import (
 
 type Route struct {
 	Ctx       *fiber.Ctx
+	Log       *logrus.Entry
 	Storage   *domain.Storage
 	Validator *validator.Validate
 }
@@ -18,9 +19,9 @@ type FiberResult func(ctx *fiber.Ctx) error
 
 func (action *Route) Call(handler Handler) FiberResult {
 	return func(ctx *fiber.Ctx) error {
-		logrus.Info(ctx)
 		scoped := *action
 		scoped.Ctx = ctx
+		scoped.Log, _ = ctx.Locals("logger").(*logrus.Entry)
 		return handler(&scoped)
 	}
 }

@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/sirupsen/logrus"
 )
 
 type PostOrderRequest struct {
@@ -20,7 +19,7 @@ type PostOrderResponse struct {
 func PostOrder(route *Route) error {
 	var request PostOrderRequest
 	if err := route.Ctx.BodyParser(&request); err != nil {
-		logrus.WithError(err).Error("Could not parse JSON")
+		route.Log.WithError(err).Error("Could not parse JSON")
 		return route.Ctx.Status(http.StatusBadRequest).JSON(fiber.Map{"error": "JSON parse error"})
 	}
 
@@ -31,7 +30,7 @@ func PostOrder(route *Route) error {
 	storage := route.Storage
 	order, err := storage.CreateOrder(request.Name)
 	if err != nil {
-		logrus.WithError(err).Error("Could not create order")
+		route.Log.WithError(err).Error("Could not create order")
 		return route.Ctx.Status(http.StatusInternalServerError).JSON(fiber.Map{"error": "Could not create order"})
 	}
 

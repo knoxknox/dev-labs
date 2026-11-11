@@ -19,7 +19,8 @@ type FiberResult func(ctx *fiber.Ctx) error
 func (action *Route) Call(handler Handler) FiberResult {
 	return func(ctx *fiber.Ctx) error {
 		logrus.Info(ctx)
-		action.Ctx = ctx
-		return handler(action)
+		scoped := *action
+		scoped.Ctx = ctx
+		return handler(&scoped)
 	}
 }

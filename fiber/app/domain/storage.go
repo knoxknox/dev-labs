@@ -33,6 +33,18 @@ func (storage *Storage) GetOrder(id string) (Order, error) {
 	return Order{}, errors.New(fmt.Sprintf("Order %s not found", id))
 }
 
+func (storage *Storage) ListOrders() []Order {
+	storage.mutex.RLock()
+	defer storage.mutex.RUnlock()
+
+	orders := make([]Order, 0, len(storage.orders))
+	for _, order := range storage.orders {
+		orders = append(orders, order)
+	}
+
+	return orders
+}
+
 func (storage *Storage) CreateOrder(name string) (Order, error) {
 	storage.mutex.Lock()
 	uuid := uuid.New().String()
@@ -44,4 +56,32 @@ func (storage *Storage) CreateOrder(name string) (Order, error) {
 
 	storage.mutex.Unlock()
 	return storage.GetOrder(uuid)
+}
+
+func (storage *Storage) UpdateOrder(id string, name string) (Order, error) {
+	storage.mutex.Lock()
+	defer storage.mutex.Unlock()
+
+	order, ok := storage.orders[id]
+	if !ok {
+		return Order{}, errors.New(fmt.Sprintf("Order %s not found", id))
+	}
+
+	order.Name = name
+	storage.orders[id] = order
+
+	return order, nil
+}
+
+func (storage *Storage) DeleteOrder(id string) error {
+	storage.mutex.Lock()
+	defer storage.mutex.Unlock()
+
+	if _, ok := storage.orders[id]; !ok {
+		return errors.New(fmt.Sprintf("Order %s not found", id))
+	}
+
+	delete(storage.orders, id)
+
+	return nil
 }

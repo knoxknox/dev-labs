@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"errors"
 	"fmt"
 	"sync"
 	"time"
@@ -30,7 +29,7 @@ func (storage *Storage) GetOrder(id string) (Order, error) {
 		return order, nil
 	}
 
-	return Order{}, errors.New(fmt.Sprintf("Order %s not found", id))
+	return Order{}, fmt.Errorf("Order %s not found", id)
 }
 
 func (storage *Storage) ListOrders() []Order {
@@ -64,7 +63,7 @@ func (storage *Storage) UpdateOrder(id string, name string) (Order, error) {
 
 	order, ok := storage.orders[id]
 	if !ok {
-		return Order{}, errors.New(fmt.Sprintf("Order %s not found", id))
+		return Order{}, fmt.Errorf("Order %s not found", id)
 	}
 
 	order.Name = name
@@ -78,7 +77,7 @@ func (storage *Storage) DeleteOrder(id string) error {
 	defer storage.mutex.Unlock()
 
 	if _, ok := storage.orders[id]; !ok {
-		return errors.New(fmt.Sprintf("Order %s not found", id))
+		return fmt.Errorf("Order %s not found", id)
 	}
 
 	delete(storage.orders, id)

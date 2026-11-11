@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/knoxknox/dev-labs/fiber/app/actions"
 	"github.com/knoxknox/dev-labs/fiber/app/domain"
@@ -10,7 +11,7 @@ import (
 func main() {
 	app := fiber.New()
 	storage := domain.NewStorage()
-	action := &actions.Route{Storage: storage}
+	action := &actions.Route{Storage: storage, Validator: validator.New()}
 
 	app.Get("/orders", action.Call(actions.ListOrders))
 	app.Post("/orders", action.Call(actions.PostOrder))

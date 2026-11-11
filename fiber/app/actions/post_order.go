@@ -8,7 +8,7 @@ import (
 )
 
 type PostOrderRequest struct {
-	Name string `json:"name"`
+	Name string `json:"name" validate:"required,max=255"`
 }
 
 type PostOrderResponse struct {
@@ -22,6 +22,10 @@ func PostOrder(route *Route) error {
 	if err := route.Ctx.BodyParser(&request); err != nil {
 		logrus.WithError(err).Error("Could not parse JSON")
 		return route.Ctx.Status(http.StatusBadRequest).JSON(fiber.Map{"error": "JSON parse error"})
+	}
+
+	if err := route.Validator.Struct(request); err != nil {
+		return route.Ctx.Status(http.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
 	storage := route.Storage

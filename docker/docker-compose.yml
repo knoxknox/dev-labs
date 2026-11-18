@@ -21,7 +21,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
     volumes:
-      - postgres_dev_data:/var/lib/postgresql/data
+      - postgres_dev_data:/var/lib/postgresql
 
   nginx:
     image: nginx:1.24-alpine
